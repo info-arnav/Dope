@@ -21484,8 +21484,8 @@ export let proccessed_array = [
   ],
   [
     "2022UEC2545",
-    ["TANISH"],
-    "GUPTA tanish_gupta.ug22",
+    ["TANISH", "GUPTA"],
+    "tanish_gupta.ug22",
     [
       ["tanishsolanki16", "Tanish Solanki"],
       ["itanish_s", "Tanish Sharma"],
@@ -23464,7 +23464,13 @@ export let proccessed_array = [
       ["piyush_bhardwaj_._", "Piyush Bhardwaj"],
     ],
   ],
-  ["2022UEC2642", ["SAANVI", "SARRAF"], "saanvi.sarraf.ug22", [["saanvi.sarraf", "Saanvi"]], [["saanvi.sarraf", "Saanvi"]]],
+  [
+    "2022UEC2642",
+    ["SAANVI", "SARRAF"],
+    "saanvi.sarraf.ug22",
+    [["saanvi.sarraf", "Saanvi"]],
+    [["saanvi.sarraf", "Saanvi"]],
+  ],
   ["2022UEC2643", ["KAVISHKA", "CHAUDHARY"], "kavishka.chaudhary.ug22", [], []],
   [
     "2022UEC2644",
