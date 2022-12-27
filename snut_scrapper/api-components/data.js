@@ -1,4 +1,4 @@
-export let proccessed_array = [
+export let data = [
   [
     "2022UBT1001",
     ["ANANT", "KUMAR", "SHUKLA"],
@@ -25,7 +25,7 @@ export let proccessed_array = [
     [["saanvvisingh.16", "saanvvi"]],
     [["saanvvisingh.16", "saanvvi"]],
   ],
-  ["2022UBT1003", ["DAKS", "H"], " daksh.ug22", [], []],
+  ["2022UBT1003", ["DAKS", "H"], "daksh.ug22", [], []],
   [
     "2022UBT1004",
     ["JAYANT", "BALYAN"],
@@ -1217,7 +1217,7 @@ export let proccessed_array = [
       ["princeraj5016", "Prince Raj"],
     ],
   ],
-  ["2022UBT1066", ["AARON", "JACOB", "aaron."], "j acob.ug22", [], []],
+  ["2022UBT1066", ["AARON", "JACOB"], "aaron.jacob.ug22", [], []],
   [
     "2022UBT1067",
     ["RITIK", "CHAUHAN"],
@@ -2610,7 +2610,7 @@ export let proccessed_array = [
   [
     "2022UCA1845",
     ["SHREYA", "VERMA"],
-    "shreya verma.ug22",
+    "shreyaverma.ug22",
     [
       ["shreya.verma.7", "Shreya Verma"],
       ["vermaaa_shreyaaa", "Shreya Verma"],
@@ -2930,8 +2930,8 @@ export let proccessed_array = [
   ],
   [
     "2022UCA1865",
-    ["ARCHIT", "JAIN", "archit."],
-    "j ain.ug22",
+    ["ARCHIT", "JAIN"],
+    "architjain.ug22",
     [
       ["archit.31", "Archit"],
       ["archit.bhatia.23", "Archit Bhatia"],
@@ -3366,8 +3366,8 @@ export let proccessed_array = [
   ],
   [
     "2022UCA1900",
-    ["HARSH"],
-    "GUPTA harsh_gupta.ug22",
+    ["HARSH", "GUPTA"],
+    "harsh_gupta.ug22",
     [
       ["justnotharshh", "Harsh"],
       ["harsh_k201", "Harsh Kumar Naveen"],
@@ -8279,9 +8279,9 @@ export let proccessed_array = [
     ],
   ],
   [
-    "2022UC18002",
-    ["YASH"],
-    "KUMAR yash_kumar.ug22",
+    "2022UC1802",
+    ["YASH", "KUNMAR"],
+    "yash_kumar.ug22",
     [
       ["yashv1651", "Yash Vardhan Nilaratna"],
       ["yashgupta9412", "YASH GUPTA"],
@@ -10373,8 +10373,8 @@ export let proccessed_array = [
   ],
   [
     "2022UCM2308",
-    ["PRANAY"],
-    "JAIN pranay_jain.ug22",
+    ["PRANAY", "JAIN"],
+    "pranay_jain.ug22",
     [
       ["pranay.1611", "Pranay Jain"],
       ["pranaykothari_", "Pranay Kothari"],

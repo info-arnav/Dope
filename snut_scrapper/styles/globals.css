@@ -65,17 +65,30 @@ body {
   padding: 0px;
 }
 footer {
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(252, 249, 249);
   color: black;
   padding: 20px;
+  padding-top: 120px;
+  padding-bottom: 120px;
   font-family: sans-serif;
+}
+.footer-title {
+  margin-top: 50px;
+}
+.links * {
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
 }
 nav button a {
   margin: 0px;
   padding: 0px;
   color: white;
 }
-
+.footer-content {
+  font-size: 14px;
+}
 .columns {
   display: flex;
   justify-content: top;
@@ -94,7 +107,7 @@ footer img {
 footer h2 {
   margin: 0px;
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 800px) {
   .columns {
     display: block;
     justify-content: top;
@@ -102,6 +115,10 @@ footer h2 {
   .column {
     margin: 0;
     margin-top: 50px;
+  }
+  footer {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
   .col-1 {
     margin-top: 20px;
