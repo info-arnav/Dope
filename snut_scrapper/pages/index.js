@@ -14,5 +14,5 @@ export async function getServerSideProps(context) {
   }
 }
 export default function Home({ isConnected }) {
-  return <main>Coming Soon</main>;
+  return <>Coming Soon</>;
 }
