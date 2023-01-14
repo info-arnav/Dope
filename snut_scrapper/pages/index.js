@@ -1,5 +1,5 @@
 import Head from "next/head";
-import clientPromise from "../lib/mongodb";
+import clientPromise from "../middleware/mongodb";
 export async function getServerSideProps(context) {
   try {
     await clientPromise;
@@ -14,5 +14,5 @@ export async function getServerSideProps(context) {
   }
 }
 export default function Home({ isConnected }) {
-  return <>Coming Soon</>;
+  return <>{isConnected && "data"}</>;
 }

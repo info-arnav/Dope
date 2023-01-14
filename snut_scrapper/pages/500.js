@@ -8,5 +8,13 @@ export default function Error() {
       Router.push("/500");
     }
   }, []);
-  return <div>Coming Soon</div>;
+  return (
+    <div className="error">
+      <div className="error-title">Error 505</div>
+      <div className="error-message">
+        Looks like some error occured, no worries just click Home at the top of
+        the screen.
+      </div>
+    </div>
+  );
 }

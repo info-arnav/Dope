@@ -1,5 +1,9 @@
 import Head from "next/head";
 
 export default function About() {
-  return <>Coming Soon</>;
+  return (
+    <div>
+      <div className="about-banner"></div>
+    </div>
+  );
 }

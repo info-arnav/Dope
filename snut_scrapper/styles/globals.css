@@ -34,7 +34,8 @@ nav a {
 .ais-SearchBox-form {
   width: 100%;
 }
-.ais-SearchBox-input {
+.ais-SearchBox-input,
+nav input {
   border-radius: 22px;
   border: none;
   height: 45px;
@@ -42,6 +43,10 @@ nav a {
   padding: 2px;
   width: 100%;
   padding-left: 10px;
+}
+nav input {
+  margin-right: -5px;
+  background-color: rgb(222, 222, 222);
 }
 nav button {
   padding: 14px;
@@ -72,6 +77,9 @@ ul {
 main,
 .ais-Hits-list {
   margin-top: 80px;
+}
+.ais-SearchBox-reset {
+  display: none;
 }
 body {
   margin: 0px;
@@ -172,4 +180,17 @@ footer h2 {
 }
 .ais-SearchBox-submit {
   display: none;
+}
+.error {
+  text-align: center;
+}
+.error-title {
+  margin-top: 250px;
+  font-size: 72px;
+  font-weight: bold;
+}
+.error-message {
+  margin-top: 80px;
+  font-size: 18px;
+  margin-bottom: 250px;
 }

@@ -5,10 +5,12 @@ import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 export default function Home({ Component, pageProps }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState("");
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    let input_box = document.getElementsByClassName("ais-SearchBox-input");
-  });
+    setShow("");
+    setLoaded(true);
+  }, []);
   const searchClient = algoliasearch(
     "LO5V83KRK7",
     "97fbfd0f84701d77ad4589c5bf53adbc"
@@ -49,12 +51,26 @@ export default function Home({ Component, pageProps }) {
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
           <Link href="/" className="image-nav">
-            <Image src="/logo.png" width={40} height={40}></Image>
+            <Image
+              src="/logo.png"
+              width={40}
+              height={40}
+              alt="Logo of Dope"
+            ></Image>
           </Link>
           <Link href="/" className="home">
             HOME
           </Link>
-          <SearchBox />
+          {loaded ? (
+            <SearchBox
+              onChange={(e) => {
+                setShow(e.target.value);
+              }}
+              showLoadingIndicator={false}
+            />
+          ) : (
+            <input placeholder="Search" disabled></input>
+          )}
           <button className="register" disabled>
             <Link href="/register">REGISTER</Link>
           </button>
@@ -63,8 +79,11 @@ export default function Home({ Component, pageProps }) {
           </button>
         </nav>
         <main>
-          <Hits hitComponent={Hit} />
-          <Component {...pageProps} />
+          {show.length > 0 ? (
+            <Hits hitComponent={Hit} />
+          ) : (
+            <Component {...pageProps} />
+          )}
         </main>
         <footer>
           <div className="columns">
