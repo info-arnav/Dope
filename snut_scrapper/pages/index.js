@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import clientPromise from "../middleware/mongodb";
 export async function getServerSideProps(context) {
   try {
@@ -13,6 +14,6 @@ export async function getServerSideProps(context) {
     };
   }
 }
-export default function Home({ isConnected }) {
-  return <>{isConnected && "data"}</>;
+export default function Home({ isConnected, username }) {
+  return <>{username}</>;
 }

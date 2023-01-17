@@ -165,7 +165,10 @@ footer h2 {
     margin-left: 10px;
   }
 }
-
+.chat {
+  margin-left: 10px;
+  margin-right: 5px;
+}
 @media only screen and (max-width: 340px) {
   nav input {
     border-radius: 22px;
@@ -193,4 +196,31 @@ footer h2 {
   margin-top: 80px;
   font-size: 18px;
   margin-bottom: 250px;
+}
+.credntials {
+  width: 95%;
+  max-width: 700px;
+  box-shadow: 0px 0px 10px 0px gray;
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 500px;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+main {
+  margin: 5px;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+.title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.credntials input {
+  width: 90%;
+  height: 25px;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 5px;
 }

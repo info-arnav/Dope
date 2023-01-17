@@ -1,13 +1,44 @@
 import "../styles/globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import * as jose from "jose";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 export default function Home({ Component, pageProps }) {
+  const [loggedIn, setLoggedIn] = useState(null);
+  const [username, setUsername] = useState(false);
   const [show, setShow] = useState("");
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
+    let userStorage = localStorage.getItem("user");
+    if (userStorage) {
+      const secret = new TextEncoder().encode(
+        "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
+      );
+      const verifier = async () => {
+        try {
+          const data = await jose.jwtVerify(userStorage, secret);
+          console.log(0);
+          if (data.payload.data) {
+            console.log(1);
+            setLoggedIn(true);
+            setUsername(data.payload.data.username);
+          } else {
+            console.log(2);
+            setLoggedIn(false);
+            localStorage.removeItem("user");
+          }
+        } catch {
+          console.log(3);
+          setLoggedIn(false);
+          localStorage.removeItem("user");
+        }
+      };
+      verifier();
+    } else {
+      setLoggedIn(false);
+    }
     setShow("");
     setLoaded(true);
   }, []);
@@ -50,7 +81,14 @@ export default function Home({ Component, pageProps }) {
     <>
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
-          <Link href="/" className="image-nav">
+          <Link
+            href="/"
+            className="image-nav"
+            onClick={() => {
+              setShow("");
+              setLoaded(true);
+            }}
+          >
             <Image
               src="/logo.png"
               width={40}
@@ -58,8 +96,15 @@ export default function Home({ Component, pageProps }) {
               alt="Logo of Dope"
             ></Image>
           </Link>
-          <Link href="/" className="home">
-            HOME
+          <Link
+            href="/"
+            className="home"
+            onClick={() => {
+              setShow("");
+              setLoaded(true);
+            }}
+          >
+            {loggedIn == null ? "" : loggedIn == false ? "HOME" : "PROFILE"}
           </Link>
           {loaded ? (
             <SearchBox
@@ -71,18 +116,56 @@ export default function Home({ Component, pageProps }) {
           ) : (
             <input placeholder="Search" disabled></input>
           )}
-          <button className="register" disabled>
-            <Link href="/register">REGISTER</Link>
-          </button>
-          <button className="login" disabled>
-            <Link href="/login">LOGIN</Link>
-          </button>
+          {loggedIn == null ? (
+            <></>
+          ) : loggedIn == false ? (
+            <button className="register" disabled>
+              <Link
+                href="/register"
+                onClick={() => {
+                  setShow("");
+                  setLoaded(true);
+                }}
+              >
+                REGISTER
+              </Link>
+            </button>
+          ) : (
+            <></>
+          )}
+          {loggedIn == null ? (
+            <></>
+          ) : loggedIn == false ? (
+            <button className="login" disabled>
+              <Link
+                href="/login"
+                onClick={() => {
+                  setShow("");
+                  setLoaded(true);
+                }}
+              >
+                LOGIN
+              </Link>
+            </button>
+          ) : (
+            <button className="chat" disabled>
+              <Link
+                href="/chats"
+                onClick={() => {
+                  setShow("");
+                  setLoaded(true);
+                }}
+              >
+                CHAT
+              </Link>
+            </button>
+          )}
         </nav>
         <main>
           {show.length > 0 ? (
             <Hits hitComponent={Hit} />
           ) : (
-            <Component {...pageProps} />
+            <Component username={username} {...pageProps} />
           )}
         </main>
         <footer>
@@ -103,7 +186,15 @@ export default function Home({ Component, pageProps }) {
               <h2>About</h2>
               <br></br>
               <p className="links">
-                <Link href="/about">About</Link>
+                <Link
+                  onClick={() => {
+                    setShow("");
+                    setLoaded(true);
+                  }}
+                  href="/about"
+                >
+                  About
+                </Link>
               </p>
             </div>
             <div className="column">
@@ -111,16 +202,40 @@ export default function Home({ Component, pageProps }) {
               <br></br>
 
               <p className="links">
-                <Link href="/register">Register</Link>
+                <Link
+                  onClick={() => {
+                    setShow("");
+                    setLoaded(true);
+                  }}
+                  href="/register"
+                >
+                  Register
+                </Link>
                 <br></br>
-                <Link href="/login">Login</Link>
+                <Link
+                  onClick={() => {
+                    setShow("");
+                    setLoaded(true);
+                  }}
+                  href="/login"
+                >
+                  Login
+                </Link>
               </p>
             </div>
             <div className="column col-4">
               <h2>Legal</h2>
               <br></br>
               <p className="links">
-                <Link href="/privacy">Privacy Policy</Link>
+                <Link
+                  onClick={() => {
+                    setShow("");
+                    setLoaded(true);
+                  }}
+                  href="/privacy"
+                >
+                  Privacy Policy
+                </Link>
               </p>
             </div>
           </div>
