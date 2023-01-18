@@ -11,5 +11,5 @@ export default function Home({ username_given }) {
     }
   });
   const router = useRouter();
-  return <>{pageLoad && username_given ? <></> : <></>}</>;
+  return <>{pageLoad ? username_given ? <></> : <></> : <></>}</>;
 }

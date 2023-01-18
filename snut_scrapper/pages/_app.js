@@ -21,11 +21,9 @@ export default function Home({ Component, pageProps }) {
           const data = await jose.jwtVerify(userStorage, secret);
           console.log(0);
           if (data.payload.data) {
-            console.log(1);
             setLoggedIn(true);
-            setUsername(data.payload.data.username);
+            setUsername(data.payload.data);
           } else {
-            console.log(2);
             setLoggedIn(false);
             localStorage.removeItem("user");
           }
@@ -107,12 +105,16 @@ export default function Home({ Component, pageProps }) {
             {loggedIn == null ? "" : loggedIn == false ? "HOME" : "PROFILE"}
           </Link>
           {loaded ? (
-            <SearchBox
-              onChange={(e) => {
-                setShow(e.target.value);
-              }}
-              showLoadingIndicator={false}
-            />
+            username ? (
+              <SearchBox
+                onChange={(e) => {
+                  setShow(e.target.value);
+                }}
+                showLoadingIndicator={false}
+              />
+            ) : (
+              <input disabled placeholder="Login to Search"></input>
+            )
           ) : (
             <input placeholder="Search" disabled></input>
           )}
@@ -162,10 +164,10 @@ export default function Home({ Component, pageProps }) {
           )}
         </nav>
         <main>
-          {show.length > 0 ? (
+          {show.length > 0 && username ? (
             <Hits hitComponent={Hit} />
           ) : (
-            <Component username={username} {...pageProps} />
+            <Component username_given={username} {...pageProps} />
           )}
         </main>
         <footer>

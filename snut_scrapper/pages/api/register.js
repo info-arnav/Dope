@@ -7,21 +7,28 @@ export default async (req, res) => {
     const db = client.db("nsut");
     const data = await db
       .collection("users")
-      .find({ email: req.body.username.split("@")[0] });
+      .find({ email: req.body.username.split("@")[0] })
+      .toArray();
     if (data) {
-      if (data.password) {
-        bcrypt.compare(req.body.password, data.hash, function (err, result) {
-          if (result) {
-            res.json({ error: false, loggedIn: true, data: data.username });
-          } else {
-            res.json({ error: false, loggedIn: false });
-          }
-        });
-      } else {
-        res.json({ error: false, loggedIn: false });
-      }
+      bcrypt.hash(req.body.password, 10).then(async function (hash) {
+        let ndata = await db
+          .collection("users")
+          .update(
+            { email: req.body.username.split("@")[0] },
+            { $set: { password: hash } }
+          );
+        console.log(ndata, req.body.username.split("@")[0]);
+        res.send({ error: false, username: req.body.username.split("@")[0] });
+      });
     } else {
-      res.json({ error: false, loggedIn: false });
+      console.log(4);
+      bcrypt.hash(req.body.password, 10).then(async function (hash) {
+        const ndata = await db.collection("users").insert({
+          email: req.body.username.split("@")[0],
+          password: hash,
+        });
+        res.send({ error: false, username: req.body.username.split("@")[0] });
+      });
     }
   } catch (e) {
     res.json({ error: true });

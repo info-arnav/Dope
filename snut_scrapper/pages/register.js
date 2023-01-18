@@ -1,10 +1,17 @@
 import axios from "axios";
 import * as jose from "jose";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Login() {
-  const router = useRouter();
+export default function Login({ username_given }) {
+  const [pageLoad, setPageLoad] = useState(false);
+  useEffect(() => {
+    if (username_given) {
+      router.push("/");
+    } else {
+      setPageLoad(true);
+    }
+  });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,6 +31,8 @@ export default function Login() {
       axios.post("/api/otp", { username: username }).then(async (e) => {
         if (e.data.error) {
           setError("Some error occured");
+        } else if (e.data.registered) {
+          setError("Already registered");
         } else {
           setHash(e.data.otp);
           setError(false);
@@ -56,9 +65,15 @@ export default function Login() {
           if (e.data.error) {
             setError("Some error occured");
           } else {
-            setHash(e.data.hash);
-            setError(false);
-            setShowOtp(true);
+            const secret = new TextEncoder().encode(
+              "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
+            );
+            const alg = "HS256";
+            const jwt = await new jose.SignJWT({ data: e.data.username })
+              .setProtectedHeader({ alg })
+              .sign(secret);
+            localStorage.setItem("user", jwt);
+            reload();
           }
         });
     } else {
@@ -68,59 +83,65 @@ export default function Login() {
   };
   return (
     <>
-      <center>
-        {choosePassword ? (
-          <form className="credntials" onSubmit={auth3}>
-            <p className="title">Choose Password</p>
-            <input
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-            ></input>
-            <input
-              placeholder="Confirm Password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              value={confirmPassword}
-              required
-            ></input>
-            <p>{error}</p>
-            <button action="submit" disabled={disabled}>
-              Register
-            </button>
-            <button onClick={reload}>Restart ?</button>
-          </form>
-        ) : showOtp ? (
-          <form className="credntials" onSubmit={auth2}>
-            <p className="title">Verify OTP</p>
-            <input
-              placeholder="OTP"
-              onChange={(e) => setOtp(e.target.value)}
-              value={otp}
-              required
-            ></input>
-            <p>{error}</p>
-            <button action="submit" disabled={disabled}>
-              Verify
-            </button>
-            <button onClick={reload}>Restart ?</button>
-          </form>
-        ) : (
-          <form className="credntials" onSubmit={auth}>
-            <p className="title">Register</p>
-            <input
-              placeholder="User ID"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              required
-            ></input>
-            <p>{error}</p>
-            <button action="submit" disabled={disabled}>
-              Send OTP
-            </button>
-          </form>
-        )}
-      </center>
+      {pageLoad && (
+        <center>
+          {choosePassword ? (
+            <form className="credntials" onSubmit={auth3}>
+              <p className="title">Choose Password</p>
+              <input
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                type="password"
+                required
+              ></input>
+              <input
+                placeholder="Confirm Password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
+                type="password"
+                required
+              ></input>
+              <p>{error}</p>
+              <button action="submit" disabled={disabled}>
+                Register
+              </button>
+              <button onClick={reload}>Restart ?</button>
+            </form>
+          ) : showOtp ? (
+            <form className="credntials" onSubmit={auth2}>
+              <p className="title">Verify OTP</p>
+              <input
+                placeholder="OTP"
+                onChange={(e) => setOtp(e.target.value)}
+                value={otp}
+                type="number"
+                required
+              ></input>
+              <p>{error}</p>
+              <button action="submit" disabled={disabled}>
+                Verify
+              </button>
+              <button onClick={reload}>Restart ?</button>
+            </form>
+          ) : (
+            <form className="credntials" onSubmit={auth}>
+              <p className="title">Register</p>
+              <input
+                placeholder="User ID"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                type="email"
+                required
+              ></input>
+              <p>{error}</p>
+              <button action="submit" disabled={disabled}>
+                Send OTP
+              </button>
+            </form>
+          )}
+        </center>
+      )}
     </>
   );
 }

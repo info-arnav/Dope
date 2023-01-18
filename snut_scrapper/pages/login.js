@@ -1,9 +1,19 @@
 import axios from "axios";
 import Head from "next/head";
 import * as jose from "jose";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-export default function Login() {
+export default function Login({ username_given }) {
+  const [pageLoad, setPageLoad] = useState(false);
+  useEffect(() => {
+    if (username_given) {
+      router.push("/");
+    } else {
+      setPageLoad(true);
+    }
+  });
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
@@ -19,16 +29,16 @@ export default function Login() {
           setError("Some error occured, please try again.");
         } else if (e.data.loggedIn == false) {
           setError("Invalid credentials");
-        } else if (loggedIn == true) {
+        } else if (e.data.loggedIn == true) {
           const secret = new TextEncoder().encode(
             "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
           );
           const alg = "HS256";
-          const jwt = await new jose.SignJWT({ data: e.data.data.username })
+          const jwt = await new jose.SignJWT({ data: e.data.data })
             .setProtectedHeader({ alg })
             .sign(secret);
           localStorage.setItem("user", jwt);
-          window.location = "/";
+          router.push("/");
         } else {
           setError("Some error occured, please try again.");
         }
@@ -37,27 +47,31 @@ export default function Login() {
   };
   return (
     <>
-      <center>
-        <form className="credntials" onSubmit={auth}>
-          <p className="title">Login</p>
-          <input
-            placeholder="User ID"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            required
-          ></input>
-          <input
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-          ></input>
-          <p>{error}</p>
-          <button action="submit" disabled={disabled}>
-            Login
-          </button>
-        </form>
-      </center>
+      {pageLoad && (
+        <center>
+          <form className="credntials" onSubmit={auth}>
+            <p className="title">Login</p>
+            <input
+              placeholder="User ID"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              type="email"
+              required
+            ></input>
+            <input
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              type="password"
+              required
+            ></input>
+            <p>{error}</p>
+            <button action="submit" disabled={disabled}>
+              Login
+            </button>
+          </form>
+        </center>
+      )}
     </>
   );
 }
