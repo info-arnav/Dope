@@ -85,6 +85,7 @@ export default function Login({ username_given }) {
   return (
     <>
       <Head
+        image=""
         title="Dope - Register"
         description="Register now to update your profile and chat with people you find."
         kewrod=", register"

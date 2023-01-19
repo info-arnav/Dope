@@ -4,6 +4,7 @@ export default function About() {
   return (
     <div>
       <Head
+        image=""
         title="Dope - About"
         description="A social platform for people of NSUT to meet each other online and get to know each other more."
         kewrod=", about"
