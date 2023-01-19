@@ -171,7 +171,14 @@ export default function Home({ Component, pageProps }) {
       {
         <main>
           {show.length >= 0 && (
-            <Component username_given={username} {...pageProps} />
+            <Component
+              username_given={username}
+              {...pageProps}
+              onClick={() => {
+                setShow("");
+                setLoaded(true);
+              }}
+            />
           )}
         </main>
       }
