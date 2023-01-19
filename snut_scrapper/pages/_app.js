@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import Image from "next/image";
 import Link from "next/link";
 import * as jose from "jose";
+import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
@@ -78,6 +79,7 @@ export default function Home({ Component, pageProps }) {
   };
   return (
     <>
+      <Analytics />
       {/* <InstantSearch searchClient={searchClient} indexName="dev_NSUT"> */}
       <nav>
         <Link
