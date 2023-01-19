@@ -4,15 +4,16 @@ import { useRouter } from "next/router";
 import Head from "../components/head";
 import { useEffect, useState } from "react";
 
-export default function Login({ username_given }) {
+export default function Login({ username_given, loggedIn }) {
   const [pageLoad, setPageLoad] = useState(false);
   useEffect(() => {
-    if (username_given) {
-      router.push("/");
-    } else {
+    if (loggedIn == false) {
+      router.push("");
+    } else if (loggedIn) {
       setPageLoad(true);
     }
   }, []);
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -91,65 +92,67 @@ export default function Login({ username_given }) {
         kewrod=", register"
         url="register"
       ></Head>
-      {pageLoad && (
-        <center>
-          {choosePassword ? (
-            <form className="credntials" onSubmit={auth3}>
-              <p className="title">Choose Password</p>
-              <input
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                type="password"
-                required
-              ></input>
-              <input
-                placeholder="Confirm Password"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                value={confirmPassword}
-                type="password"
-                required
-              ></input>
-              <p>{error}</p>
-              <button action="submit" disabled={disabled}>
-                {disabled ? "Loading...." : "Register"}
-              </button>
-              <button onClick={reload}>Restart ?</button>
-            </form>
-          ) : showOtp ? (
-            <form className="credntials" onSubmit={auth2}>
-              <p className="title">Verify OTP</p>
-              <input
-                placeholder="OTP"
-                onChange={(e) => setOtp(e.target.value)}
-                value={otp}
-                type="number"
-                required
-              ></input>
-              <p>{error}</p>
-              <button action="submit" disabled={disabled}>
-                {disabled ? "Loading...." : "Verify"}
-              </button>
-              <button onClick={reload}>Restart ?</button>
-            </form>
-          ) : (
-            <form className="credntials" onSubmit={auth}>
-              <p className="title">Register</p>
-              <input
-                placeholder="User ID"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
-                type="email"
-                required
-              ></input>
-              <p>{error}</p>
-              <button action="submit" disabled={disabled}>
-                {disabled ? "Loading...." : "Send OTP"}
-              </button>
-            </form>
-          )}
-        </center>
-      )}
+      <div className="form-page">
+        {pageLoad && (
+          <center>
+            {choosePassword ? (
+              <form className="credntials" onSubmit={auth3}>
+                <p className="title">Choose Password</p>
+                <input
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  type="password"
+                  required
+                ></input>
+                <input
+                  placeholder="Confirm Password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={confirmPassword}
+                  type="password"
+                  required
+                ></input>
+                <p>{error}</p>
+                <button action="submit" disabled={disabled}>
+                  {disabled ? "Loading...." : "Register"}
+                </button>
+                <button onClick={reload}>Restart ?</button>
+              </form>
+            ) : showOtp ? (
+              <form className="credntials" onSubmit={auth2}>
+                <p className="title">Verify OTP</p>
+                <input
+                  placeholder="OTP"
+                  onChange={(e) => setOtp(e.target.value)}
+                  value={otp}
+                  type="number"
+                  required
+                ></input>
+                <p>{error}</p>
+                <button action="submit" disabled={disabled}>
+                  {disabled ? "Loading...." : "Verify"}
+                </button>
+                <button onClick={reload}>Restart ?</button>
+              </form>
+            ) : (
+              <form className="credntials" onSubmit={auth}>
+                <p className="title">Register</p>
+                <input
+                  placeholder="User ID"
+                  onChange={(e) => setUsername(e.target.value)}
+                  value={username}
+                  type="email"
+                  required
+                ></input>
+                <p>{error}</p>
+                <button action="submit" disabled={disabled}>
+                  {disabled ? "Loading...." : "Send OTP"}
+                </button>
+              </form>
+            )}
+          </center>
+        )}
+      </div>
     </>
   );
 }

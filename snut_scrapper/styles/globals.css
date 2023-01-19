@@ -196,30 +196,9 @@ footer h2 {
   font-size: 18px;
   margin-bottom: 250px;
 }
-.credntials {
-  width: 95%;
-  max-width: 700px;
-  box-shadow: 0px 0px 10px 0px gray;
-  border-radius: 20px;
-  padding: 20px;
-  min-height: 500px;
-  margin-top: 200px;
-  margin-bottom: 200px;
-}
 
 main {
   margin-top: 60px;
-}
-.title {
-  font-size: 25px;
-  font-weight: bold;
-}
-.credntials input {
-  width: 90%;
-  height: 25px;
-  margin: 5px;
-  border-radius: 5px;
-  padding: 5px;
 }
 .about-banner {
   background-image: url("../public/banner.webp");
@@ -261,4 +240,13 @@ main {
 .about-content {
   margin: 10px;
   margin-bottom: 40px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.policy {
+  margin: 10px;
+  margin-top: 100px;
+  margin-bottom: 80px;
 }

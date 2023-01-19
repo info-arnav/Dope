@@ -3,15 +3,15 @@ import Head from "../components/head";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function Home({ username_given }) {
+export default function Home({ username_given, loggedIn }) {
   const [pageLoad, setPageLoad] = useState(false);
   useEffect(() => {
-    if (username_given) {
-      router.push("/");
-    } else {
+    if (loggedIn == false) {
+      setPageLoad(true);
+    } else if (loggedIn) {
       setPageLoad(true);
     }
-  });
+  }, []);
   const router = useRouter();
   return (
     <>

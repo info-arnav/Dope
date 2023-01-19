@@ -6,7 +6,6 @@ import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
-import Head from "next/head";
 export default function Home({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(null);
   const [username, setUsername] = useState(false);
@@ -21,7 +20,7 @@ export default function Home({ Component, pageProps }) {
       const verifier = async () => {
         try {
           const data = await jose.jwtVerify(userStorage, secret);
-          console.log(0);
+
           if (data.payload.data) {
             setLoggedIn(true);
             setUsername(data.payload.data);
@@ -30,7 +29,6 @@ export default function Home({ Component, pageProps }) {
             localStorage.removeItem("user");
           }
         } catch {
-          console.log(3);
           setLoggedIn(false);
           localStorage.removeItem("user");
         }
@@ -44,7 +42,7 @@ export default function Home({ Component, pageProps }) {
   }, []);
   const searchClient = algoliasearch(
     "8PCXEU15SU",
-    "97fbfd0f84701d77ad4589c5bf53adbc"
+    "7b08d93fde9eb5eebb3d081f764b2ec4"
   );
   const Hit = (e) => {
     return (
@@ -80,98 +78,99 @@ export default function Home({ Component, pageProps }) {
   return (
     <>
       <Analytics />
-      {/* <InstantSearch searchClient={searchClient} indexName="dev_NSUT"> */}
-      <nav>
-        <Link
-          href="/"
-          className="image-nav"
-          onClick={() => {
-            setShow("");
-            setLoaded(true);
-          }}
-        >
-          <Image
-            src="/logo.png"
-            width={40}
-            height={40}
-            alt="Logo of Dope"
-          ></Image>
-        </Link>
-        <Link
-          href="/"
-          className="home"
-          onClick={() => {
-            setShow("");
-            setLoaded(true);
-          }}
-        >
-          {loggedIn == null ? "" : loggedIn == false ? "HOME" : "PROFILE"}
-        </Link>
-        {/* {loaded ? (
-              <SearchBox
-                onChange={(e) => {
-                  setShow(e.target.value);
+      <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
+        <nav>
+          <Link
+            href="/"
+            className="image-nav"
+            onClick={() => {
+              setShow("");
+              setLoaded(true);
+            }}
+          >
+            <Image
+              src="/logo.png"
+              width={40}
+              height={40}
+              alt="Logo of Dope"
+            ></Image>
+          </Link>
+          <Link
+            href="/"
+            className="home"
+            onClick={() => {
+              setShow("");
+              setLoaded(true);
+            }}
+          >
+            {loggedIn == null ? "" : loggedIn == false ? "HOME" : "PROFILE"}
+          </Link>
+          {loaded ? (
+            <SearchBox
+              onChange={(e) => {
+                setShow(e.target.value);
+              }}
+              showLoadingIndicator={false}
+            />
+          ) : (
+            <input placeholder="Search" disabled></input>
+          )}
+          {loggedIn == null ? (
+            <></>
+          ) : loggedIn == false ? (
+            <button className="register" disabled>
+              <Link
+                href="/register"
+                onClick={() => {
+                  setShow("");
+                  setLoaded(true);
                 }}
-                showLoadingIndicator={false}
-              />
-            ) : ( */}
-        <input placeholder="Search" disabled></input>
-        {/* )} */}
-        {loggedIn == null ? (
-          <></>
-        ) : loggedIn == false ? (
-          <button className="register" disabled>
-            <Link
-              href="/register"
-              onClick={() => {
-                setShow("");
-                setLoaded(true);
-              }}
-            >
-              REGISTER
-            </Link>
-          </button>
-        ) : (
-          <></>
+              >
+                REGISTER
+              </Link>
+            </button>
+          ) : (
+            <></>
+          )}
+          {loggedIn == null ? (
+            <></>
+          ) : loggedIn == false ? (
+            <button className="login" disabled>
+              <Link
+                href="/login"
+                onClick={() => {
+                  setShow("");
+                  setLoaded(true);
+                }}
+              >
+                LOGIN
+              </Link>
+            </button>
+          ) : (
+            <button className="chat" disabled>
+              <Link
+                href="/chat"
+                onClick={() => {
+                  setShow("");
+                  setLoaded(true);
+                }}
+              >
+                CHAT
+              </Link>
+            </button>
+          )}
+        </nav>
+        {show.length > 0 && (
+          <main>
+            <Hits hitComponent={Hit} />
+          </main>
         )}
-        {loggedIn == null ? (
-          <></>
-        ) : loggedIn == false ? (
-          <button className="login" disabled>
-            <Link
-              href="/login"
-              onClick={() => {
-                setShow("");
-                setLoaded(true);
-              }}
-            >
-              LOGIN
-            </Link>
-          </button>
-        ) : (
-          <button className="chat" disabled>
-            <Link
-              href="/chat"
-              onClick={() => {
-                setShow("");
-                setLoaded(true);
-              }}
-            >
-              CHAT
-            </Link>
-          </button>
-        )}
-      </nav>
-      {/* {show.length > 0 && (
-        <main>
-          <Hits hitComponent={Hit} />
-        </main>
-      )} */}
-      {/* </InstantSearch> */}
+      </InstantSearch>
       {
         <main>
-          {show.length >= 0 && (
+          {show.length <= 0 && (
             <Component
+              loggedIn={loggedIn}
               username_given={username}
               {...pageProps}
               onClick={() => {

@@ -3,16 +3,17 @@ import Head from "../components/head";
 import * as jose from "jose";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function Login({ username_given }) {
+export default function Login({ username_given, loggedIn }) {
   const reload = () => {
     router.reload(window.location.pathname);
   };
   const [pageLoad, setPageLoad] = useState(false);
   useEffect(() => {
-    if (username_given) {
-      router.push("/");
-    } else {
+    if (loggedIn == false) {
+      router.push("");
+    } else if (loggedIn) {
       setPageLoad(true);
     }
   }, []);
@@ -29,7 +30,6 @@ export default function Login({ username_given }) {
       .post("/api/login", { username: username, password: password })
       .then(async (e) => {
         if (e.data.error == true) {
-          sssss;
           setError("Some error occured, please try again.");
         } else if (e.data.loggedIn == false) {
           setError("Invalid credentials");
@@ -58,31 +58,36 @@ export default function Login({ username_given }) {
         kewrod=", login"
         url="login"
       ></Head>
-      {pageLoad && (
-        <center>
-          <form className="credntials" onSubmit={auth}>
-            <p className="title">Login</p>
-            <input
-              placeholder="User ID"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              type="email"
-              required
-            ></input>
-            <input
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              type="password"
-              required
-            ></input>
-            <p>{error}</p>
-            <button action="submit" disabled={disabled}>
-              {disabled ? "Loading...." : "Login"}
-            </button>
-          </form>
-        </center>
-      )}
+      <div className="form-page">
+        {pageLoad && (
+          <center>
+            <form className="credntials" onSubmit={auth}>
+              <p className="title">Login</p>
+              <input
+                placeholder="User ID"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                type="email"
+                required
+              ></input>
+              <input
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                type="password"
+                required
+              ></input>
+              <p>{error}</p>
+              <button action="submit" disabled={disabled}>
+                {disabled ? "Loading...." : "Login"}
+              </button>
+              <Link href="/register">
+                <p>Not yet Registered ? Sign Up Now</p>
+              </Link>
+            </form>
+          </center>
+        )}
+      </div>
     </>
   );
 }

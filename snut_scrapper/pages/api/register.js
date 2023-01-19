@@ -18,11 +18,10 @@ export default async (req, res) => {
             { email: req.body.username.split("@")[0] },
             { $set: { password: hash } }
           );
-        console.log(ndata, req.body.username.split("@")[0]);
+
         res.send({ error: false, username: req.body.username.split("@")[0] });
       });
     } else {
-      console.log(4);
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
         const ndata = await db.collection("users").insert({
           email: req.body.username.split("@")[0],
