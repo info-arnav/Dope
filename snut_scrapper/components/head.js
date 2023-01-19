@@ -3,6 +3,7 @@ import Heads from "next/head";
 export default function Head({ title, description, kewords }) {
   return (
     <Heads>
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
       <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
