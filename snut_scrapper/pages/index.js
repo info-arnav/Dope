@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "../components/head";
 import { useEffect, useState } from "react";
 
 export default function Home({ username_given }) {
@@ -11,5 +12,15 @@ export default function Home({ username_given }) {
     }
   });
   const router = useRouter();
-  return <>{pageLoad && username_given ? <></> : <></>}</>;
+  return (
+    <>
+      <Head
+        title="Dope"
+        description="A social platform for people of NSUT to meet each other online and get to know each other more."
+        kewrod=""
+        url=""
+      ></Head>
+      {pageLoad && username_given ? <></> : <></>}
+    </>
+  );
 }

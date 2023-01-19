@@ -1,0 +1,16 @@
+{
+  "name": "Dope",
+  "short_name": "Dope",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}

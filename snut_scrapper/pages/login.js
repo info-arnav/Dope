@@ -1,10 +1,13 @@
 import axios from "axios";
-import Head from "next/head";
+import Head from "../components/head";
 import * as jose from "jose";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Login({ username_given }) {
+  const reload = () => {
+    router.reload(window.location.pathname);
+  };
   const [pageLoad, setPageLoad] = useState(false);
   useEffect(() => {
     if (username_given) {
@@ -12,7 +15,7 @@ export default function Login({ username_given }) {
     } else {
       setPageLoad(true);
     }
-  });
+  }, []);
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +29,7 @@ export default function Login({ username_given }) {
       .post("/api/login", { username: username, password: password })
       .then(async (e) => {
         if (e.data.error == true) {
+          sssss;
           setError("Some error occured, please try again.");
         } else if (e.data.loggedIn == false) {
           setError("Invalid credentials");
@@ -38,7 +42,7 @@ export default function Login({ username_given }) {
             .setProtectedHeader({ alg })
             .sign(secret);
           localStorage.setItem("user", jwt);
-          router.push("/");
+          reload();
         } else {
           setError("Some error occured, please try again.");
         }
@@ -47,6 +51,12 @@ export default function Login({ username_given }) {
   };
   return (
     <>
+      <Head
+        title="Dope - Login"
+        description="Login now to update your profile and chat with people you find."
+        kewrod=", login"
+        url="login"
+      ></Head>
       {pageLoad && (
         <center>
           <form className="credntials" onSubmit={auth}>
@@ -67,7 +77,7 @@ export default function Login({ username_given }) {
             ></input>
             <p>{error}</p>
             <button action="submit" disabled={disabled}>
-              Login
+              {disabled ? "Loading...." : "Login"}
             </button>
           </form>
         </center>

@@ -1,5 +1,6 @@
 import clientPromise from "../../middleware/mongodb";
 import bcrypt from "bcrypt";
+import axios from "axios";
 
 export default async (req, res) => {
   try {
@@ -26,6 +27,10 @@ export default async (req, res) => {
         const ndata = await db.collection("users").insert({
           email: req.body.username.split("@")[0],
           password: hash,
+        });
+        axios.post("/api/algolia", {
+          method: "create",
+          email: req.body.username.split("@")[0],
         });
         res.send({ error: false, username: req.body.username.split("@")[0] });
       });

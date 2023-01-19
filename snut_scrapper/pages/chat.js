@@ -9,7 +9,7 @@ export default function Home({ username_given }) {
     } else {
       setPageLoad(true);
     }
-  });
+  }, []);
   const router = useRouter();
   return <>{pageLoad ? username_given ? <></> : <></> : <></>}</>;
 }

@@ -2,11 +2,19 @@ const algoliasearch = require("algoliasearch");
 
 const algolia = (req, res) => {
   const client = algoliasearch(
-    "LO5V83KRK7",
-    "1a7d1eb3159489327b6165775c54b1b0"
+    "8PCXEU15SU",
+    "fc652d91b2d6db2718b47254be4c5d6e"
   );
   const index = client.initIndex("dev_NSUT");
-  res.send("success");
+  if (req.body.method == "create") {
+    index.saveObjects([{ objectID: req.body.email }]).then(({ objectIDs }) => {
+      res.send("success");
+    });
+  } else if (req.body.method == "update") {
+    index.partialUpdateObjects([req.body.object]).then(({ objectIDs }) => {
+      res.send("success");
+    });
+  }
 };
 
 export default algolia;

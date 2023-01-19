@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as jose from "jose";
 import { useRouter } from "next/router";
+import Head from "../components/head";
 import { useEffect, useState } from "react";
 
 export default function Login({ username_given }) {
@@ -11,7 +12,7 @@ export default function Login({ username_given }) {
     } else {
       setPageLoad(true);
     }
-  });
+  }, []);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -83,6 +84,12 @@ export default function Login({ username_given }) {
   };
   return (
     <>
+      <Head
+        title="Dope - Register"
+        description="Register now to update your profile and chat with people you find."
+        kewrod=", register"
+        url="register"
+      ></Head>
       {pageLoad && (
         <center>
           {choosePassword ? (
@@ -104,7 +111,7 @@ export default function Login({ username_given }) {
               ></input>
               <p>{error}</p>
               <button action="submit" disabled={disabled}>
-                Register
+                {disabled ? "Loading...." : "Register"}
               </button>
               <button onClick={reload}>Restart ?</button>
             </form>
@@ -120,7 +127,7 @@ export default function Login({ username_given }) {
               ></input>
               <p>{error}</p>
               <button action="submit" disabled={disabled}>
-                Verify
+                {disabled ? "Loading...." : "Verify"}
               </button>
               <button onClick={reload}>Restart ?</button>
             </form>
@@ -136,7 +143,7 @@ export default function Login({ username_given }) {
               ></input>
               <p>{error}</p>
               <button action="submit" disabled={disabled}>
-                Send OTP
+                {disabled ? "Loading...." : "Send OTP"}
               </button>
             </form>
           )}

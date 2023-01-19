@@ -1,5 +1,15 @@
-import Head from "next/head";
+import Head from "../components/head";
 
 export default function Privacy() {
-  return <>Coming Soon</>;
+  return (
+    <>
+      <Head
+        title="Dope - Privacy Policy"
+        description="Dope is open about the data it uses. You can find it all here."
+        kewrod=", privacy-policy"
+        url="privacy"
+      ></Head>
+      Coming Soon
+    </>
+  );
 }
