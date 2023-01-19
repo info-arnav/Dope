@@ -33,7 +33,7 @@ export default function Home({ Component, pageProps }) {
           localStorage.removeItem("user");
         }
       };
-      verifier();
+      verifier().then((e) => setLoggedIn(false));
     } else {
       setLoggedIn(false);
     }
