@@ -1,6 +1,6 @@
 import Heads from "next/head";
 
-export default function Head({ title, description, kewords, url }) {
+export default function Head({ title, description, kewords, url, image }) {
   return (
     <Heads>
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
