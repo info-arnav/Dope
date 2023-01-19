@@ -1,6 +1,10 @@
 import Heads from "next/head";
+import { useEffect } from "react";
 
 export default function Head({ title, description, kewords, url, image }) {
+  useEffect(() => {
+    console.log(image);
+  });
   return (
     <Heads>
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
