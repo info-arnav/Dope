@@ -152,7 +152,7 @@ export default function Home({ Component, pageProps }) {
           ) : (
             <button className="chat" disabled>
               <Link
-                href="/chats"
+                href="/chat"
                 onClick={() => {
                   setShow("");
                   setLoaded(true);
