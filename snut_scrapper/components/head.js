@@ -31,16 +31,10 @@ export default function Head({ title, description, kewords, url, image }) {
       />
       <meta property="og:title" content={title} />
       <meta property="og:url" content={`https://www.itsdope.in/${url}`} />
-      <meta
-        property="og:image"
-        content={image | "https://wwww.itsdope.in/logo.png"}
-      />
+      <meta property="og:image" content={"https://wwww.itsdope.in/logo.png"} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta
-        name="twitter:image"
-        content={image | "https://wwww.itsdope.in/logo.png"}
-      />
+      <meta name="twitter:image" content={"https://wwww.itsdope.in/logo.png"} />
       <meta name="twitter:card" content="summary_large_image" />
     </Heads>
   );

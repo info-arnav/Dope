@@ -52,7 +52,7 @@ export default function Login({ username_given }) {
   return (
     <>
       <Head
-        image=""
+        image="https://wwww.itsdope.in/logo.png"
         title="Dope - Login"
         description="Login now to update your profile and chat with people you find."
         kewrod=", login"
