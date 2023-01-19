@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Head from "../../components/head";
 
 export default function About({ username_given, loggedIn }) {
