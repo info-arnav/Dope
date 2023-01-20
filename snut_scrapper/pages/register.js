@@ -3,8 +3,10 @@ import * as jose from "jose";
 import { useRouter } from "next/router";
 import Head from "../components/head";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Login({ username_given }) {
+  const [disabled, setDisabled] = useState(false);
   const router = useRouter();
   const reload = () => {
     router.reload(window.location.pathname);
@@ -13,19 +15,19 @@ export default function Login({ username_given }) {
     if (username_given) {
       router.push("/");
     }
-  }, [username_given]);
+  }, [username_given, disabled]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState("");
   const [hash, setHash] = useState("");
-  const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState("");
   const [choosePassword, setChoosePassword] = useState("");
   const auth = async (e) => {
     e.preventDefault();
     setError(false);
+    setDisabled(true);
     if (username.slice(-15) == "ug22@nsut.ac.in") {
       axios.post("/api/otp", { username: username }).then(async (e) => {
         if (e.data.error) {
@@ -46,6 +48,7 @@ export default function Login({ username_given }) {
   const auth2 = async (e) => {
     e.preventDefault();
     setError(false);
+    setDisabled(true);
     if (otp == hash) {
       setError(false);
       setChoosePassword(true);
@@ -57,6 +60,7 @@ export default function Login({ username_given }) {
   const auth3 = async (e) => {
     e.preventDefault();
     setError(false);
+    setDisabled(true);
     if (password == confirmPassword) {
       axios
         .post("/api/register", { username: username, password: password })
@@ -90,9 +94,9 @@ export default function Login({ username_given }) {
         url="register"
       ></Head>
       {username_given != null && username_given == false ? (
-        <center>
+        <center className="forms">
           {choosePassword ? (
-            <form className="credntials" onSubmit={auth3}>
+            <form className="credentials" onSubmit={auth3}>
               <p className="title">Choose Password</p>
               <input
                 placeholder="Password"
@@ -108,14 +112,14 @@ export default function Login({ username_given }) {
                 type="password"
                 required
               ></input>
-              <p>{error}</p>
+              <p className="error">{error}</p>
               <button action="submit" disabled={disabled}>
                 {disabled ? "Loading...." : "Register"}
               </button>
               <button onClick={reload}>Restart ?</button>
             </form>
           ) : showOtp ? (
-            <form className="credntials" onSubmit={auth2}>
+            <form className="credentials" onSubmit={auth2}>
               <p className="title">Verify OTP</p>
               <input
                 placeholder="OTP"
@@ -124,14 +128,16 @@ export default function Login({ username_given }) {
                 type="number"
                 required
               ></input>
-              <p>{error}</p>
+              <p className="error">{error}</p>
               <button action="submit" disabled={disabled}>
                 {disabled ? "Loading...." : "Verify"}
               </button>
-              <button onClick={reload}>Restart ?</button>
+              <button className="restart" onClick={reload}>
+                Restart ?
+              </button>
             </form>
           ) : (
-            <form className="credntials" onSubmit={auth}>
+            <form className="credentials" onSubmit={auth}>
               <p className="title">Register</p>
               <input
                 placeholder="User ID"
@@ -140,10 +146,13 @@ export default function Login({ username_given }) {
                 type="email"
                 required
               ></input>
-              <p>{error}</p>
+              <p className="error">{error}</p>
               <button action="submit" disabled={disabled}>
                 {disabled ? "Loading...." : "Send OTP"}
               </button>
+              <p>
+                <Link href="/login">Already Registered ? Login</Link>
+              </p>
             </form>
           )}
         </center>

@@ -3,8 +3,10 @@ import Head from "../components/head";
 import * as jose from "jose";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Login({ username_given }) {
+  const [disabled, setDisabled] = useState(false);
   const reload = () => {
     router.reload(window.location.pathname);
   };
@@ -12,11 +14,10 @@ export default function Login({ username_given }) {
     if (username_given) {
       router.push("/");
     }
-  }, [username_given]);
+  }, [username_given, disabled]);
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState("");
   const auth = async (e) => {
     e.preventDefault();
@@ -56,8 +57,8 @@ export default function Login({ username_given }) {
         url="login"
       ></Head>
       {username_given != null && username_given == false ? (
-        <center>
-          <form className="credntials" onSubmit={auth}>
+        <center className="forms">
+          <form className="credentials" onSubmit={auth}>
             <p className="title">Login</p>
             <input
               placeholder="User ID"
@@ -73,10 +74,13 @@ export default function Login({ username_given }) {
               type="password"
               required
             ></input>
-            <p>{error}</p>
+            <p className="error">{error}</p>
             <button action="submit" disabled={disabled}>
               {disabled ? "Loading...." : "Login"}
             </button>
+            <p>
+              <Link href="/register">Not yet registered ? Register Now</Link>
+            </p>
           </form>
         </center>
       ) : (

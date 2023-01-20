@@ -205,30 +205,9 @@ footer h2 {
   font-size: 18px;
   margin-bottom: 250px;
 }
-.credntials {
-  width: 95%;
-  max-width: 700px;
-  box-shadow: 0px 0px 10px 0px gray;
-  border-radius: 20px;
-  padding: 20px;
-  min-height: 500px;
-  margin-top: 200px;
-  margin-bottom: 200px;
-}
 
 main {
   margin-top: 60px;
-}
-.title {
-  font-size: 25px;
-  font-weight: bold;
-}
-.credntials input {
-  width: 90%;
-  height: 25px;
-  margin: 5px;
-  border-radius: 5px;
-  padding: 5px;
 }
 .about-banner {
   background-image: url("../public/banner.webp");
@@ -282,4 +261,61 @@ a {
 }
 .empty {
   height: 90vh;
+}
+.forms {
+  margin-top: 60px;
+  background-image: url("../public/forms.webp");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.289);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.credentials {
+  margin: 5px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 95%;
+  max-width: 500px;
+  min-height: 50vh;
+  box-shadow: 0px 0px 10px 0px grey;
+}
+.credentials .title {
+  margin-top: 40px;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+.credentials input {
+  width: 90%;
+  height: 40px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border: solid black;
+}
+.credentials button {
+  background-color: black;
+  padding: 5px;
+  height: 50px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  width: 90%;
+}
+.error {
+  color: orange;
+  font-weight: bold;
 }
