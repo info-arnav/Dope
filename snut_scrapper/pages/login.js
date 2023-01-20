@@ -27,10 +27,11 @@ export default function Login({ username_given }) {
       .post("/api/login", { username: username, password: password })
       .then(async (e) => {
         if (e.data.error == true) {
-          sssss;
           setError("Some error occured, please try again.");
+          setDisabled(false);
         } else if (e.data.loggedIn == false) {
           setError("Invalid credentials");
+          setDisabled(false);
         } else if (e.data.loggedIn == true) {
           const secret = new TextEncoder().encode(
             "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
@@ -43,9 +44,9 @@ export default function Login({ username_given }) {
           reload();
         } else {
           setError("Some error occured, please try again.");
+          setDisabled(false);
         }
       });
-    setDisabled(false);
   };
   return (
     <>

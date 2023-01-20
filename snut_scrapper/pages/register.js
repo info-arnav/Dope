@@ -32,18 +32,21 @@ export default function Login({ username_given }) {
       axios.post("/api/otp", { username: username }).then(async (e) => {
         if (e.data.error) {
           setError("Some error occured");
+          setDisabled(false);
         } else if (e.data.registered) {
           setError("Already registered");
+          setDisabled(false);
         } else {
           setHash(e.data.otp);
           setError(false);
           setShowOtp(true);
+          setDisabled(false);
         }
       });
     } else {
       setError("Email not of format ug22@nsut.ac.in");
+      setDisabled(false);
     }
-    setDisabled(false);
   };
   const auth2 = async (e) => {
     e.preventDefault();
@@ -52,10 +55,11 @@ export default function Login({ username_given }) {
     if (otp == hash) {
       setError(false);
       setChoosePassword(true);
+      setDisabled(false);
     } else {
       setError("invalid OTP");
+      setDisabled(false);
     }
-    setDisabled(false);
   };
   const auth3 = async (e) => {
     e.preventDefault();
@@ -67,6 +71,7 @@ export default function Login({ username_given }) {
         .then(async (e) => {
           if (e.data.error) {
             setError("Some error occured");
+            setDisabled(false);
           } else {
             const secret = new TextEncoder().encode(
               "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
@@ -81,8 +86,8 @@ export default function Login({ username_given }) {
         });
     } else {
       setError("Password dont match");
+      setDisabled(false);
     }
-    setDisabled(false);
   };
   return (
     <>
