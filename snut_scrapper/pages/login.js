@@ -55,7 +55,7 @@ export default function Login({ username_given }) {
         kewrod=", login"
         url="login"
       ></Head>
-      {username != null && username == false && (
+      {username_given != null && username_given == false && (
         <center>
           <form className="credntials" onSubmit={auth}>
             <p className="title">Login</p>
