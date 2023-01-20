@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import * as jose from "jose";
 import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
@@ -112,7 +113,10 @@ export default function Home({ Component, pageProps }) {
           {username == null ? (
             <></>
           ) : username == false ? (
-            <button className="register">
+            <button
+              className="register"
+              onClick={() => Router.push("/register")}
+            >
               <Link
                 href="/register"
                 onClick={() => {
@@ -130,7 +134,7 @@ export default function Home({ Component, pageProps }) {
               {"     "}
             </button>
           ) : username == false ? (
-            <button className="login">
+            <button className="login" onClick={() => Router.push("/login")}>
               <Link
                 href="/login"
                 onClick={() => {
@@ -141,7 +145,7 @@ export default function Home({ Component, pageProps }) {
               </Link>
             </button>
           ) : (
-            <button className="chat">
+            <button className="chat" onClick={() => Router.push("/Chat")}>
               <Link
                 href="/chat"
                 onClick={() => {

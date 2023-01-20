@@ -55,7 +55,7 @@ export default function Login({ username_given }) {
         kewrod=", login"
         url="login"
       ></Head>
-      {username_given != null && username_given == false && (
+      {username_given != null && username_given == false ? (
         <center>
           <form className="credntials" onSubmit={auth}>
             <p className="title">Login</p>
@@ -79,6 +79,8 @@ export default function Login({ username_given }) {
             </button>
           </form>
         </center>
+      ) : (
+        <div className="empty"></div>
       )}
     </>
   );

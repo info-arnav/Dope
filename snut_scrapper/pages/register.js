@@ -89,7 +89,7 @@ export default function Login({ username_given }) {
         kewrod=", register"
         url="register"
       ></Head>
-      {username_given != null && username_given == false && (
+      {username_given != null && username_given == false ? (
         <center>
           {choosePassword ? (
             <form className="credntials" onSubmit={auth3}>
@@ -147,6 +147,8 @@ export default function Login({ username_given }) {
             </form>
           )}
         </center>
+      ) : (
+        <div className="empty"></div>
       )}
     </>
   );

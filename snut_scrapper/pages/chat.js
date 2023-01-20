@@ -8,5 +8,13 @@ export default function Chat({ username_given }) {
     }
   }, [username_given]);
   const router = useRouter();
-  return <>{username_given != null && username_given != false && <></>}</>;
+  return (
+    <>
+      {username_given != null && username_given != false ? (
+        <></>
+      ) : (
+        <div className="empty"></div>
+      )}
+    </>
+  );
 }

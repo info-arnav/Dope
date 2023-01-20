@@ -19,7 +19,7 @@ export default function Home({ username_given }) {
       ></Head>
 
       {username_given == null ? (
-        <></>
+        <div className="empty"></div>
       ) : username_given == false ? (
         <>
           <div className="about-banner">
