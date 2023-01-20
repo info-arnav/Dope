@@ -25,6 +25,9 @@ nav a {
   font-weight: bold;
   font-size: 13px;
 }
+.home {
+  min-width: 40px;
+}
 .ais-SearchBox {
   flex: 1;
 }
@@ -98,6 +101,7 @@ footer {
 }
 .register {
   margin-left: 10px;
+  min-width: 70px;
 }
 .footer-title {
   margin-top: 50px;
@@ -156,12 +160,17 @@ footer h2 {
     display: none;
   }
 }
+.login,
+.register {
+  min-width: 70px;
+}
 @media only screen and (max-width: 450px) {
   .register {
     display: none;
   }
   .login {
     margin-left: 10px;
+    min-width: 70px;
   }
 }
 .chat {

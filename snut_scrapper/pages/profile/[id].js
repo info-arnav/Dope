@@ -1,16 +1,12 @@
-import Head from "../../components/head";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-export default function About() {
-  return (
-    <div>
-      <Head
-        image="https://wwww.itsdope.in/social.jpg"
-        title="Dope - About"
-        description="A social platform for people of NSUT to meet each other online and get to know each other more."
-        kewrod=", about"
-        url="about"
-      ></Head>
-      <div className="about-banner"></div>
-    </div>
-  );
+export default function Profile({ username_given }) {
+  useEffect(() => {
+    if (username_given == false) {
+      router.push("/");
+    }
+  }, [username_given]);
+  const router = useRouter();
+  return <>{username != null && username != false && <></>}</>;
 }

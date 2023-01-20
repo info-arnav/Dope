@@ -8,14 +8,11 @@ export default function Login({ username_given }) {
   const reload = () => {
     router.reload(window.location.pathname);
   };
-  const [pageLoad, setPageLoad] = useState(false);
   useEffect(() => {
     if (username_given) {
       router.push("/");
-    } else {
-      setPageLoad(true);
     }
-  }, []);
+  }, [username_given]);
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +55,7 @@ export default function Login({ username_given }) {
         kewrod=", login"
         url="login"
       ></Head>
-      {pageLoad && (
+      {username != null && username == false && (
         <center>
           <form className="credntials" onSubmit={auth}>
             <p className="title">Login</p>

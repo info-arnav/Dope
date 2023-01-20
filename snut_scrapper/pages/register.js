@@ -5,14 +5,15 @@ import Head from "../components/head";
 import { useEffect, useState } from "react";
 
 export default function Login({ username_given }) {
-  const [pageLoad, setPageLoad] = useState(false);
+  const router = useRouter();
+  const reload = () => {
+    router.reload(window.location.pathname);
+  };
   useEffect(() => {
     if (username_given) {
       router.push("/");
-    } else {
-      setPageLoad(true);
     }
-  }, []);
+  }, [username_given]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,9 +23,6 @@ export default function Login({ username_given }) {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState("");
   const [choosePassword, setChoosePassword] = useState("");
-  const reload = () => {
-    router.reload(window.location.pathname);
-  };
   const auth = async (e) => {
     e.preventDefault();
     setError(false);
@@ -91,7 +89,7 @@ export default function Login({ username_given }) {
         kewrod=", register"
         url="register"
       ></Head>
-      {pageLoad && (
+      {username != null && username == false && (
         <center>
           {choosePassword ? (
             <form className="credntials" onSubmit={auth3}>

@@ -1,15 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function Home({ username_given }) {
-  const [pageLoad, setPageLoad] = useState(false);
+export default function Chat({ username_given }) {
   useEffect(() => {
-    if (username_given) {
+    if (username_given == false) {
       router.push("/");
-    } else {
-      setPageLoad(true);
     }
-  }, []);
+  }, [username_given]);
   const router = useRouter();
-  return <>{pageLoad ? username_given ? <></> : <></> : <></>}</>;
+  return <>{username != null && username != false && <></>}</>;
 }

@@ -4,15 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Home({ username_given }) {
-  const [pageLoad, setPageLoad] = useState(false);
-  useEffect(() => {
-    if (username_given) {
-      router.push("/");
-    } else {
-      setPageLoad(true);
-    }
-  });
   const router = useRouter();
+  const reload = () => {
+    router.reload(window.location.pathname);
+  };
   return (
     <>
       <Head
@@ -22,9 +17,10 @@ export default function Home({ username_given }) {
         url=""
         image="https://wwww.itsdope.in/social.jpg"
       ></Head>
-      {pageLoad && username_given ? (
+
+      {username_given == null ? (
         <></>
-      ) : (
+      ) : username_given == false ? (
         <>
           <div className="about-banner">
             <div>
@@ -50,6 +46,18 @@ export default function Home({ username_given }) {
               data.
             </b>
           </p>
+        </>
+      ) : (
+        <>
+          {username_given}
+          <button
+            onClick={(e) => {
+              localStorage.removeItem("user");
+              reload();
+            }}
+          >
+            Logout
+          </button>
         </>
       )}
     </>
