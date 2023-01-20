@@ -48,7 +48,7 @@ export default function Home({ username_given }) {
           </p>
         </>
       ) : (
-        <>
+        <div className="index">
           {username_given}
           <button
             onClick={(e) => {
@@ -58,7 +58,7 @@ export default function Home({ username_given }) {
           >
             Logout
           </button>
-        </>
+        </div>
       )}
     </>
   );

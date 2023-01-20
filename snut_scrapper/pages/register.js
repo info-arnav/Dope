@@ -108,8 +108,13 @@ export default function Login({ username_given }) {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 type="password"
+                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                 required
               ></input>
+              <p style={{ marginBottom: 5 }}>
+                Must contain one capital letter, numbers, a special character
+                and atleast 8 characters.
+              </p>
               <input
                 placeholder="Confirm Password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
