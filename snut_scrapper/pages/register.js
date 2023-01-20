@@ -117,7 +117,7 @@ export default function Login({ username_given }) {
                 type="password"
                 required
               ></input>
-              <p className="error">{error}</p>
+              <p className="error-1">{error}</p>
               <button action="submit" disabled={disabled}>
                 {disabled ? "Loading...." : "Register"}
               </button>
@@ -133,7 +133,7 @@ export default function Login({ username_given }) {
                 type="number"
                 required
               ></input>
-              <p className="error">{error}</p>
+              <p className="error-1">{error}</p>
               <button action="submit" disabled={disabled}>
                 {disabled ? "Loading...." : "Verify"}
               </button>
@@ -151,7 +151,7 @@ export default function Login({ username_given }) {
                 type="email"
                 required
               ></input>
-              <p className="error">{error}</p>
+              <p className="error-1">{error}</p>
               <button action="submit" disabled={disabled}>
                 {disabled ? "Loading...." : "Send OTP"}
               </button>

@@ -145,7 +145,7 @@ export default function Home({ Component, pageProps }) {
               </Link>
             </button>
           ) : (
-            <button className="chat" onClick={() => Router.push("/Chat")}>
+            <button className="chat" onClick={() => Router.push("/chat")}>
               <Link
                 href="/chat"
                 onClick={() => {

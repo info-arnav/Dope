@@ -75,7 +75,7 @@ export default function Login({ username_given }) {
               type="password"
               required
             ></input>
-            <p className="error">{error}</p>
+            <p className="error-1">{error}</p>
             <button action="submit" disabled={disabled}>
               {disabled ? "Loading...." : "Login"}
             </button>
