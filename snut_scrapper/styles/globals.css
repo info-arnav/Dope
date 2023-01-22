@@ -155,6 +155,9 @@ footer h2 {
   .image-nav {
     display: none;
   }
+  .home {
+    margin-left: 10px;
+  }
 }
 .login,
 .register,

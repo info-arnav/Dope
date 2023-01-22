@@ -111,9 +111,14 @@ export default function Home({ Component, pageProps }) {
           />
 
           {username == null ? (
-            <button className="register" disabled>
-              {"     "}
-            </button>
+            <a disabled className="nav-image-right extra">
+              <Image
+                src="/white.jpg"
+                width={35}
+                height={35}
+                alt="white image"
+              ></Image>
+            </a>
           ) : username == false ? (
             <Link
               href="/register"
@@ -148,9 +153,14 @@ export default function Home({ Component, pageProps }) {
             </>
           )}
           {username == null ? (
-            <button className="login" disabled>
-              {"     "}
-            </button>
+            <a disabled className="nav-image-right">
+              <Image
+                src="/white.jpg"
+                width={35}
+                height={35}
+                alt="white image"
+              ></Image>
+            </a>
           ) : username == false ? (
             <Link
               href="/login"
