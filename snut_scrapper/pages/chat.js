@@ -5,20 +5,19 @@ import Head from "../components/head";
 export default function Chat({ username_given }) {
   useEffect(() => {
     if (username_given == false) {
-      router.push("/");
+      router.push("/login");
     }
   }, [username_given]);
   const router = useRouter();
   return (
     <>
-      <Head>
-        <title>Dope - Chat</title>
-        <meta name="title" content="Dope - Chat" />
-        <meta
-          name="description"
-          content="You can chat with your friends here."
-        />
-      </Head>
+      <Head
+        title="Dope - Chat"
+        description="You can chat with your friends here."
+        kewrod=", chat"
+        url="chat"
+        image="https://wwww.itsdope.in/social.jpg"
+      ></Head>
       {username_given != null && username_given != false ? (
         <div className="error">
           <div className="error-title">WAIT!</div>

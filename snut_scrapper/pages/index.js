@@ -2,12 +2,22 @@ import { useRouter } from "next/router";
 import Head from "../components/head";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from "axios";
+import Image from "next/image";
 
 export default function Home({ username_given }) {
   const router = useRouter();
+  const [userData, setUserData] = useState(false);
   const reload = () => {
     router.reload(window.location.pathname);
   };
+  useEffect(() => {
+    if (username_given) {
+      axios
+        .post("/api/user", { email: username_given.split("@")[0] })
+        .then((e) => setUserData(e.data));
+    }
+  }, [username_given]);
   return (
     <>
       <Head
@@ -45,11 +55,22 @@ export default function Home({ username_given }) {
               register with your email address and make suitable changes to your
               data.
             </b>
+            <br></br>
+            <br></br>Another beinifit of registering is that you can{" "}
+            <b>randomly</b> view people whome you may connect with on the app.
+            We will try to try to make this a bit more personalized in the
+            future.
           </p>
         </>
-      ) : (
+      ) : userData ? (
         <div className="index">
-          {username_given}
+          <center>
+            {userData.image ? (
+              <Image src={userData.image} width={150} height={150}></Image>
+            ) : (
+              <Image src="/profile.webp" width={150} height={150}></Image>
+            )}
+          </center>
           <button
             onClick={(e) => {
               localStorage.removeItem("user");
@@ -58,6 +79,10 @@ export default function Home({ username_given }) {
           >
             Logout
           </button>
+        </div>
+      ) : (
+        <div className="empty">
+          <Image src="/loading.gif" width={300} height={300}></Image>
         </div>
       )}
     </>

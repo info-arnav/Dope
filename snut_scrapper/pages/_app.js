@@ -111,50 +111,77 @@ export default function Home({ Component, pageProps }) {
           />
 
           {username == null ? (
-            <></>
+            <button className="register" disabled>
+              {"     "}
+            </button>
           ) : username == false ? (
-            <button
-              className="register"
-              onClick={() => Router.push("/register")}
+            <Link
+              href="/register"
+              className="nav-image-right extra"
+              onClick={() => {
+                setShow("");
+              }}
             >
+              <Image
+                src="/register.png"
+                width={35}
+                height={35}
+                alt="Register icon"
+              ></Image>
+            </Link>
+          ) : (
+            <>
               <Link
-                href="/register"
+                href="/find"
+                className="nav-image-right extra"
                 onClick={() => {
                   setShow("");
                 }}
               >
-                REGISTER
+                <Image
+                  src="/discover.png"
+                  width={35}
+                  height={35}
+                  alt="discover icon"
+                ></Image>
               </Link>
-            </button>
-          ) : (
-            <></>
+            </>
           )}
           {username == null ? (
             <button className="login" disabled>
               {"     "}
             </button>
           ) : username == false ? (
-            <button className="login" onClick={() => Router.push("/login")}>
-              <Link
-                href="/login"
-                onClick={() => {
-                  setShow("");
-                }}
-              >
-                LOGIN
-              </Link>
-            </button>
+            <Link
+              href="/login"
+              className="nav-image-right"
+              onClick={() => {
+                setShow("");
+              }}
+            >
+              {" "}
+              <Image
+                src="/login.png"
+                width={35}
+                height={35}
+                alt="login icon"
+              ></Image>
+            </Link>
           ) : (
-            <button className="chat" onClick={() => Router.push("/chat")}>
-              <Link
-                href="/chat"
-                onClick={() => {
-                  setShow("");
-                }}
-              >
-                CHAT
-              </Link>
-            </button>
+            <Link
+              href="/chat"
+              className="nav-image-right"
+              onClick={() => {
+                setShow("");
+              }}
+            >
+              <Image
+                src="/chat.png"
+                width={35}
+                height={35}
+                alt="chat icon"
+              ></Image>
+            </Link>
           )}
         </nav>
         {show.length > 0 && (
@@ -230,6 +257,24 @@ export default function Home({ Component, pageProps }) {
                 href="/login"
               >
                 Login
+              </Link>
+              <br></br>
+              <Link
+                onClick={() => {
+                  setShow("");
+                }}
+                href="/find"
+              >
+                Discover
+              </Link>
+              <br></br>
+              <Link
+                onClick={() => {
+                  setShow("");
+                }}
+                href="/chat"
+              >
+                Chat
               </Link>
             </p>
           </div>

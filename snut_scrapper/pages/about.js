@@ -33,6 +33,10 @@ export default function About() {
           register with your email address and make suitable changes to your
           data.
         </b>
+        <br></br>
+        <br></br>Another beinifit of registering is that you can <b>randomly</b>{" "}
+        view people whome you may connect with on the app. We will try to try to
+        make this a bit more personalized in the future.
       </p>
     </div>
   );
