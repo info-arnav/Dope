@@ -1,7 +1,7 @@
 import clientPromise from "../../middleware/mongodb";
 
 export default function Profile(props) {
-  return <>{props.email}</>;
+  return <div className="profile">{props.email}</div>;
 }
 export async function getServerSideProps(id) {
   id = id.query.id;

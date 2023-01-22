@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import clientPromise from "../middleware/mongodb";
 import Head from "../components/head";
+import Image from "next/image";
 
 export default function Chat({ username_given, data }) {
   function reload() {
@@ -24,10 +25,41 @@ export default function Chat({ username_given, data }) {
       ></Head>
       {username_given != null && username_given != false ? (
         <>
-          <button onClick={reload}>reload</button>{" "}
+          <button className="find-people" onClick={reload}>
+            Find New People
+          </button>{" "}
           <div className="grid">
             {data.map((e) => (
-              <div>{e.email}</div>
+              <a className="card" href={`/profile/${e.email}`}>
+                <center>
+                  <Image
+                    width={100}
+                    height={100}
+                    src={e.image || "/profile.webp"}
+                  ></Image>
+                  <div className="name">
+                    {e.name.toUpperCase() || "Not Provided"}
+                  </div>
+                  <div className="email">{e.email + "@nsut.ac.in"}</div>
+                  <div className="bio">{e.bio || "Not Provided"}</div>
+                  {e.insta_predicted.split("*")[0] ? (
+                    <div cldivss="instagram_id">
+                      {e.insta_predicted.split("*")[0].split("$")[0]}
+                    </div>
+                  ) : (
+                    <div class="instagram_id" disabled>
+                      No Prediction
+                    </div>
+                  )}
+                  {e.insta_predicted.split("*")[0] ? (
+                    <div class="instagram_name">
+                      {e.insta_predicted.split("*")[0].split("$")[1]}
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </center>
+              </a>
             ))}
           </div>
         </>

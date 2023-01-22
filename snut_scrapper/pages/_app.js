@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import Image from "next/image";
 import Link from "next/link";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import * as jose from "jose";
 import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
@@ -9,6 +9,7 @@ import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
+  const router = useRouter();
   const [show, setShow] = useState("");
   const verifier = async (userStorage) => {
     try {
@@ -41,18 +42,44 @@ export default function Home({ Component, pageProps }) {
   );
   const Hit = (e) => {
     return (
-      <div style={{ marginBottom: 80 }}>
-        <p>{e.hit.name}</p>
-        <p>{e.hit.roll_no}</p>
-        <p>{e.hit.objectID}@nsut.ac.in</p>
-        <>
-          <h2>Predicted</h2>
-          {e.hit.insta_predicted.split("*")[0]
-            ? e.hit.insta_predicted.split("*")[0].split("$")[0] +
-              " " +
-              e.hit.insta_predicted.split("*")[0].split("$")[1]
-            : "No prediction"}
-        </>
+      <div
+        className="card"
+        onClick={() => {
+          router.push(`/profile/${e.hit.objectID}`);
+          setShow("");
+        }}
+      >
+        <center>
+          <Image
+            width={100}
+            height={100}
+            src={e.hit.image || "/profile.webp"}
+          ></Image>
+          <div className="name">{e.hit.name || "Not Provided"}</div>
+          <div className="email">{e.hit.objectID + "@nsut.ac.in"}</div>
+          <div className="bio">{e.hit.bio || "Not Provided"}</div>
+          {e.hit.insta_predicted.split("*")[0] ? (
+            <div
+              class="instagram_id"
+              href={`https://www.instagram.com/${
+                e.hit.insta_predicted.split("*")[0].split("$")[0]
+              }`}
+            >
+              {e.hit.insta_predicted.split("*")[0].split("$")[0]}
+            </div>
+          ) : (
+            <div class="instagram_id" disabled>
+              No Prediction
+            </div>
+          )}
+          {e.hit.insta_predicted.split("*")[0] ? (
+            <div class="instagram_name">
+              {e.hit.insta_predicted.split("*")[0].split("$")[1]}
+            </div>
+          ) : (
+            <></>
+          )}
+        </center>
       </div>
     );
   };
