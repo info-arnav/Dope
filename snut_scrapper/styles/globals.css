@@ -318,3 +318,9 @@ a {
   border-radius: 100%;
   border: solid black;
 }
+.ais-Hits-list,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}

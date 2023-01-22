@@ -44,28 +44,14 @@ export default function Home({ Component, pageProps }) {
       <div style={{ marginBottom: 80 }}>
         <p>{e.hit.name}</p>
         <p>{e.hit.roll_no}</p>
-        <p>{e.hit.email}@nsut.ac.in</p>
+        <p>{e.hit.objectID}@nsut.ac.in</p>
         <>
           <h2>Predicted</h2>
-          {e.hit.insta_predicted.split("*").map((e) => {
-            let array = e.split("$");
-            return (
-              <p>
-                {array[0]} {array[1]}
-              </p>
-            );
-          })}
-        </>
-        <>
-          <h2>Possibilities</h2>
-          {e.hit.insta_posibilities.split("*").map((e) => {
-            let array = e.split("$");
-            return (
-              <p>
-                {array[0]} {array[1]}
-              </p>
-            );
-          })}
+          {e.hit.insta_predicted.split("*")[0]
+            ? e.hit.insta_predicted.split("*")[0].split("$")[0] +
+              " " +
+              e.hit.insta_predicted.split("*")[0].split("$")[1]
+            : "No prediction"}
         </>
       </div>
     );

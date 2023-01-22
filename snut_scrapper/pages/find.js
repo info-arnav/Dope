@@ -24,10 +24,12 @@ export default function Chat({ username_given, data }) {
       ></Head>
       {username_given != null && username_given != false ? (
         <>
-          {data.map((e) => (
-            <div>{e.email}</div>
-          ))}
-          <button onClick={reload}>reload</button>
+          <button onClick={reload}>reload</button>{" "}
+          <div className="grid">
+            {data.map((e) => (
+              <div>{e.email}</div>
+            ))}
+          </div>
         </>
       ) : (
         <div className="empty"></div>
