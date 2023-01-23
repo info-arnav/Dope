@@ -11,12 +11,48 @@ export default function Home({ username_given }) {
   const reload = () => {
     router.reload(window.location.pathname);
   };
-  const update = async () => {};
+  const [disabled, setDisabled] = useState(false);
+  const [instagram, setInstagram] = useState("");
+  const [bio, setBio] = useState("");
+  const [image, setImage] = useState("");
+  const update = async (e) => {
+    e.preventDefault();
+    setDisabled(true);
+    await axios.post("/api/algolia", {
+      method: "update",
+      object: {
+        objectID: userData.email,
+        roll_no: userData.roll_no,
+        image: image,
+        name: userData.name,
+        bio: bio,
+        instagram_id: instagram,
+      },
+    });
+    await axios
+      .post("/api/update", {
+        email: userData.email,
+        changes: {
+          email: userData.email,
+          roll_no: userData.roll_no,
+          image: image,
+          name: userData.name,
+          bio: bio,
+          instagram_id: instagram,
+        },
+      })
+      .then((e) => reload());
+  };
   useEffect(() => {
     if (username_given) {
       axios
         .post("/api/user", { email: username_given.split("@")[0] })
-        .then((e) => setUserData(e.data));
+        .then((e) => {
+          setInstagram(e.data.instgram_id);
+          setBio(e.data.bio);
+          setImage(e.data.image);
+          setUserData(e.data);
+        });
     }
   }, [username_given]);
   return (
@@ -67,11 +103,7 @@ export default function Home({ username_given }) {
         <div className="profile-back">
           <div className="profile-front">
             <center>
-              <Image
-                width={200}
-                height={200}
-                src={userData.image || "/profile.webp"}
-              ></Image>
+              <Image width={200} height={200} src="/profile.webp"></Image>
               <div className="name">
                 {userData.name.toUpperCase() || "Not Provided"}
               </div>
@@ -79,18 +111,49 @@ export default function Home({ username_given }) {
               <hr></hr>
               <br></br>
               <p className="bio">
-                {userData.bio ? userData.bio : "No bio added"}
+                <b>
+                  <div className="title">Bio</div>
+                </b>
+                <textarea
+                  placeholder="Nothing here"
+                  className="profile-text-area"
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                ></textarea>
               </p>
             </center>
             <b>
               <div className="title">Email ID</div>
+              <input
+                className="profile-input"
+                disabled
+                value={userData.email + "@nsut.ac.in"}
+              ></input>
             </b>
             <br></br>
             <b>
               <div className="title">Instagram ID</div>
+              <input
+                className="profile-input"
+                value={instagram}
+                placeholder="Nothing here"
+                onChange={(e) => setInstagram(e.target.value)}
+              ></input>
+            </b>
+            <br></br>
+            <b>
+              <div className="title">Image - Coming Soon</div>
+              <input
+                className="profile-input"
+                value={image}
+                type="file"
+                placeholder="Nothing here"
+                disabled
+              ></input>
             </b>
             <button
               onClick={update}
+              disabled={disabled}
               style={{
                 borderRadius: 20,
                 color: "white",
@@ -102,7 +165,7 @@ export default function Home({ username_given }) {
                 fontWeight: "bold",
               }}
             >
-              Update Profile
+              {disabled ? "Loading...." : "Update Profile"}
             </button>
             <button
               onClick={(e) => {

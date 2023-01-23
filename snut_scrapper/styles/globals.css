@@ -405,9 +405,24 @@ a {
   margin-bottom: 30px;
 }
 .bio {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 .possibilities {
   height: 100px;
   overflow-y: scroll;
+}
+.profile-input {
+  width: calc(100% - 20px);
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border-radius: 20px;
+  border: solid black;
+  padding: 10px;
+}
+.profile-text-area {
+  width: calc(100% - 40px);
+  margin-top: 5px;
+  border: solid black;
+  border-radius: 20px;
+  padding: 20px;
 }

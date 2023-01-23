@@ -8,16 +8,7 @@ export default async (req, res) => {
     const db = client.db("nsut");
     await db
       .collection("users")
-      .update(
-        { email: req.body.username.split("@")[0] },
-        { $set: req.body.changes }
-      );
-    let updated = req.body.changes;
-    updated.objectID = updated.email;
-    axios.post("/api/algolia", {
-      method: "update",
-      email: updated,
-    });
+      .update({ email: req.body.email }, { $set: req.body.changes });
     res.send({ error: false });
   } catch (e) {
     res.json({ error: true });
