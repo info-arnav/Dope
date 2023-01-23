@@ -18,14 +18,14 @@ export default async (req, res) => {
           port: 465,
           secure: true,
           auth: {
-            user: "info@arnavgupta.net",
-            pass: "Arnav300804",
+            user: "admin@itsdope.in",
+            pass: req.body.PASSWORD,
           },
         });
         let otp = Math.floor(1000 + Math.random() * 9000);
         await transporter
           .sendMail({
-            from: '"Dope" <info@arnavgupta.net>',
+            from: '"Dope" <admin@itsdope.in>',
             to: req.body.username,
             subject: "OTP for Dope",
             html: `<p>Your OTP is ${otp}</p>`,

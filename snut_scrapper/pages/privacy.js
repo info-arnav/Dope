@@ -546,7 +546,7 @@ export default function Privacy() {
             us:
           </p>
           <ul>
-            <li>By email: info@arnavgupta.net</li>
+            <li>By email: admin@itsdope.in</li>
           </ul>
         </div>
       </div>
