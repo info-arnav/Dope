@@ -4,7 +4,7 @@
     <loc>https://www.itsdope.in/api/sitemap-dynamic.xml</loc>
   </sitemap> 
   <sitemap>
-    <loc>http://localhost:3000/api/sitemap-dynamic.xml</loc>
+    <loc>https://localhost:3000/api/sitemap-dynamic-images.xml</loc>
   </sitemap>
   <sitemap>
     <loc>https://www.itsdope.in/sitemap-static.xml</loc>
