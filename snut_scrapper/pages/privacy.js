@@ -7,7 +7,7 @@ export default function Privacy() {
         image="https://wwww.itsdope.in/social.jpg"
         title="Dope - Privacy Policy"
         description="Dope is open about the data it uses. You can find it all here."
-        kewrod=", privacy-policy"
+        keword=", privacy-policy"
         url="privacy"
       ></Head>
       <div className="policy">

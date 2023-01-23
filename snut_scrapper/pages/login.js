@@ -54,7 +54,7 @@ export default function Login({ username_given }) {
         image="https://wwww.itsdope.in/social.jpg"
         title="Dope - Login"
         description="Login now to update your profile and chat with people you find."
-        kewrod=", login"
+        keword=", login"
         url="login"
       ></Head>
       {username_given != null && username_given == false ? (

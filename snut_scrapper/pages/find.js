@@ -19,7 +19,7 @@ export default function Chat({ username_given, data }) {
       <Head
         title="Dope - Discover"
         description="Find new people on Dope whome you can connect with."
-        kewrod=", discover"
+        keword=", discover"
         url="find"
         image="https://wwww.itsdope.in/social.jpg"
       ></Head>
@@ -40,11 +40,16 @@ export default function Chat({ username_given, data }) {
                   <div className="name">
                     {e.name.toUpperCase() || "Not Provided"}
                   </div>
-                  <div className="email">{e.email + "@nsut.ac.in"}</div>
-                  <div className="title">About</div>
-                  <div className="bio">{e.bio || "Not Provided"}</div>
-                  <div className="title">Prediction</div>
-                  {e.insta_predicted.split("*")[0] ? (
+                  <div className="email">{e.roll_no}</div>
+                  <hr></hr>
+                </center>
+                <b>
+                  <div className="title">
+                    {!e.instagram_id ? "Prediction" : "Instrgram ID"}
+                  </div>
+                </b>
+                {!e.instagram_id ? (
+                  e.insta_predicted.split("*")[0] ? (
                     <div className="instagram_id">
                       {e.insta_predicted.split("*")[0].split("$")[0]}
                     </div>
@@ -52,15 +57,21 @@ export default function Chat({ username_given, data }) {
                     <div class="instagram_id" disabled>
                       No Prediction
                     </div>
-                  )}
-                  {e.insta_predicted.split("*")[0] ? (
+                  )
+                ) : (
+                  <div className="instagram_id">{e.instagram_id}</div>
+                )}
+                {!e.instagram_id ? (
+                  e.insta_predicted.split("*")[0] ? (
                     <div className="instagram_name">
                       {e.insta_predicted.split("*")[0].split("$")[1]}
                     </div>
                   ) : (
-                    <></>
-                  )}
-                </center>
+                    <div className="instagram_name"></div>
+                  )
+                ) : (
+                  <div className="instagram_name">{e.instagram_name}</div>
+                )}
               </a>
             ))}
           </div>

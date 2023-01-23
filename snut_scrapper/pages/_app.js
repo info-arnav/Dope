@@ -55,33 +55,41 @@ export default function Home({ Component, pageProps }) {
             height={100}
             src={e.hit.image || "/profile.webp"}
           ></Image>
-          <div className="name">{e.hit.name || "Not Provided"}</div>
-          <div className="email">{e.hit.objectID + "@nsut.ac.in"}</div>
-          <div className="title">About</div>
-          <div className="bio">{e.hit.bio || "Not Provided"}</div>
-          <div className="title">Prediction</div>
-          {e.hit.insta_predicted.split("*")[0] ? (
-            <div
-              class="instagram_id"
-              href={`https://www.instagram.com/${
-                e.hit.insta_predicted.split("*")[0].split("$")[0]
-              }`}
-            >
+          <div className="name">
+            {e.hit.name.toUpperCase() || "Not Provided"}
+          </div>
+          <div className="email">{e.hit.roll_no}</div>
+          <hr></hr>
+        </center>
+        <b>
+          <div className="title">
+            {!e.hit.instagram_id ? "Prediction" : "Instrgram ID"}
+          </div>
+        </b>
+        {!e.hit.instagram_id ? (
+          e.hit.insta_predicted.split("*")[0] ? (
+            <div className="instagram_id">
               {e.hit.insta_predicted.split("*")[0].split("$")[0]}
             </div>
           ) : (
-            <div className="instagram_id" disabled>
+            <div class="instagram_id" disabled>
               No Prediction
             </div>
-          )}
-          {e.hit.insta_predicted.split("*")[0] ? (
+          )
+        ) : (
+          <div className="instagram_id">{e.hit.instagram_id}</div>
+        )}
+        {!e.hit.instagram_id ? (
+          e.hit.insta_predicted.split("*")[0] ? (
             <div className="instagram_name">
               {e.hit.insta_predicted.split("*")[0].split("$")[1]}
             </div>
           ) : (
-            <></>
-          )}
-        </center>
+            <div className="instagram_name"></div>
+          )
+        ) : (
+          <div className="instagram_name">{e.hit.instagram_name}</div>
+        )}
       </div>
     );
   };

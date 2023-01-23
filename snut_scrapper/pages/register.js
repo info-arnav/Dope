@@ -95,7 +95,7 @@ export default function Login({ username_given }) {
         image="https://wwww.itsdope.in/social.jpg"
         title="Dope - Register"
         description="Register now to update your profile and chat with people you find."
-        kewrod=", register"
+        keword=", register"
         url="register"
       ></Head>
       {username_given != null && username_given == false ? (
@@ -106,13 +106,13 @@ export default function Login({ username_given }) {
               <input
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
-                style={{marginBottom:0}}
+                style={{ marginBottom: 0 }}
                 value={password}
                 type="password"
                 pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                 required
               ></input>
-              <p style={{ marginBottom: 15, marginTop:2 }}>
+              <p style={{ marginBottom: 15, marginTop: 2 }}>
                 Must contain one capital letter, numbers, a special character
                 and atleast 8 characters.
               </p>

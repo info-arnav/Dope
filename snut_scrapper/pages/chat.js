@@ -14,7 +14,7 @@ export default function Chat({ username_given }) {
       <Head
         title="Dope - Chat"
         description="You can chat with your friends here."
-        kewrod=", chat"
+        keword=", chat"
         url="chat"
         image="https://wwww.itsdope.in/social.jpg"
       ></Head>

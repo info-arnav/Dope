@@ -11,6 +11,7 @@ export default function Home({ username_given }) {
   const reload = () => {
     router.reload(window.location.pathname);
   };
+  const update = async () => {};
   useEffect(() => {
     if (username_given) {
       axios
@@ -23,7 +24,7 @@ export default function Home({ username_given }) {
       <Head
         title="Dope"
         description="A social platform for people of NSUT to meet each other online and get to know each other more."
-        kewrod=""
+        keword=""
         url=""
         image="https://wwww.itsdope.in/social.jpg"
       ></Head>
@@ -63,22 +64,65 @@ export default function Home({ username_given }) {
           </p>
         </>
       ) : userData ? (
-        <div className="index">
-          <center>
-            {userData.image ? (
-              <Image src={userData.image} width={150} height={150}></Image>
-            ) : (
-              <Image src="/profile.webp" width={150} height={150}></Image>
-            )}
-          </center>
-          <button
-            onClick={(e) => {
-              localStorage.removeItem("user");
-              reload();
-            }}
-          >
-            Logout
-          </button>
+        <div className="profile-back">
+          <div className="profile-front">
+            <center>
+              <Image
+                width={200}
+                height={200}
+                src={userData.image || "/profile.webp"}
+              ></Image>
+              <div className="name">
+                {userData.name.toUpperCase() || "Not Provided"}
+              </div>
+              <div className="email">{userData.roll_no}</div>
+              <hr></hr>
+              <br></br>
+              <p className="bio">
+                {userData.bio ? userData.bio : "No bio added"}
+              </p>
+            </center>
+            <b>
+              <div className="title">Email ID</div>
+            </b>
+            <br></br>
+            <b>
+              <div className="title">Instagram ID</div>
+            </b>
+            <button
+              onClick={update}
+              style={{
+                borderRadius: 20,
+                color: "white",
+                backgroundColor: "black",
+                width: "100%",
+                cursor: "pointer",
+                padding: 10,
+                marginTop: 20,
+                fontWeight: "bold",
+              }}
+            >
+              Update Profile
+            </button>
+            <button
+              onClick={(e) => {
+                localStorage.removeItem("user");
+                reload();
+              }}
+              style={{
+                borderRadius: 20,
+                color: "white",
+                backgroundColor: "black",
+                width: "100%",
+                padding: 10,
+                cursor: "pointer",
+                marginTop: 10,
+                fontWeight: "bold",
+              }}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       ) : (
         <div className="empty">

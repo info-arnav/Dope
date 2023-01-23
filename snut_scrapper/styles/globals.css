@@ -9,6 +9,9 @@ nav {
   background-color: white;
 }
 * {
+  word-wrap: break-word;
+}
+* {
   font-family: sans-serif;
 }
 nav * {
@@ -159,12 +162,6 @@ footer h2 {
     margin-left: 10px;
   }
 }
-.login,
-.register,
-.chat,
-.discover {
-}
-
 @media only screen and (max-width: 340px) {
   nav input {
     border-radius: 22px;
@@ -335,8 +332,17 @@ a {
   margin: 10px;
   display: grid;
   margin-bottom: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 10px;
+}
+@media only screen and (max-width: 320px) {
+  .grid {
+    margin: 10px;
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(100vw, 1fr));
+    gap: 10px;
+  }
 }
 .ais-Hits {
   margin: 10px;
@@ -347,6 +353,8 @@ a {
   border: solid black;
   height: 100%;
   cursor: pointer;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .card:hover {
   box-shadow: 0px 0px 10px 0px grey;
@@ -362,4 +370,44 @@ a {
 }
 .profile {
   margin-top: 80px;
+}
+.card .title {
+  margin-bottom: 10px;
+}
+.instagram_name {
+  margin-bottom: 10px;
+}
+.profile-back {
+  margin-top: 60px;
+  background-image: url("../public/profile-bg.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.289);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-front {
+  margin: 5px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 95%;
+  max-width: 500px;
+  min-height: 50vh;
+  box-shadow: 0px 0px 10px 0px grey;
+}
+.profile-front img {
+  border-radius: 100%;
+  margin-bottom: 30px;
+}
+.bio {
+  margin-bottom: 50px;
+}
+.possibilities {
+  height: 100px;
+  overflow-y: scroll;
 }
