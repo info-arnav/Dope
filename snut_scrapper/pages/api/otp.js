@@ -19,7 +19,7 @@ export default async (req, res) => {
           secure: true,
           auth: {
             user: "admin@itsdope.in",
-            pass: req.body.PASSWORD,
+            pass: "Arnav@300804",
           },
         });
         let otp = Math.floor(1000 + Math.random() * 9000);

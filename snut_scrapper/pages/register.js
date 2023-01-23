@@ -106,12 +106,13 @@ export default function Login({ username_given }) {
               <input
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
+                style={{marginBottom:0}}
                 value={password}
                 type="password"
                 pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                 required
               ></input>
-              <p style={{ marginBottom: 5 }}>
+              <p style={{ marginBottom: 15, marginTop:2 }}>
                 Must contain one capital letter, numbers, a special character
                 and atleast 8 characters.
               </p>
