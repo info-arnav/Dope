@@ -1,7 +1,4 @@
 User-agent: *
-Disallow: /api/*
-Allow: /api/sitemap.xml
-Allow: /api/image/*
 Disallow: /chat
 Disallow: /404
 Disallow: /_error
