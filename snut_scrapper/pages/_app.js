@@ -88,7 +88,7 @@ export default function Home({ Component, pageProps }) {
             <div className="instagram_name"></div>
           )
         ) : (
-          <div className="instagram_name">{e.hit.instagram_name}</div>
+          <div className="instagram_name"></div>
         )}
       </div>
     );

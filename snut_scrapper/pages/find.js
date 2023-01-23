@@ -70,7 +70,7 @@ export default function Chat({ username_given, data }) {
                     <div className="instagram_name"></div>
                   )
                 ) : (
-                  <div className="instagram_name">{e.instagram_name}</div>
+                  <div className="instagram_name"></div>
                 )}
               </a>
             ))}

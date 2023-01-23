@@ -72,7 +72,7 @@ export default function Profile(props) {
             <div className="instagram_name"></div>
           )
         ) : (
-          <div className="instagram_name">{props.instagram_name}</div>
+          <div className="instagram_name"></div>
         )}
         <b>
           <div className="title">{!props.instagram_id && "Possibilities"}</div>
