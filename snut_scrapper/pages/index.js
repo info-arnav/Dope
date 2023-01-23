@@ -13,6 +13,8 @@ export default function Home({ username_given }) {
   };
   const [disabled, setDisabled] = useState(false);
   const [instagram, setInstagram] = useState("");
+  const [name, setName] = useState("");
+  const [roll_no, setRoll_no] = useState("");
   const [bio, setBio] = useState("");
   const [image, setImage] = useState("");
   const update = async (e) => {
@@ -22,9 +24,9 @@ export default function Home({ username_given }) {
       method: "update",
       object: {
         objectID: userData.email,
-        roll_no: userData.roll_no,
+        roll_no: roll_no,
         image: image,
-        name: userData.name,
+        name: name,
         bio: bio,
         instagram_id: instagram,
       },
@@ -34,9 +36,9 @@ export default function Home({ username_given }) {
         email: userData.email,
         changes: {
           email: userData.email,
-          roll_no: userData.roll_no,
+          roll_no: roll_no,
           image: image,
-          name: userData.name,
+          name: name,
           bio: bio,
           instagram_id: instagram,
         },
@@ -51,6 +53,8 @@ export default function Home({ username_given }) {
           setInstagram(e.data.instgram_id);
           setBio(e.data.bio);
           setImage(e.data.image);
+          setName(e.data.name);
+          setRoll_no(e.data.roll_no);
           setUserData(e.data);
         });
     }
@@ -104,10 +108,18 @@ export default function Home({ username_given }) {
           <div className="profile-front">
             <center>
               <Image width={200} height={200} src="/profile.webp"></Image>
-              <div className="name">
-                {userData.name.toUpperCase() || "Not Provided"}
-              </div>
-              <div className="email">{userData.roll_no}</div>
+              <input
+                className="profile-input"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              ></input>
+
+              <input
+                className="profile-input"
+                onChange={(e) => setRoll_no(e.target.value)}
+                value={roll_no}
+              ></input>
+
               <hr></hr>
               <br></br>
               <p className="bio">
