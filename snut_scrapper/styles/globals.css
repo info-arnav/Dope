@@ -335,7 +335,7 @@ a {
   margin: 10px;
   display: grid;
   margin-bottom: 50px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 10px;
 }
 .ais-Hits {

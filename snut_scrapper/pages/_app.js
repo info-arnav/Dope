@@ -57,7 +57,9 @@ export default function Home({ Component, pageProps }) {
           ></Image>
           <div className="name">{e.hit.name || "Not Provided"}</div>
           <div className="email">{e.hit.objectID + "@nsut.ac.in"}</div>
+          <div className="title">About</div>
           <div className="bio">{e.hit.bio || "Not Provided"}</div>
+          <div className="title">Prediction</div>
           {e.hit.insta_predicted.split("*")[0] ? (
             <div
               class="instagram_id"
@@ -68,12 +70,12 @@ export default function Home({ Component, pageProps }) {
               {e.hit.insta_predicted.split("*")[0].split("$")[0]}
             </div>
           ) : (
-            <div class="instagram_id" disabled>
+            <div className="instagram_id" disabled>
               No Prediction
             </div>
           )}
           {e.hit.insta_predicted.split("*")[0] ? (
-            <div class="instagram_name">
+            <div className="instagram_name">
               {e.hit.insta_predicted.split("*")[0].split("$")[1]}
             </div>
           ) : (

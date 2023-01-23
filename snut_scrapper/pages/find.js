@@ -41,9 +41,11 @@ export default function Chat({ username_given, data }) {
                     {e.name.toUpperCase() || "Not Provided"}
                   </div>
                   <div className="email">{e.email + "@nsut.ac.in"}</div>
+                  <div className="title">About</div>
                   <div className="bio">{e.bio || "Not Provided"}</div>
+                  <div className="title">Prediction</div>
                   {e.insta_predicted.split("*")[0] ? (
-                    <div cldivss="instagram_id">
+                    <div className="instagram_id">
                       {e.insta_predicted.split("*")[0].split("$")[0]}
                     </div>
                   ) : (
@@ -52,7 +54,7 @@ export default function Chat({ username_given, data }) {
                     </div>
                   )}
                   {e.insta_predicted.split("*")[0] ? (
-                    <div class="instagram_name">
+                    <div className="instagram_name">
                       {e.insta_predicted.split("*")[0].split("$")[1]}
                     </div>
                   ) : (
