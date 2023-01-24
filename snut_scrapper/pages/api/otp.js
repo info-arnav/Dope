@@ -9,7 +9,7 @@ export default async (req, res) => {
       .collection("users")
       .find({ email: req.body.username.split("@")[0] })
       .toArray();
-    if (data) {
+    if (data[0]) {
       if (data[0].password) {
         res.send({ error: false, registered: true });
       } else {
