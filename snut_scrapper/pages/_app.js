@@ -45,7 +45,8 @@ export default function Home({ Component, pageProps }) {
       <div
         className="card"
         onClick={() => {
-          router.push(`/profile/${e.hit.objectID}`);
+          window.location.replace(`/profile/${e.hit.objectID}`);
+          setShow("");
         }}
       >
         <center>
@@ -124,6 +125,7 @@ export default function Home({ Component, pageProps }) {
           <SearchBox
             onChange={(e) => {
               setShow(e.target.value);
+              window.scrollTo(0, 0);
             }}
             showLoadingIndicator={false}
           />
