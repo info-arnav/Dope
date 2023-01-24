@@ -16,7 +16,7 @@ export default function Chat({ username_given }) {
         description="You can chat with your friends here."
         keword=", chat"
         url="chat"
-        image="https://wwww.itsdope.in/social.jpg"
+        image="https://www.itsdope.in/social.jpg"
       ></Head>
       {username_given != null && username_given != false ? (
         <div className="error">

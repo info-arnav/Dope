@@ -51,7 +51,7 @@ export default function Login({ username_given }) {
   return (
     <>
       <Head
-        image="https://wwww.itsdope.in/social.jpg"
+        image="https://www.itsdope.in/social.jpg"
         title="Dope - Login"
         description="Login now to update your profile and chat with people you find."
         keword=", login"

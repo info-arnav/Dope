@@ -21,7 +21,7 @@ export default function Chat({ username_given, data }) {
         description="Find new people on Dope whome you can connect with."
         keword=", discover"
         url="find"
-        image="https://wwww.itsdope.in/social.jpg"
+        image="https://www.itsdope.in/social.jpg"
       ></Head>
       {username_given != null && username_given != false ? (
         <>

@@ -12,7 +12,7 @@ export default function Profile(props) {
         }. About - ${props.bio | "No Bio"}`}
         keword={`, ${props.email}@nsut.ac.in, ${props.name}, profile`}
         url={`profile/${props.email}`}
-        image="https://wwww.itsdope.in/social.jpg"
+        image="https://www.itsdope.in/social.jpg"
       ></Head>
       <div className="profile-front">
         <center>
