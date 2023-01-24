@@ -32,6 +32,25 @@ export default async (req, res) => {
           })
           .then((e) => res.json({ error: false, otp: otp }));
       }
+    } else {
+      let transporter = nodemailer.createTransport({
+        host: "smtp.rediffmailpro.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "admin@itsdope.in",
+          pass: "Arnav@300804",
+        },
+      });
+      let otp = Math.floor(1000 + Math.random() * 9000);
+      await transporter
+        .sendMail({
+          from: '"Dope" <admin@itsdope.in>',
+          to: req.body.username,
+          subject: "OTP for Dope",
+          html: `<p>Your OTP is ${otp}</p>`,
+        })
+        .then((e) => res.json({ error: false, otp: otp }));
     }
   } catch (e) {
     res.json({ error: true });
