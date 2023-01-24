@@ -46,7 +46,6 @@ export default function Home({ Component, pageProps }) {
         className="card"
         onClick={() => {
           window.location.replace(`/profile/${e.hit.objectID}`);
-          setShow("");
         }}
       >
         <center>
