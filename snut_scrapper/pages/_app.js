@@ -5,6 +5,7 @@ import Router, { useRouter } from "next/router";
 import * as jose from "jose";
 import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
+import NextNProgress from "nextjs-progressbar";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 export default function Home({ Component, pageProps }) {
@@ -29,6 +30,18 @@ export default function Home({ Component, pageProps }) {
     }
   };
   useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/service-worker.js").then(
+          function (registration) {},
+          function (err) {
+            console.log("Service Worker registration failed: ", err);
+          }
+        );
+      });
+    }
+  }, []);
+  useEffect(() => {
     let userStorage = localStorage.getItem("user");
     if (userStorage) {
       verifier(userStorage);
@@ -45,7 +58,8 @@ export default function Home({ Component, pageProps }) {
       <div
         className="card"
         onClick={() => {
-          window.location.replace(`/profile/${e.hit.objectID}`);
+          router.push(`/profile/${e.hit.objectID}`);
+          setShow("");
         }}
       >
         <center>
@@ -91,6 +105,7 @@ export default function Home({ Component, pageProps }) {
   return (
     <>
       <Analytics />
+      <NextNProgress />
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
           <Link
