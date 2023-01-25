@@ -16,6 +16,8 @@ export default function Head({ title, description, kewords, url, image }) {
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content="English" />
       <link rel="apple-touch-icon" href="/logo.png" />
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="manifest" href="/manifest.manifest" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
