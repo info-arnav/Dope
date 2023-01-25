@@ -30,18 +30,6 @@ export default function Home({ Component, pageProps }) {
     }
   };
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/service-worker.js").then(
-          function (registration) {},
-          function (err) {
-            console.log("Service Worker registration failed: ", err);
-          }
-        );
-      });
-    }
-  }, []);
-  useEffect(() => {
     let userStorage = localStorage.getItem("user");
     if (userStorage) {
       verifier(userStorage);
