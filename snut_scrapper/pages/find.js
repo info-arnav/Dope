@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import clientPromise from "../middleware/mongodb";
 import Head from "../components/head";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Chat({ username_given, data }) {
   function reload() {
@@ -31,7 +30,7 @@ export default function Chat({ username_given, data }) {
           </button>{" "}
           <div className="grid">
             {data.map((e) => (
-              <Link className="card" href={`/profile/${e.email}`}>
+              <a className="card" href={`/profile/${e.email}`}>
                 <center>
                   <Image width={100} height={100} src="/profile.webp"></Image>
                   <div className="name">
@@ -69,7 +68,7 @@ export default function Chat({ username_given, data }) {
                 ) : (
                   <div className="instagram_name"></div>
                 )}
-              </Link>
+              </a>
             ))}
           </div>
         </>

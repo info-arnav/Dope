@@ -5,7 +5,6 @@ import Router, { useRouter } from "next/router";
 import * as jose from "jose";
 import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
-import NextNProgress from "nextjs-progressbar";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 export default function Home({ Component, pageProps }) {
@@ -46,8 +45,7 @@ export default function Home({ Component, pageProps }) {
       <div
         className="card"
         onClick={() => {
-          router.push(`/profile/${e.hit.objectID}`);
-          setShow("");
+          window.location.replace(`/profile/${e.hit.objectID}`);
         }}
       >
         <center>
@@ -93,7 +91,6 @@ export default function Home({ Component, pageProps }) {
   return (
     <>
       <Analytics />
-      <NextNProgress />
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
           <Link
