@@ -32,6 +32,10 @@ export default function Head({ title, description, kewords, url, image }) {
           }),
         }}
       />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      />
       <meta property="og:title" content={title} />
       <meta property="og:url" content={`https://www.itsdope.in/${url}`} />
       <meta property="og:image" content={image} />
