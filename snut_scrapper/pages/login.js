@@ -53,7 +53,7 @@ export default function Login({ username_given }) {
       <Head
         image="https://www.itsdope.in/social.jpg"
         title="Dope - Login"
-        description="Login now to update your profile and chat with people you find."
+        description="Login now to update your profile and avail other festures."
         keword=", login"
         url="login"
       ></Head>

@@ -36,10 +36,32 @@ export default function Home({ Component, pageProps }) {
       setUsername(false);
     }
   }, [username]);
-  const searchClient = algoliasearch(
+  const algoliaClient = algoliasearch(
     "8PCXEU15SU",
     "7b08d93fde9eb5eebb3d081f764b2ec4"
   );
+  const searchClient = {
+    ...algoliaClient,
+    search(requests) {
+      if (requests.every(({ params }) => !params.query)) {
+        return Promise.resolve({
+          results: requests.map(() => ({
+            hits: [],
+            nbHits: 0,
+            nbPages: 0,
+            page: 0,
+            processingTimeMS: 0,
+            hitsPerPage: 0,
+            exhaustiveNbHits: false,
+            query: "",
+            params: "",
+          })),
+        });
+      }
+
+      return algoliaClient.search(requests);
+    },
+  };
   const Hit = (e) => {
     return (
       <div
@@ -198,7 +220,7 @@ export default function Home({ Component, pageProps }) {
             </Link>
           ) : (
             <Link
-              href="/chat"
+              href="/updates"
               className="nav-image-right"
               onClick={() => {
                 setShow("");
@@ -208,7 +230,7 @@ export default function Home({ Component, pageProps }) {
                 src="/chat.png"
                 width={35}
                 height={35}
-                alt="chat icon"
+                alt="update icon"
               ></Image>
             </Link>
           )}
@@ -301,7 +323,7 @@ export default function Home({ Component, pageProps }) {
                 onClick={() => {
                   setShow("");
                 }}
-                href="/chat"
+                href="/updates"
               >
                 Chat
               </Link>

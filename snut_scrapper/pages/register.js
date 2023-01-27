@@ -94,7 +94,7 @@ export default function Login({ username_given }) {
       <Head
         image="https://www.itsdope.in/social.jpg"
         title="Dope - Register"
-        description="Register now to update your profile and chat with people you find."
+        description="Register now to update your profile and avail other festures"
         keword=", register"
         url="register"
       ></Head>

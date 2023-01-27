@@ -4,7 +4,7 @@ import clientPromise from "../middleware/mongodb";
 import Head from "../components/head";
 import Image from "next/image";
 
-export default function Chat({ username_given, data }) {
+export default function Find({ username_given, data }) {
   function reload() {
     router.reload();
   }

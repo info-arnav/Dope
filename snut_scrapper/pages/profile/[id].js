@@ -23,7 +23,16 @@ export default function Profile(props) {
           <div className="email">{props.roll_no}</div>
           <hr></hr>
           <br></br>
-          <p className="bio">{props.bio ? props.bio : "No bio added"}</p>
+          {props.bio ? (
+            <p
+              className="bio"
+              dangerouslySetInnerHTML={{
+                __html: props.bio.replace("\n", "<br>"),
+              }}
+            ></p>
+          ) : (
+            <p className="bio">No Bio Added</p>
+          )}
         </center>
         <b>
           <div className="title" style={{ marginBottom: 0 }}>
