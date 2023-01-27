@@ -107,53 +107,23 @@ export default function Home({ username }) {
             <center>
               <p style={{ fontWeight: "bold", fontSize: 24 }}>New Post</p>
               <input
+                className="inputs"
                 placeholder="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                style={{
-                  width: "95%",
-                  padding: 5,
-                  paddingLeft: 15,
-                  paddingRight: 15,
-                  marginBottom: 10,
-                  borderRadius: 20,
-                  border: "solid black",
-                }}
                 required
               ></input>
               <textarea
                 placeholder="description"
                 value={description}
-                style={{
-                  width: "95%",
-                  padding: 5,
-                  paddingLeft: 15,
-                  paddingRight: 15,
-                  marginBottom: 10,
-                  minHeight: 80,
-                  borderRadius: 20,
-                  border: "solid black",
-                }}
+                style={{ minHeight: 80 }}
+                className="inputs"
                 onChange={(e) => setDescription(e.target.value)}
                 required
               ></textarea>
               <br></br>
               <p className="error-1">{error}</p>
-              <button
-                action="submit"
-                style={{
-                  width: "95%",
-                  padding: 5,
-                  paddingLeft: 15,
-                  paddingRight: 15,
-                  marginBottom: 10,
-                  borderRadius: 20,
-                  backgroundColor: "black",
-                  color: "white",
-                  cursor: "pointer",
-                }}
-                disabled={disabled}
-              >
+              <button action="submit" className="buttons" disabled={disabled}>
                 {disabled ? "Loading...." : "Add Event"}
               </button>
             </center>

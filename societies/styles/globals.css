@@ -1,5 +1,13 @@
+html {
+  width: 100%;
+}
 body {
   margin: 0;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 * {
   word-wrap: break-word;
@@ -50,7 +58,8 @@ body {
   font-weight: bold;
   margin-bottom: 60px;
 }
-.credentials input {
+.credentials input,
+.inputs {
   width: 90%;
   height: 40px;
   padding: 5px;
@@ -61,7 +70,8 @@ body {
   margin-bottom: 10px;
   border: solid black;
 }
-.credentials button {
+.credentials button,
+.buttons {
   background-color: black;
   padding: 5px;
   height: 50px;

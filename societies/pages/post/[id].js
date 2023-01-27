@@ -56,7 +56,7 @@ export default function Profile({
             <br></br>
             <p
               dangerouslySetInnerHTML={{
-                __html: description.replace("\n", "<br>"),
+                __html: description.replaceAll("\n", "<br>"),
               }}
             ></p>
           </div>

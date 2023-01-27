@@ -67,7 +67,7 @@ export default function Home({ Component, pageProps }) {
       <div
         className="card"
         onClick={() => {
-          window.location.replace(`/profile/${e.hit.objectID}`);
+          window.location.replaceAll(`/profile/${e.hit.objectID}`);
         }}
       >
         <center>

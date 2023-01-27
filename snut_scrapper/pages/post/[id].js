@@ -20,7 +20,7 @@ export default function Profile(props) {
       <br></br>
       <p
         dangerouslySetInnerHTML={{
-          __html: props.description.replace("\n", "<br>"),
+          __html: props.description.replaceAll("\n", "<br>"),
         }}
       ></p>
     </div>
