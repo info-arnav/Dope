@@ -133,7 +133,7 @@ export default function Home({ username }) {
             <p style={{ fontWeight: "bold", fontSize: 24 }}>Past Posts</p>
           </center>
           <div className="grid">
-            {data.map((e) => (
+            {data.reverse().map((e) => (
               <Link className="card" id="soc" href={`/post/${e._id}`}>
                 <div className="socs-name">{e.societies.toUpperCase()}</div>
                 <div className="soc-title">{e.title}</div>

@@ -28,7 +28,7 @@ export default function Update({ username_given }) {
       {username_given != null && username_given != false ? (
         notices ? (
           <div className="grid" style={{ marginTop: 80 }}>
-            {notices.map((e) => (
+            {notices.reverse().map((e) => (
               <Link className="card" id="soc" href={`/post/${e._id}`}>
                 <div className="soc-name">{e.societies.toUpperCase()}</div>
                 <div className="soc-title">{e.title}</div>
