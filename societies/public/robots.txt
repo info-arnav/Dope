@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /api/*
+Allow: /api/sitemap-dynamic.xml
+Allow: /api/sitemap-dynamic-images.xml
+Allow: /api/image/*
+Disallow: /chat
+Disallow: /404
+Disallow: /_error
+
+Sitemap: https://societies.itsdope.in/sitemap.xml
+Sitemap: https://societies.itsdope.in/api/sitemap.xml
