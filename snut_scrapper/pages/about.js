@@ -36,7 +36,10 @@ export default function About() {
         <br></br>
         <br></br>Another beinifit of registering is that you can <b>randomly</b>{" "}
         view people whome you may connect with on the app. We will try to try to
-        make this a bit more personalized in the future.
+        make this a bit more personalized in the future.<br></br>
+        <br></br>
+        Want More ? We also provide a way for you to view all society
+        information at one place on the site once registered.
       </p>
     </div>
   );
