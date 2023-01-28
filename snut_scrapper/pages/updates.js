@@ -29,7 +29,7 @@ export default function Update({ username_given }) {
         notices ? (
           <div style={{ marginTop: 80 }}>
             {" "}
-            <p style={{ margin: 5 }}>
+            <p style={{ margin: 10 }}>
               These updates are posted by admin of itsdope.in or the society
               members.
             </p>
