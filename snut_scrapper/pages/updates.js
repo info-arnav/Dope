@@ -27,16 +27,21 @@ export default function Update({ username_given }) {
       ></Head>
       {username_given != null && username_given != false ? (
         notices ? (
-<div style={{ marginTop: 80 }}> <p>These updates are posted by admin of itsdope.in or the society members.</p>
-          <div className="grid" style={{ marginTop: 10 }}>
-            {notices.reverse().map((e) => (
-              <Link className="card" id="soc" href={`/post/${e._id}`}>
-                <div className="soc-name">{e.societies.toUpperCase()}</div>
-                <div className="soc-title">{e.title}</div>
-              </Link>
-            ))}
+          <div style={{ marginTop: 80 }}>
+            {" "}
+            <p style={{ margin: 5 }}>
+              These updates are posted by admin of itsdope.in or the society
+              members.
+            </p>
+            <div className="grid" style={{ marginTop: 10 }}>
+              {notices.reverse().map((e) => (
+                <Link className="card" id="soc" href={`/post/${e._id}`}>
+                  <div className="soc-name">{e.societies.toUpperCase()}</div>
+                  <div className="soc-title">{e.title}</div>
+                </Link>
+              ))}
+            </div>
           </div>
-</div>
         ) : (
           <div className="empty">
             <Image src="/loading.gif" width={300} height={300}></Image>
