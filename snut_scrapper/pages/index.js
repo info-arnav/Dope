@@ -50,7 +50,7 @@ export default function Home({ username_given }) {
       axios
         .post("/api/user", { email: username_given.split("@")[0] })
         .then((e) => {
-          setInstagram(e.data.instgram_id);
+          setInstagram(e.data.instagram_id);
           setBio(e.data.bio);
           setImage(e.data.image);
           setName(e.data.name);
