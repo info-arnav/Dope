@@ -6,6 +6,7 @@ import * as jose from "jose";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
+import * as gtag from "../lib/gtag";
 import Script from "next/script";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
@@ -36,6 +37,15 @@ export default function Home({ Component, pageProps }) {
       setUsername(false);
     }
   }, [username]);
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   const algoliaClient = algoliasearch(
     "8PCXEU15SU",
     "7b08d93fde9eb5eebb3d081f764b2ec4"
