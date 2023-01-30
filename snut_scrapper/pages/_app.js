@@ -121,12 +121,13 @@ export default function Home({ Component, pageProps }) {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-                    window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VWHKBKEGL9');
-                  `,
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-VWHKBKEGL9', {
+            page_path: window.location.pathname,
+          });
+        `,
         }}
       />
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
