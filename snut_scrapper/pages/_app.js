@@ -113,7 +113,7 @@ export default function Home({ Component, pageProps }) {
   return (
     <>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-VWHKBKEGL9"
+        src="https://www.googletagmanager.com/gtag/js?id=G-V0BN5GZJL2"
         strategy="afterInteractive"
       />
       <Script
@@ -124,7 +124,7 @@ export default function Home({ Component, pageProps }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-VWHKBKEGL9', {
+          gtag('config', 'G-V0BN5GZJL2', {
             page_path: window.location.pathname,
           });
         `,
