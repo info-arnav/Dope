@@ -460,3 +460,7 @@ a {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.width-anonymous {
+  width: calc(98% - 20px);
+}

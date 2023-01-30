@@ -325,7 +325,16 @@ export default function Home({ Component, pageProps }) {
                 }}
                 href="/updates"
               >
-                Chat
+                Society Updates
+              </Link>
+              <br></br>
+              <Link
+                onClick={() => {
+                  setShow("");
+                }}
+                href="/anonymous"
+              >
+                Anonymous
               </Link>
             </p>
           </div>
