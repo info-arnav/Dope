@@ -8,8 +8,8 @@ export default function Profile(props) {
       <Head
         title={`Dope - ${props.email}@nsut.ac.in`}
         description={`This is the profile of ${
-          props.name | "No name"
-        }. About - ${props.bio | "No Bio"}`}
+          props.name || "No name"
+        }. About - ${props.bio || "No Bio"}`}
         keword={`, ${props.email}@nsut.ac.in, ${props.name}, profile`}
         url={`profile/${props.email}`}
         image={props.image || "https://www.itsdope.in/profile.webp"}
