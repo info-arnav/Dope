@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
+import Script from "next/script";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
   const router = useRouter();
@@ -112,6 +113,12 @@ export default function Home({ Component, pageProps }) {
   };
   return (
     <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-VWHKBKEGL9"
+        strategy="lazyOnload"
+        async
+      />
+      <Script src="https://www.itsdope.in/analytics,js" strategy="lazyOnload" />
       <Analytics />
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
