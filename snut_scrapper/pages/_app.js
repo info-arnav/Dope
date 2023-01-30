@@ -266,8 +266,8 @@ export default function Home({ Component, pageProps }) {
             <h2 className="footer-title">Dope</h2>
             <br></br>
             <p className="footer-content">
-              A social platform for people of NSUT to meet each other online and
-              get to know each other more.
+              Dope assists NSUT students in making the transition to college,
+              which is a major adjustment in their lives.
               <br></br>
               <br></br>
               Copyright @ 2022 Dope
