@@ -115,9 +115,9 @@ export default function Home({ Component, pageProps }) {
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-VWHKBKEGL9"
         strategy="afterInteractive"
-        async
       />
       <Script
+        id="google-analytics"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
