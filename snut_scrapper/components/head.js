@@ -1,9 +1,16 @@
 import Heads from "next/head";
 import { useEffect } from "react";
+import Script from "next/script";
 
 export default function Head({ title, description, kewords, url, image }) {
   return (
     <Heads>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-VWHKBKEGL9"
+        strategy="lazyOnload"
+        async
+      />
+      <Script src="https://www.itsdope.in/analytics,js" strategy="lazyOnload" />
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
       <title>{title}</title>
       <meta name="title" content={title} />
