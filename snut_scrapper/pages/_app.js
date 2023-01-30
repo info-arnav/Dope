@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import * as jose from "jose";
-import { Analytics } from "@vercel/analytics/react";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
@@ -115,11 +114,21 @@ export default function Home({ Component, pageProps }) {
     <>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-VWHKBKEGL9"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         async
       />
-      <Script src="https://www.itsdope.in/analytics,js" strategy="lazyOnload" />
-      <Analytics />
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+                    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VWHKBKEGL9');
+                  `,
+        }}
+      />
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
           <Link
