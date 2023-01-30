@@ -37,15 +37,6 @@ export default function Home({ Component, pageProps }) {
       setUsername(false);
     }
   }, [username]);
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
   const algoliaClient = algoliasearch(
     "8PCXEU15SU",
     "7b08d93fde9eb5eebb3d081f764b2ec4"
@@ -123,23 +114,20 @@ export default function Home({ Component, pageProps }) {
   return (
     <>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-V0BN5GZJL2"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}
       />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-V0BN5GZJL2', {
-            page_path: window.location.pathname,
-          });
-        `,
-        }}
-      />
+
+      <Script strategy="lazyOnload">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
+        page_path: window.location.pathname,
+        });
+    `}
+      </Script>
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
           <Link
