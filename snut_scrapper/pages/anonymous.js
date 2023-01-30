@@ -71,7 +71,7 @@ export default function Anonymous() {
               }}
               disabled={disabled}
             >
-              Append
+              {disabled ? "Loading...." : "Append"}
             </button>
           </form>
           <br></br>
