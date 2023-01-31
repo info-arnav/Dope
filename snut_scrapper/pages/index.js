@@ -138,9 +138,9 @@ export default function Home({ username_given }) {
           <div className="profile-front">
             <center>
               {image ? (
-                <Image width={200} height={200} src={image}></Image>
+                <img width={200} height={200} src={image}></img>
               ) : (
-                <Image width={200} height={200} src="/profile.webp"></Image>
+                <img width={200} height={200} src="/profile.webp"></img>
               )}
               <input
                 className="profile-input"

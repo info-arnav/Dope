@@ -58,9 +58,9 @@ export default function Profile() {
           <div className="profile-front">
             <center>
               {data.image ? (
-                <Image width={200} height={200} src={data.image}></Image>
+                <img width={200} height={200} src={data.image}></img>
               ) : (
-                <Image width={200} height={200} src="/profile.webp"></Image>
+                <img width={200} height={200} src="/profile.webp"></img>
               )}
               <div className="name">
                 {data.name.toUpperCase() || "Not Provided"}

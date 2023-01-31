@@ -42,9 +42,9 @@ export default function Find({ username_given }) {
               <a className="card" href={`/profile/${e.email}`}>
                 <center>
                   {e.image ? (
-                    <Image width={100} height={100} src={e.image}></Image>
+                    <img width={100} height={100} src={e.image}></img>
                   ) : (
-                    <Image width={100} height={100} src="/profile.webp"></Image>
+                    <img width={100} height={100} src="/profile.webp"></img>
                   )}
                   <div className="name">
                     {e.name.toUpperCase() || "Not Provided"}

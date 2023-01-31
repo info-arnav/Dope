@@ -17,9 +17,9 @@ export default function Profile(props) {
       <div className="profile-front">
         <center>
           {props.image ? (
-            <Image width={200} height={200} src={props.image}></Image>
+            <img width={200} height={200} src={props.image}></img>
           ) : (
-            <Image width={200} height={200} src="/profile.webp"></Image>
+            <img width={200} height={200} src="/profile.webp"></img>
           )}
           <div className="name">
             {props.name.toUpperCase() || "Not Provided"}
