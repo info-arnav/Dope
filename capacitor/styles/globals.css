@@ -1,0 +1,466 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+}
+* {
+  word-wrap: break-word;
+}
+* {
+  font-family: sans-serif;
+}
+nav * {
+  font-family: sans-serif;
+  margin: 2px;
+}
+
+nav a {
+  padding: 14px;
+  border: solid black;
+  border-radius: 22px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+.home {
+  min-width: 40px;
+}
+.ais-SearchBox {
+  flex: 1;
+}
+.ais-SearchBox-reset {
+  display: none;
+}
+.ais-SearchBox-form {
+  width: 100%;
+}
+.ais-SearchBox-input,
+nav input {
+  border-radius: 22px;
+  border: none;
+  height: 45px;
+  background-color: rgb(222, 222, 222);
+  padding: 2px;
+  width: 100%;
+  padding-left: 10px;
+}
+nav input {
+  margin-right: -5px;
+  background-color: rgb(222, 222, 222);
+}
+.nav-image-right {
+  padding: 0px;
+}
+.extra {
+  margin-left: 10px;
+}
+nav button:hover {
+  cursor: pointer;
+}
+
+nav img {
+  border: solid;
+  border-radius: 100%;
+}
+ul {
+  list-style-type: none !important;
+  margin-block-start: 0px !important;
+  margin-block-end: 0px !important;
+  margin-inline-start: 0px !important;
+  margin-inline-end: 0px !important;
+  padding-inline-start: 0px !important;
+}
+.ais-Hits-list {
+  margin-top: 80px;
+}
+.ais-SearchBox-reset {
+  display: none;
+}
+body {
+  margin: 0px;
+}
+
+.image-nav {
+  border: none;
+  padding: 0px;
+}
+footer {
+  background-color: rgb(252, 249, 249);
+  color: black;
+  padding: 20px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  font-family: sans-serif;
+}
+.register,
+.discover {
+  margin-left: 10px;
+}
+.footer-title {
+  margin-top: 50px;
+}
+.links * {
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
+}
+nav button a {
+  margin: 0px;
+  padding: 0px;
+  color: white;
+}
+.footer-content {
+  font-size: 16px;
+}
+.columns {
+  display: flex;
+  justify-content: top;
+}
+.column {
+  flex: 1 1 0px;
+  margin: 10px;
+}
+
+footer img {
+  border: white solid;
+  border-radius: 100%;
+  width: 40%;
+  height: auto;
+}
+footer h2 {
+  margin: 0px;
+}
+@media only screen and (max-width: 800px) {
+  .columns {
+    display: block;
+    justify-content: top;
+  }
+  .column {
+    margin: 0;
+    margin-top: 50px;
+  }
+  footer {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .col-1 {
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .image-nav {
+    display: none;
+  }
+  .home {
+    margin-left: 10px;
+  }
+}
+@media only screen and (max-width: 340px) {
+  nav input {
+    border-radius: 22px;
+    border: none;
+    height: 45px;
+    background-color: rgb(222, 222, 222);
+    padding: 2px;
+    flex: 1;
+    padding-left: 10px;
+    width: 0px;
+  }
+}
+.ais-SearchBox-submit {
+  display: none;
+}
+.error {
+  text-align: center;
+}
+.error-title {
+  margin-top: 250px;
+  font-size: 72px;
+  font-weight: bold;
+}
+.error-message {
+  margin-top: 80px;
+  font-size: 18px;
+  margin-bottom: 250px;
+}
+
+main {
+  margin-top: 60px;
+}
+.about-banner {
+  background-image: url("../public/banner.webp");
+  width: 100%;
+  height: 90vh;
+  background-size: cover;
+  display: flex;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.289);
+  align-items: center;
+}
+.about-banner div {
+  margin-top: 10%;
+  margin-left: 15%;
+}
+.about-banner p {
+  font-size: 53px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+.about-button {
+  background-color: black;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+.about-title {
+  font-weight: bold;
+  margin: 10px;
+  margin-top: 40px;
+  font-size: 35px;
+  margin-bottom: 35px;
+}
+.about-content {
+  margin: 10px;
+  margin-bottom: 40px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.policy {
+  margin: 10px;
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+.empty {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forms {
+  margin-top: 60px;
+  background-image: url("../public/forms.webp");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.289);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.credentials {
+  margin: 5px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 95%;
+  max-width: 500px;
+  min-height: 50vh;
+  box-shadow: 0px 0px 10px 0px grey;
+}
+.credentials .title {
+  margin-top: 40px;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+.credentials input {
+  width: 90%;
+  height: 40px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border: solid black;
+}
+.credentials button {
+  background-color: black;
+  padding: 5px;
+  height: 50px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  width: 90%;
+}
+.error-1 {
+  color: orange;
+  font-weight: bold;
+}
+.index {
+  margin-top: 120px;
+}
+
+.index img {
+  border-radius: 100%;
+  border: solid black;
+}
+.find-people {
+  margin: 10px;
+  margin-top: 20px;
+  background-color: black;
+  width: calc(100% - 20px);
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.ais-Hits-list,
+.grid {
+  margin: 10px;
+  display: grid;
+  margin-bottom: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px;
+}
+@media only screen and (max-width: 320px) {
+  .grid {
+    margin: 10px;
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(100vw, 1fr));
+    gap: 10px;
+  }
+}
+.ais-Hits {
+  margin: 10px;
+  margin-top: 80px;
+}
+.card {
+  overflow: hidden;
+  border-radius: 20px;
+  border: solid black;
+  height: 100%;
+  cursor: pointer;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.card:hover {
+  box-shadow: 0px 0px 10px 0px grey;
+}
+.card img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 100%;
+  border: solid black;
+}
+.card .name {
+  font-weight: bold;
+}
+.profile {
+  margin-top: 80px;
+}
+.card .title {
+  margin-bottom: 10px;
+}
+.instagram_name {
+  margin-bottom: 10px;
+}
+.profile-back {
+  margin-top: 60px;
+  background-image: url("../public/profile-bg.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.289);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-front {
+  margin: 5px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 95%;
+  max-width: 500px;
+  min-height: 50vh;
+  box-shadow: 0px 0px 10px 0px grey;
+}
+.profile-front img {
+  border-radius: 100%;
+  margin-bottom: 30px;
+}
+.bio {
+  margin-bottom: 35px;
+}
+.possibilities {
+  height: 100px;
+  overflow-y: scroll;
+}
+.profile-input {
+  width: calc(100% - 20px);
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border-radius: 20px;
+  border: solid black;
+  padding: 10px;
+}
+.profile-text-area {
+  width: calc(100% - 40px);
+  margin-top: 5px;
+  border: solid black;
+  border-radius: 20px;
+  padding: 20px;
+}
+.updates {
+  margin-top: 80px;
+}
+.updates .title {
+  font-weight: bold;
+  font-size: 32px;
+}
+.soc-name {
+  background-color: black;
+  width: 100%;
+  height: 35px;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+}
+#soc {
+  padding: 0px;
+}
+.soc-title {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.soc-buttons {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.width-anonymous {
+  width: calc(98% - 20px);
+}
