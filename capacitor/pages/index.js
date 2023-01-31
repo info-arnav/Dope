@@ -50,7 +50,7 @@ export default function Home({ username_given }) {
         }),
       }
     );
-    if (changed) {
+    if (image != `https://www.itsdope.in/api/image/${userData.email}`) {
       await fetch(
         Capacitor.isNativePlatform()
           ? "https://www.itsdope.in/api/update-image"
