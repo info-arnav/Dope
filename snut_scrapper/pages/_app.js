@@ -6,6 +6,7 @@ import * as jose from "jose";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
@@ -116,20 +117,6 @@ export default function Home({ Component, pageProps }) {
   };
   return (
     <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}
-      />
-
-      <Script>
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
-        page_path: window.location.pathname,
-        });
-    `}
-      </Script>
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
         <nav>
           <Link
@@ -371,6 +358,7 @@ export default function Home({ Component, pageProps }) {
           </div>
         </div>
       </footer>
+      <Analytics />
     </>
   );
 }
