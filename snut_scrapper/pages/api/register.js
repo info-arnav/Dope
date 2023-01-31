@@ -1,8 +1,14 @@
 import clientPromise from "../../middleware/mongodb";
 import bcrypt from "bcrypt";
+const algoliasearch = require("algoliasearch");
 import axios from "axios";
 
 export default async (req, res) => {
+  const client = algoliasearch(
+    "8PCXEU15SU",
+    "fc652d91b2d6db2718b47254be4c5d6e"
+  );
+  const index = client.initIndex("dev_NSUT");
   try {
     const client = await clientPromise;
     const db = client.db("nsut");
@@ -26,11 +32,14 @@ export default async (req, res) => {
           email: req.body.username.split("@")[0],
           password: hash,
         });
-        axios.post("/api/algolia", {
-          method: "create",
-          email: req.body.username.split("@")[0],
-        });
-        res.send({ error: false, username: req.body.username.split("@")[0] });
+        await index
+          .saveObjects([{ objectID: req.body.username.split("@")[0] }])
+          .then(({ objectIDs }) => {
+            res.send({
+              error: false,
+              username: req.body.username.split("@")[0],
+            });
+          });
       });
     }
   } catch (e) {

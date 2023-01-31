@@ -27,7 +27,9 @@ export default function Home({ username_given }) {
       object: {
         objectID: userData.email,
         roll_no: roll_no,
-        image: `https://www.itsdope.in/api/image/${userData.email}`,
+        image: image
+          ? `https://www.itsdope.in/api/image/${userData.email}`
+          : "",
         name: name,
         bio: bio,
         instagram_id: instagram,
@@ -45,7 +47,9 @@ export default function Home({ username_given }) {
         changes: {
           email: userData.email,
           roll_no: roll_no,
-          image: `https://www.itsdope.in/api/image/${userData.email}`,
+          image: image
+            ? `https://www.itsdope.in/api/image/${userData.email}`
+            : "",
           name: name,
           bio: bio,
           instagram_id: instagram,
