@@ -57,11 +57,11 @@ export default function Profile() {
         <div className="profile-back">
           <div className="profile-front">
             <center>
-              <Image
-                width={200}
-                height={200}
-                src={data.image || "/profile.webp"}
-              ></Image>
+              {data.image ? (
+                <Image width={200} height={200} src={data.image}></Image>
+              ) : (
+                <Image width={200} height={200} src="/profile.webp"></Image>
+              )}
               <div className="name">
                 {data.name.toUpperCase() || "Not Provided"}
               </div>

@@ -71,11 +71,11 @@ export default function Home({ Component, pageProps }) {
         }}
       >
         <center>
-          <Image
-            width={100}
-            height={100}
-            src={e.hit.image || "/profile.webp"}
-          ></Image>
+          {e.hit.image ? (
+            <Image width={100} height={100} src={e.hit.image}></Image>
+          ) : (
+            <Image width={100} height={100} src="/profile.webp"></Image>
+          )}
           <div className="name">
             {e.hit.name.toUpperCase() || "Not Provided"}
           </div>

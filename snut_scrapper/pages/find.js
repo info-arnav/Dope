@@ -41,11 +41,11 @@ export default function Find({ username_given }) {
             {data.map((e) => (
               <a className="card" href={`/profile/${e.email}`}>
                 <center>
-                  <Image
-                    width={100}
-                    height={100}
-                    src={e.image || "/profile.webp"}
-                  ></Image>
+                  {e.image ? (
+                    <Image width={100} height={100} src={e.image}></Image>
+                  ) : (
+                    <Image width={100} height={100} src="/profile.webp"></Image>
+                  )}
                   <div className="name">
                     {e.name.toUpperCase() || "Not Provided"}
                   </div>

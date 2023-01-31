@@ -137,11 +137,11 @@ export default function Home({ username_given }) {
         <div className="profile-back">
           <div className="profile-front">
             <center>
-              <Image
-                width={200}
-                height={200}
-                src={image || `/profile.webp`}
-              ></Image>
+              {image ? (
+                <Image width={200} height={200} src={image}></Image>
+              ) : (
+                <Image width={200} height={200} src="/profile.webp"></Image>
+              )}
               <input
                 className="profile-input"
                 onChange={(e) => setName(e.target.value)}
