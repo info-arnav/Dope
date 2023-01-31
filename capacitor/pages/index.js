@@ -253,7 +253,6 @@ export default function Home({ username_given }) {
                 onChange={imageHandle}
                 type="file"
                 placeholder="Nothing here"
-                disabled
               ></input>
             </b>
             <button
