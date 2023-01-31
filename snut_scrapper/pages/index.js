@@ -13,6 +13,7 @@ export default function Home({ username_given }) {
     router.reload(window.location.pathname);
   };
   const [disabled, setDisabled] = useState(false);
+  const [changed, setChanged] = useState(false);
   const [instagram, setInstagram] = useState("");
   const [name, setName] = useState("");
   const [roll_no, setRoll_no] = useState("");
@@ -32,10 +33,12 @@ export default function Home({ username_given }) {
         instagram_id: instagram,
       },
     });
-    await axios.post("/api/update-image", {
-      email: userData.email,
-      image: image,
-    });
+    if (setChanged) {
+      await axios.post("/api/update-image", {
+        email: userData.email,
+        image: image,
+      });
+    }
     await axios
       .post("/api/update", {
         email: userData.email,
@@ -76,6 +79,7 @@ export default function Home({ username_given }) {
         const compressedFile = await imageCompression(imageFile, options);
         const base64 = await convertBase64(compressedFile);
         setImage(base64);
+        setChanged(true);
       } catch (error) {
         reject(error);
       }

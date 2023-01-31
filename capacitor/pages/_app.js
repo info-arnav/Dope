@@ -64,12 +64,7 @@ export default function Home({ Component, pageProps }) {
   };
   const Hit = (e) => {
     return (
-      <div
-        className="card"
-        onClick={() => {
-          window.location.replace(`/profile/${e.hit.objectID}`);
-        }}
-      >
+      <Link className="card" href={`/profile/${e.hit.objectID}`}>
         <center>
           {e.hit.image ? (
             <img width={100} height={100} src={e.hit.image}></img>
@@ -111,7 +106,7 @@ export default function Home({ Component, pageProps }) {
         ) : (
           <div className="instagram_name"></div>
         )}
-      </div>
+      </Link>
     );
   };
   return (

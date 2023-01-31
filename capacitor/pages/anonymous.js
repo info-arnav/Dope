@@ -6,7 +6,7 @@ import Head from "../components/head";
 export default function Anonymous() {
   const router = useRouter();
   const reload = () => {
-    router.reload(window.location.pathname);
+    router.push(window.location.pathname);
   };
   const [query, setQuery] = useState("");
   const [disabled, setDisabled] = useState(false);

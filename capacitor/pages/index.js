@@ -9,8 +9,9 @@ import Image from "next/image";
 export default function Home({ username_given }) {
   const router = useRouter();
   const [userData, setUserData] = useState(false);
+  const [changed, setChanged] = useState(false);
   const reload = () => {
-    router.reload(window.location.pathname);
+    router.push(window.location.pathname);
   };
   const [disabled, setDisabled] = useState(false);
   const [instagram, setInstagram] = useState("");
@@ -49,25 +50,27 @@ export default function Home({ username_given }) {
         }),
       }
     );
-    await fetch(
-      Capacitor.isNativePlatform()
-        ? "https://www.itsdope.in/api/update-image"
-        : "/api/update-image",
-      {
-        method: "POST",
+    if (changed) {
+      await fetch(
+        Capacitor.isNativePlatform()
+          ? "https://www.itsdope.in/api/update-image"
+          : "/api/update-image",
+        {
+          method: "POST",
 
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify({
-          email: userData.email,
-          image: image,
-        }),
-      }
-    );
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+          redirect: "follow",
+          referrerPolicy: "no-referrer",
+          body: JSON.stringify({
+            email: userData.email,
+            image: image,
+          }),
+        }
+      );
+    }
     await fetch(
       Capacitor.isNativePlatform()
         ? "https://www.itsdope.in/api/update"
@@ -139,6 +142,7 @@ export default function Home({ username_given }) {
         const compressedFile = await imageCompression(imageFile, options);
         const base64 = await convertBase64(compressedFile);
         setImage(base64);
+        setChanged(true);
       } catch (error) {
         reject(error);
       }

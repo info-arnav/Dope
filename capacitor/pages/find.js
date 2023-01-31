@@ -2,10 +2,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "../components/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Find({ username_given }) {
   function reload() {
-    router.reload();
+    router.push(window.location.pathname);
   }
   useEffect(() => {
     if (username_given == false) {
@@ -53,7 +54,7 @@ export default function Find({ username_given }) {
           </button>
           <div className="grid" style={{ minHeight: 800 }}>
             {data.map((e) => (
-              <a className="card" href={`/profile/${e.email}`}>
+              <Link className="card" href={`/profile/${e.email}`}>
                 <center>
                   {e.image ? (
                     <img width={100} height={100} src={e.image}></img>
@@ -95,7 +96,7 @@ export default function Find({ username_given }) {
                 ) : (
                   <div className="instagram_name"></div>
                 )}
-              </a>
+              </Link>
             ))}
           </div>
         </>

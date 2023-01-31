@@ -8,7 +8,7 @@ export default function Login({ username_given }) {
   const [disabled, setDisabled] = useState(false);
   const router = useRouter();
   const reload = () => {
-    router.reload(window.location.pathname);
+    router.push(window.location.pathname);
   };
   useEffect(() => {
     if (username_given) {

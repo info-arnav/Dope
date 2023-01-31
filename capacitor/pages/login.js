@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Login({ username_given }) {
   const [disabled, setDisabled] = useState(false);
   const reload = () => {
-    router.reload(window.location.pathname);
+    router.push(window.location.pathname);
   };
   useEffect(() => {
     if (username_given) {
