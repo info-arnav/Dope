@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import imageCompression from "browser-image-compression";
 import Head from "../components/head";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -40,11 +41,30 @@ export default function Home({ username_given }) {
           object: {
             objectID: userData.email,
             roll_no: roll_no,
-            image: image,
+            image: `https://www.itsdope.in/api/image/${userData.email}`,
             name: name,
             bio: bio,
             instagram_id: instagram,
           },
+        }),
+      }
+    );
+    await fetch(
+      Capacitor.isNativePlatform()
+        ? "https://www.itsdope.in/api/update-image"
+        : "/api/update-image",
+      {
+        method: "POST",
+
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({
+          email: userData.email,
+          image: image,
         }),
       }
     );
@@ -68,7 +88,7 @@ export default function Home({ username_given }) {
             changes: {
               email: userData.email,
               roll_no: roll_no,
-              image: image,
+              image: `https://www.itsdope.in/api/image/${userData.email}`,
               name: name,
               bio: bio,
               instagram_id: instagram,
@@ -107,6 +127,37 @@ export default function Home({ username_given }) {
         });
     }
   }, [username_given]);
+  const imageHandle = async (e) => {
+    e.preventDefault();
+    const imageFile = e.target.files[0];
+    const options = {
+      maxSizeMB: 0.5,
+      maxWidthOrHeight: 1920,
+    };
+    if (imageFile.name.match(/\.(jpg|jpeg|png|gif|webp|svg)$/)) {
+      try {
+        const compressedFile = await imageCompression(imageFile, options);
+        const base64 = await convertBase64(compressedFile);
+        setImage(base64);
+      } catch (error) {
+        reject(error);
+      }
+    }
+  };
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
   return (
     <>
       <Head
@@ -196,10 +247,10 @@ export default function Home({ username_given }) {
             </b>
             <br></br>
             <b>
-              <div className="title">Image - Coming Soon</div>
+              <div className="title">Image</div>
               <input
                 className="profile-input"
-                value={image}
+                onChange={imageHandle}
                 type="file"
                 placeholder="Nothing here"
                 disabled

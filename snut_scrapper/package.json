@@ -10,6 +10,7 @@
     "algoliasearch": "^4.14.3",
     "axios": "^1.2.2",
     "bcrypt": "^5.1.0",
+    "browser-image-compression": "^2.0.0",
     "fs": "^0.0.1-security",
     "jose": "^4.11.2",
     "mongodb": "^4.13.0",
