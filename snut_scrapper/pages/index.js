@@ -60,13 +60,15 @@ export default function Home({ username_given }) {
         .then((e) => {
           if (e.data.out) {
             localStorage.removeItem("user");
+            reload();
+          } else {
+            setInstagram(e.data.instagram_id);
+            setBio(e.data.bio);
+            setImage(e.data.image);
+            setName(e.data.name);
+            setRoll_no(e.data.roll_no);
+            setUserData(e.data);
           }
-          setInstagram(e.data.instagram_id);
-          setBio(e.data.bio);
-          setImage(e.data.image);
-          setName(e.data.name);
-          setRoll_no(e.data.roll_no);
-          setUserData(e.data);
         });
     }
   }, [username_given]);
