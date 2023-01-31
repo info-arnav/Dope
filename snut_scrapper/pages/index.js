@@ -58,6 +58,9 @@ export default function Home({ username_given }) {
       axios
         .post("/api/user", { email: username_given.split("@")[0] })
         .then((e) => {
+          if (e.data.out) {
+            localStorage.removeItem("user");
+          }
           setInstagram(e.data.instagram_id);
           setBio(e.data.bio);
           setImage(e.data.image);

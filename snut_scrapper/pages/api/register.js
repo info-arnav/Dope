@@ -10,7 +10,7 @@ export default async (req, res) => {
       .collection("users")
       .find({ email: req.body.username.split("@")[0] })
       .toArray();
-    if (data) {
+    if (data[0]) {
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
         let ndata = await db
           .collection("users")

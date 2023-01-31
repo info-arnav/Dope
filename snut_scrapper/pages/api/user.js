@@ -10,7 +10,7 @@ export default async (req, res) => {
       .collection("users")
       .find({ email: req.body.email })
       .toArray();
-    res.send(data[0]);
+    res.send(data[0] || { out: true });
   } catch (e) {
     res.json({ error: true });
   }
