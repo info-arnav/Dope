@@ -15,6 +15,10 @@ export default function Home({ username_given }) {
   const [disabled, setDisabled] = useState(false);
   const [changed, setChanged] = useState(false);
   const [instagram, setInstagram] = useState("");
+  const [snapchat, setSnapchat] = useState("");
+  const [github, setGithub] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [name, setName] = useState("");
   const [roll_no, setRoll_no] = useState("");
   const [bio, setBio] = useState("");
@@ -33,6 +37,10 @@ export default function Home({ username_given }) {
         name: name,
         bio: bio,
         instagram_id: instagram,
+        linkedin: linkedin,
+        snapchat: snapchat,
+        whatsapp: whatsapp,
+        github: github,
       },
     });
     if (
@@ -56,6 +64,10 @@ export default function Home({ username_given }) {
           name: name,
           bio: bio,
           instagram_id: instagram,
+          linkedin: linkedin,
+          whatsapp: whatsapp,
+          snapchat: snapchat,
+          github: github,
         },
       })
       .then((e) => reload());
@@ -74,6 +86,10 @@ export default function Home({ username_given }) {
             setImage(e.data.image);
             setName(e.data.name);
             setRoll_no(e.data.roll_no);
+            setSnapchat(e.data.snapchat);
+            setWhatsapp(e.data.whatsapp);
+            setGithub(e.data.github);
+            setLinkedin(e.data.linkedin);
             setUserData(e.data);
           }
         });
@@ -205,6 +221,47 @@ export default function Home({ username_given }) {
               ></input>
             </b>
             <br></br>
+
+            <b>
+              <div className="title">Snapchat</div>
+              <input
+                className="profile-input"
+                value={snapchat}
+                placeholder="Nothing here"
+                onChange={(e) => setSnapchat(e.target.value)}
+              ></input>
+            </b>
+            <br />
+            <b>
+              <div className="title">Linkedin URL</div>
+              <input
+                className="profile-input"
+                value={linkedin}
+                placeholder="Nothing here"
+                onChange={(e) => setLinkedin(e.target.value)}
+              ></input>
+            </b>
+            <br />
+            <b>
+              <div className="title">Github URL</div>
+              <input
+                className="profile-input"
+                value={github}
+                placeholder="Nothing here"
+                onChange={(e) => setGithub(e.target.value)}
+              ></input>
+            </b>
+            <br />
+            <b>
+              <div className="title">Whatsapp Number</div>
+              <input
+                className="profile-input"
+                value={whatsapp}
+                placeholder="Nothing here"
+                onChange={(e) => setWhatsapp(e.target.value)}
+              ></input>
+            </b>
+            <br />
             <b>
               <div className="title">Image</div>
               <input
@@ -214,6 +271,7 @@ export default function Home({ username_given }) {
                 placeholder="Nothing here"
               ></input>
             </b>
+            <br />
             <button
               onClick={update}
               disabled={disabled}

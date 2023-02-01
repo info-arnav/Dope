@@ -86,20 +86,75 @@ export default function Profile(props) {
         <b>
           <div className="title">{!props.instagram_id && "Possibilities"}</div>
         </b>
-        <div className="possibilities">
-          {!props.instagram_id &&
-            props.insta_posibilities.split("*").map((e) => (
-              <div>
-                <a
-                  className="instagram_id"
-                  href={`https://www.instagram.com/${e.split("$")[0]}`}
-                >
-                  {e.split("$")[0]}
-                </a>
-                <div className="instagram_name">{e.split("$")[1]}</div>
-              </div>
-            ))}
-        </div>
+        {!props.instagram_id &&
+          props.insta_posibilities.split("*").length > 0 && (
+            <div className="possibilities">
+              {props.insta_posibilities.split("*").map((e) => (
+                <div>
+                  <a
+                    className="instagram_id"
+                    href={`https://www.instagram.com/${e.split("$")[0]}`}
+                  >
+                    {e.split("$")[0]}
+                  </a>
+                  <div className="instagram_name">{e.split("$")[1]}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        {props.linkedin && (
+          <div>
+            {" "}
+            <b>
+              <div className="title">LinkedIn URL</div>
+            </b>{" "}
+            <a className="instagram_id" href={props.linkedin}>
+              {props.linkedin}
+            </a>
+          </div>
+        )}
+        <div style={{ marginTop: 10 }}></div>
+        {props.github && (
+          <div>
+            {" "}
+            <b>
+              <div className="title">Github URL</div>
+            </b>{" "}
+            <a className="instagram_id" href={props.github}>
+              {props.github}
+            </a>
+          </div>
+        )}
+        <div style={{ marginTop: 10 }}></div>
+        {props.snapchat && (
+          <div>
+            {" "}
+            <b>
+              <div className="title">Snapchat</div>
+            </b>{" "}
+            <a
+              className="instagram_id"
+              href={`https://snapchat.com/add/${props.snapchat}`}
+            >
+              {props.snapchat}
+            </a>
+          </div>
+        )}
+        <div style={{ marginTop: 10 }}></div>
+        {props.whatsapp && (
+          <div>
+            {" "}
+            <b>
+              <div className="title">Whatsapp Number</div>
+            </b>{" "}
+            <a
+              className="instagram_id"
+              href={`https://wa.me/${props.whatsapp}`}
+            >
+              {props.whatsapp}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
