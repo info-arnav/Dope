@@ -28,7 +28,10 @@ export default function Login({ username_given }) {
     e.preventDefault();
     setError(false);
     setDisabled(true);
-    if (username.slice(-15) == "ug22@nsut.ac.in") {
+    if (
+      (username.slice(-15) == "ug22@nsut.ac.in") |
+      (username.slice(-16) == "bba22@nsut.ac.in")
+    ) {
       axios.post("/api/otp", { username: username }).then(async (e) => {
         if (e.data.error) {
           setError("Some error occured");
@@ -44,7 +47,7 @@ export default function Login({ username_given }) {
         }
       });
     } else {
-      setError("Email not of format ug22@nsut.ac.in");
+      setError("Email not of format ug22@nsut.ac.in or bba22@nsut.ac.in");
       setDisabled(false);
     }
   };

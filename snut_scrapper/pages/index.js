@@ -157,6 +157,7 @@ export default function Home({ username_given }) {
               )}
               <input
                 className="profile-input"
+                placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
               ></input>
@@ -165,6 +166,7 @@ export default function Home({ username_given }) {
                 className="profile-input"
                 onChange={(e) => setRoll_no(e.target.value)}
                 value={roll_no}
+                placeholder="Roll No"
               ></input>
 
               <hr></hr>
