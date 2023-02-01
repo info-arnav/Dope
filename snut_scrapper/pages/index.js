@@ -35,7 +35,10 @@ export default function Home({ username_given }) {
         instagram_id: instagram,
       },
     });
-    if (image != `https://www.itsdope.in/api/image/${userData.email}`) {
+    if (
+      image &&
+      image != `https://www.itsdope.in/api/image/${userData.email}`
+    ) {
       await axios.post("/api/update-image", {
         email: userData.email,
         image: image,
