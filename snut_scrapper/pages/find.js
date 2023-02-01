@@ -58,10 +58,16 @@ export default function Find({ username_given }) {
                   </div>
                 </b>
                 {!e.instagram_id ? (
-                  e.insta_predicted.split("*")[0] ? (
-                    <div className="instagram_id">
-                      {e.insta_predicted.split("*")[0].split("$")[0]}
-                    </div>
+                  e.insta_predicted ? (
+                    e.insta_predicted.split("*")[0] ? (
+                      <div className="instagram_id">
+                        {e.insta_predicted.split("*")[0].split("$")[0]}
+                      </div>
+                    ) : (
+                      <div class="instagram_id" disabled>
+                        No Prediction
+                      </div>
+                    )
                   ) : (
                     <div class="instagram_id" disabled>
                       No Prediction
@@ -71,10 +77,14 @@ export default function Find({ username_given }) {
                   <div className="instagram_id">{e.instagram_id}</div>
                 )}
                 {!e.instagram_id ? (
-                  e.insta_predicted.split("*")[0] ? (
-                    <div className="instagram_name">
-                      {e.insta_predicted.split("*")[0].split("$")[1]}
-                    </div>
+                  e.insta_predicted ? (
+                    e.insta_predicted.split("*")[0] ? (
+                      <div className="instagram_name">
+                        {e.insta_predicted.split("*")[0].split("$")[1]}
+                      </div>
+                    ) : (
+                      <div className="instagram_name"></div>
+                    )
                   ) : (
                     <div className="instagram_name"></div>
                   )

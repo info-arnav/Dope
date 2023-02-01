@@ -89,10 +89,16 @@ export default function Home({ Component, pageProps }) {
           </div>
         </b>
         {!e.hit.instagram_id ? (
-          e.hit.insta_predicted.split("*")[0] ? (
-            <div className="instagram_id">
-              {e.hit.insta_predicted.split("*")[0].split("$")[0]}
-            </div>
+          e.hit.insta_predicted ? (
+            e.hit.insta_predicted.split("*")[0] ? (
+              <div className="instagram_id">
+                {e.hit.insta_predicted.split("*")[0].split("$")[0]}
+              </div>
+            ) : (
+              <div class="instagram_id" disabled>
+                No Prediction
+              </div>
+            )
           ) : (
             <div class="instagram_id" disabled>
               No Prediction
@@ -102,10 +108,14 @@ export default function Home({ Component, pageProps }) {
           <div className="instagram_id">{e.hit.instagram_id}</div>
         )}
         {!e.hit.instagram_id ? (
-          e.hit.insta_predicted.split("*")[0] ? (
-            <div className="instagram_name">
-              {e.hit.insta_predicted.split("*")[0].split("$")[1]}
-            </div>
+          e.hit.insta_predicted ? (
+            e.hit.insta_predicted.split("*")[0] ? (
+              <div className="instagram_name">
+                {e.hit.insta_predicted.split("*")[0].split("$")[1]}
+              </div>
+            ) : (
+              <div className="instagram_name"></div>
+            )
           ) : (
             <div className="instagram_name"></div>
           )

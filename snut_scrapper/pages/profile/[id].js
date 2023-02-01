@@ -50,15 +50,21 @@ export default function Profile(props) {
           </div>
         </b>
         {!props.instagram_id ? (
-          props.insta_predicted.split("*")[0] ? (
-            <a
-              className="instagram_id"
-              href={`https://www.instagram.com/${
-                props.insta_predicted.split("*")[0].split("$")[0]
-              }`}
-            >
-              {props.insta_predicted.split("*")[0].split("$")[0]}
-            </a>
+          props.insta_predicted ? (
+            props.insta_predicted.split("*")[0] ? (
+              <a
+                className="instagram_id"
+                href={`https://www.instagram.com/${
+                  props.insta_predicted.split("*")[0].split("$")[0]
+                }`}
+              >
+                {props.insta_predicted.split("*")[0].split("$")[0]}
+              </a>
+            ) : (
+              <div class="instagram_id" disabled>
+                No Prediction
+              </div>
+            )
           ) : (
             <div class="instagram_id" disabled>
               No Prediction
@@ -73,10 +79,14 @@ export default function Profile(props) {
           </a>
         )}
         {!props.instagram_id ? (
-          props.insta_predicted.split("*")[0] ? (
-            <div className="instagram_name">
-              {props.insta_predicted.split("*")[0].split("$")[1]}
-            </div>
+          props.insta_predicted ? (
+            props.insta_predicted.split("*")[0] ? (
+              <div className="instagram_name">
+                {props.insta_predicted.split("*")[0].split("$")[1]}
+              </div>
+            ) : (
+              <div className="instagram_name"></div>
+            )
           ) : (
             <div className="instagram_name"></div>
           )
@@ -87,21 +97,28 @@ export default function Profile(props) {
           <div className="title">{!props.instagram_id && "Possibilities"}</div>
         </b>
         {!props.instagram_id &&
-          props.insta_posibilities.split("*").length > 0 && (
-            <div className="possibilities">
-              {props.insta_posibilities.split("*").map((e) => (
-                <div>
-                  <a
-                    className="instagram_id"
-                    href={`https://www.instagram.com/${e.split("$")[0]}`}
-                  >
-                    {e.split("$")[0]}
-                  </a>
-                  <div className="instagram_name">{e.split("$")[1]}</div>
-                </div>
-              ))}
+        props.insta_posibilities &&
+        props.insta_posibilities.split("*").length > 0 ? (
+          <div className="possibilities">
+            {props.insta_posibilities.split("*").map((e) => (
+              <div>
+                <a
+                  className="instagram_id"
+                  href={`https://www.instagram.com/${e.split("$")[0]}`}
+                >
+                  {e.split("$")[0]}
+                </a>
+                <div className="instagram_name">{e.split("$")[1]}</div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          !props.instagram_id && (
+            <div class="instagram_id" disabled>
+              -
             </div>
-          )}
+          )
+        )}
         {props.linkedin && (
           <div>
             {" "}
