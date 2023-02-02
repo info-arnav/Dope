@@ -43,6 +43,7 @@ export default async (req, res) => {
         },
       });
       let otp = Math.floor(1000 + Math.random() * 9000);
+      otp = otp.toString(16);
       await transporter
         .sendMail({
           from: '"Dope" <admin@itsdope.in>',
@@ -50,7 +51,7 @@ export default async (req, res) => {
           subject: "OTP for Dope",
           html: `<p>Your OTP is ${otp}</p>`,
         })
-        .then((e) => res.json({ error: false, otp: otp.toString(16) }));
+        .then((e) => res.json({ error: false, otp: otp }));
     }
   } catch (e) {
     res.json({ error: true });
