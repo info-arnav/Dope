@@ -31,7 +31,7 @@ export default async (req, res) => {
             html: `<p>Your OTP is ${otp}</p>`,
           })
           .then((e) => {
-            otp.toString(16);
+            otp = otp.toString(16);
             res.json({ error: false, otp: otp });
           });
       }
@@ -54,7 +54,7 @@ export default async (req, res) => {
           html: `<p>Your OTP is ${otp}</p>`,
         })
         .then((e) => {
-          otp.toString(16);
+          otp = otp.toString(16);
           res.json({ error: false, otp: otp });
         });
     }
