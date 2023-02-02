@@ -8,10 +8,12 @@ nav {
   height: 70px;
   background-color: white;
 }
-.instagram_id{overflow-x:scroll !important;
-  max-width:100% !important;
+.instagram_id {
+  overflow-x: scroll !important;
+  max-width: 100% !important;
 }
-*,a{
+*,
+a {
   word-wrap: break-word;
 }
 * {
@@ -19,9 +21,8 @@ nav {
 }
 nav * {
   font-family: sans-serif;
-  margin: 2px; 
+  margin: 2px;
 }
-
 
 nav a {
   padding: 14px;
@@ -400,13 +401,14 @@ a {
   border-radius: 20px;
   margin-top: 40px;
   margin-bottom: 40px;
-  width: 95%;
+  width: calc(95% - 80px);
   max-width: 500px;
   min-height: 50vh;
   box-shadow: 0px 0px 10px 0px grey;
 }
-.profile-front a{
-overflow-x:scroll;}
+.profile-front a {
+  overflow-x: scroll;
+}
 .profile-front img {
   border-radius: 100%;
   margin-bottom: 30px;
