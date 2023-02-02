@@ -8,4 +8,3 @@ Disallow: /404
 Disallow: /_error
 
 Sitemap: https://www.itsdope.in/sitemap.xml
-Sitemap: https://www.itsdope.in/api/sitemap.xml
