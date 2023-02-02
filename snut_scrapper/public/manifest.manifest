@@ -16,5 +16,11 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/"
+  "start_url": "/",
+  "sameAs": [
+			"https://www.instagram.com/itsdope.in/",
+			"https://www.facebook.com/profile.php?id=100089713552189",
+			"https://www.linkedin.com/company/itsdope-in/",
+			"https://twitter.com/itsdope_nsut"
+		]
 }

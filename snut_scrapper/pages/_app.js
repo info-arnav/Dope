@@ -281,7 +281,8 @@ export default function Home({ Component, pageProps }) {
             <br></br>
             <p className="footer-content">
               Dope assists NSUT students in making the transition to college,
-              which is a major adjustment in their lives. Dope was made by Arnav Gupta (Dope it).
+              which is a major adjustment in their lives. Dope was made by Arnav
+              Gupta (Dope it).
               <br></br>
               <br></br>
               Copyright @ 2022 Dope
@@ -298,6 +299,15 @@ export default function Home({ Component, pageProps }) {
                 href="/about"
               >
                 About
+              </Link>
+              <br></br>
+              <Link
+                onClick={() => {
+                  setShow("");
+                }}
+                href="/privacy"
+              >
+                Privacy Policy
               </Link>
             </p>
           </div>
@@ -353,17 +363,44 @@ export default function Home({ Component, pageProps }) {
             </p>
           </div>
           <div className="column col-4">
-            <h2>Legal</h2>
+            <h2>Social</h2>
             <br></br>
             <p className="links">
-              <Link
+              <a
                 onClick={() => {
                   setShow("");
                 }}
-                href="/privacy"
+                href="https://www.instagram.com/itsdope.in/"
               >
-                Privacy Policy
-              </Link>
+                Instagram
+              </a>
+              <br></br>
+              <a
+                onClick={() => {
+                  setShow("");
+                }}
+                href="https://www.facebook.com/profile.php?id=100089713552189"
+              >
+                Facebook
+              </a>
+              <br></br>
+              <a
+                onClick={() => {
+                  setShow("");
+                }}
+                href="https://www.linkedin.com/company/itsdope-in/"
+              >
+                LinkedIn
+              </a>
+              <br></br>
+              <a
+                onClick={() => {
+                  setShow("");
+                }}
+                href="https://twitter.com/itsdope_nsut"
+              >
+                Twitter
+              </a>
             </p>
           </div>
         </div>
