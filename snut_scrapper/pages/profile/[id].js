@@ -1,8 +1,17 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Head from "../../components/head";
 import clientPromise from "../../middleware/mongodb";
 
 export default function Profile(props) {
+  const [loggedIn, setLoggedIn] = useState(null);
+  useEffect(() => {
+    if (props.username_given) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [props.username_given]);
   return (
     <div className="profile-back">
       <Head
@@ -157,32 +166,36 @@ export default function Profile(props) {
             </a>
           </div>
         )}
-        <div style={{ marginTop: 10 }}></div>
-        {props.whatsapp && (
-          <div>
-            {" "}
-            <b>
-              <div className="title">Whatsapp Number</div>
-            </b>{" "}
-            <a
-              className="instagram_id"
-              href={`https://wa.me/${props.whatsapp}`}
-            >
-              {props.whatsapp}
-            </a>
-          </div>
-        )}
-        <div style={{ marginTop: 10 }}></div>
-        {props.mail && (
-          <div>
-            {" "}
-            <b>
-              <div className="title">Personal Email</div>
-            </b>{" "}
-            <a className="instagram_id" href={`mailto:${props.mail}`}>
-              {props.mail}
-            </a>
-          </div>
+        {loggedIn != null && loggedIn && (
+          <>
+            <div style={{ marginTop: 10 }}></div>
+            {props.whatsapp && (
+              <div>
+                {" "}
+                <b>
+                  <div className="title">Whatsapp Number</div>
+                </b>{" "}
+                <a
+                  className="instagram_id"
+                  href={`https://wa.me/${props.whatsapp}`}
+                >
+                  {props.whatsapp}
+                </a>
+              </div>
+            )}
+            <div style={{ marginTop: 10 }}></div>
+            {props.mail && (
+              <div>
+                {" "}
+                <b>
+                  <div className="title">Personal Email</div>
+                </b>{" "}
+                <a className="instagram_id" href={`mailto:${props.mail}`}>
+                  {props.mail}
+                </a>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

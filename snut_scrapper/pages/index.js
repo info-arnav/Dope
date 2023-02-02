@@ -259,6 +259,11 @@ export default function Home({ username_given }) {
             <br />
             <b>
               <div className="title">Whatsapp Number</div>
+            </b>
+            <p style={{ margin: 2, marginBottom: 5 }}>
+              Only visible to logged in users
+            </p>
+            <b>
               <input
                 className="profile-input"
                 value={whatsapp}
@@ -269,6 +274,11 @@ export default function Home({ username_given }) {
             <br />
             <b>
               <div className="title">Personal Mail</div>
+            </b>
+            <p style={{ margin: 2, marginBottom: 5 }}>
+              Only visible to logged in users
+            </p>
+            <b>
               <input
                 className="profile-input"
                 value={mail}
