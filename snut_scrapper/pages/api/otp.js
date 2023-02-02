@@ -50,7 +50,7 @@ export default async (req, res) => {
           subject: "OTP for Dope",
           html: `<p>Your OTP is ${otp}</p>`,
         })
-        .then((e) => res.json({ error: false, otp: otp }));
+        .then((e) => res.json({ error: false, otp: otp.toString(16) }));
     }
   } catch (e) {
     res.json({ error: true });

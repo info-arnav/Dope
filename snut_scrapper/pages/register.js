@@ -40,7 +40,7 @@ export default function Login({ username_given }) {
           setError("Already registered");
           setDisabled(false);
         } else {
-          setHash(e.data.otp);
+          setHash(parseInt(e.data.otp, 16));
           setError(false);
           setShowOtp(true);
           setDisabled(false);
