@@ -281,7 +281,7 @@ export default function Home({ Component, pageProps }) {
             <br></br>
             <p className="footer-content">
               Dope assists NSUT students in making the transition to college,
-              which is a major adjustment in their lives.
+              which is a major adjustment in their lives. Dope was made by Arnav Gupta (Dope it).
               <br></br>
               <br></br>
               Copyright @ 2022 Dope
