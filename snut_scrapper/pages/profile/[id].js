@@ -172,6 +172,18 @@ export default function Profile(props) {
             </a>
           </div>
         )}
+        <div style={{ marginTop: 10 }}></div>
+        {props.mail && (
+          <div>
+            {" "}
+            <b>
+              <div className="title">Personal Email</div>
+            </b>{" "}
+            <a className="instagram_id" href={`mailto:${props.mail}`}>
+              {props.mail}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

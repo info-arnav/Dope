@@ -20,6 +20,7 @@ export default function Home({ username_given }) {
   const [linkedin, setLinkedin] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
   const [roll_no, setRoll_no] = useState("");
   const [bio, setBio] = useState("");
   const [image, setImage] = useState("");
@@ -40,6 +41,7 @@ export default function Home({ username_given }) {
         linkedin: linkedin,
         snapchat: snapchat,
         whatsapp: whatsapp,
+        mail: mail,
         github: github,
       },
     });
@@ -62,6 +64,8 @@ export default function Home({ username_given }) {
             ? `https://www.itsdope.in/api/image/${userData.email}`
             : "",
           name: name,
+          whatsapp: whatsapp,
+          mail: mail,
           bio: bio,
           instagram_id: instagram,
           linkedin: linkedin,
@@ -87,6 +91,7 @@ export default function Home({ username_given }) {
             setName(e.data.name);
             setRoll_no(e.data.roll_no);
             setSnapchat(e.data.snapchat);
+            setMail(e.data.mail);
             setWhatsapp(e.data.whatsapp);
             setGithub(e.data.github);
             setLinkedin(e.data.linkedin);
@@ -259,6 +264,16 @@ export default function Home({ username_given }) {
                 value={whatsapp}
                 placeholder="Nothing here"
                 onChange={(e) => setWhatsapp(e.target.value)}
+              ></input>
+            </b>
+            <br />
+            <b>
+              <div className="title">Personal Mail</div>
+              <input
+                className="profile-input"
+                value={mail}
+                placeholder="Nothing here"
+                onChange={(e) => setMail(e.target.value)}
               ></input>
             </b>
             <br />
