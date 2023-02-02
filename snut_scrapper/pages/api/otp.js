@@ -30,7 +30,10 @@ export default async (req, res) => {
             subject: "OTP for Dope",
             html: `<p>Your OTP is ${otp}</p>`,
           })
-          .then((e) => res.json({ error: false, otp: otp }));
+          .then((e) => {
+            otp.toString(16);
+            res.json({ error: false, otp: otp });
+          });
       }
     } else {
       let transporter = nodemailer.createTransport({
