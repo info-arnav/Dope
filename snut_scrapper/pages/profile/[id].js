@@ -31,7 +31,9 @@ export default function Profile(props) {
             <img width={200} height={200} src="/profile.webp"></img>
           )}
           <div className="name">
-            {props.name.toUpperCase() || "Not Provided"}
+            {props.name
+              ? props.name.toUpperCase() || "Not Provided"
+              : "Not Provided"}
           </div>
           <div className="email">{props.roll_no}</div>
           <hr></hr>
