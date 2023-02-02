@@ -41,8 +41,8 @@ export default function Head({ title, description, kewords, url, image }) {
       <meta property="og:image" content={image} />
       <meta property="og:image:alt" content="Image published at site Dope" />
       <meta property="og:type" content="website" />
+      <meta property="og:description" content={description} />
       <meta property="fb:app_id" content="495918506052144" />
-      <meta name="og:description" content={description} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
