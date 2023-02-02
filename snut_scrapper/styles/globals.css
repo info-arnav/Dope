@@ -8,6 +8,8 @@ nav {
   height: 70px;
   background-color: white;
 }
+.instagram_id{overflow-x:scroll
+}
 *,a{
   word-wrap: break-word;
 }
@@ -16,7 +18,7 @@ nav {
 }
 nav * {
   font-family: sans-serif;
-  margin: 2px;
+  margin: 2px; '
 }
 
 nav a {
