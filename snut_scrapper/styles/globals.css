@@ -8,7 +8,7 @@ nav {
   height: 70px;
   background-color: white;
 }
-* {
+*,a{
   word-wrap: break-word;
 }
 * {
