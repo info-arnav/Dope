@@ -152,7 +152,7 @@ export default function Login({ username_given }) {
             </form>
           ) : (
             <form className="credentials" onSubmit={auth}>
-              <p className="title">Reset Password</p>
+              <p className="title">Register</p>
               <input
                 placeholder="User ID"
                 onChange={(e) => setUsername(e.target.value)}
