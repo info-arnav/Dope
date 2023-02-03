@@ -106,7 +106,7 @@ export default function Login({ username_given }) {
           {choosePassword ? (
             <form className="credentials" onSubmit={auth3}>
               <p className="title">Choose Password</p>
-              <input
+             <input
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ marginBottom: 0 }}
@@ -116,8 +116,7 @@ export default function Login({ username_given }) {
                 required
               ></input>
               <p style={{ marginBottom: 15, marginTop: 2 }}>
-                Must contain one capital letter, numbers, a special character
-                and atleast 8 characters.
+                Must contain letters, numbers and atleast 8 characters.
               </p>
               <input
                 placeholder="Confirm Password"
