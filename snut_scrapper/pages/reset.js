@@ -106,18 +106,17 @@ export default function Login({ username_given }) {
         <center className="forms">
           {choosePassword ? (
             <form className="credentials" onSubmit={auth3}>
-              <p className="title">Choose Password</p>
               <input
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ marginBottom: 0 }}
                 value={password}
                 type="password"
-                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+                pattern="(?=^.{6,255}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*"
                 required
               ></input>
               <p style={{ marginBottom: 15, marginTop: 2 }}>
-                Must contain letters, numbers and atleast 8 characters.
+                Must contain letters, special characters, numbers and atleast 6 characters.
               </p>
               <input
                 placeholder="Confirm Password"
