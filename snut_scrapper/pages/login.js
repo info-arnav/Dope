@@ -82,6 +82,7 @@ export default function Login({ username_given }) {
             <p>
               <Link href="/register">Not yet registered ? Register Now</Link>
               <br></br>
+              <br></br>
               <Link href="/reset">Forgot Password ? Reset here</Link>
             </p>
           </form>
