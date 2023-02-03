@@ -81,8 +81,7 @@ export default function Login({ username_given }) {
             </button>
             <p>
               <Link href="/register">Not yet registered ? Register Now</Link>
-              <br></br>
-              <br></br>
+              <div style={{marginBottom:7}}><\div>
               <Link href="/reset">Forgot Password ? Reset here</Link>
             </p>
           </form>
