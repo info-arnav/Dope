@@ -153,7 +153,7 @@ export default function Login({ username_given }) {
             </form>
           ) : (
             <form className="credentials" onSubmit={auth}>
-              <p className="title">Register</p>
+              <p className="title">Reset Password</p>
               <input
                 placeholder="User ID"
                 onChange={(e) => setUsername(e.target.value)}
@@ -166,7 +166,7 @@ export default function Login({ username_given }) {
                 {disabled ? "Loading...." : "Send OTP"}
               </button>
               <p>
-                <Link href="/login">Already Registered ? Login</Link>
+                <Link href="/login">Remember Password ? Login</Link>
               </p>
             </form>
           )}
