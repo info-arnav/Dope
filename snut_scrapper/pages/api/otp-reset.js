@@ -32,7 +32,7 @@ export default async (req, res) => {
           })
           .then((e) => {
             otp = otp.toString(16);
-            res.json({ error: false, otp: otp });
+            res.json({ error: false, otp: otp, registered:true});
           });
       }
     } else {
