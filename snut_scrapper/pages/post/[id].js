@@ -11,7 +11,7 @@ export default function Profile(props) {
         description={`This is a noticed published by "${props.societies}" titled "${props.title}"`}
         keword={`, notices, ${props.societies}`}
         url={`profile/${props._id}`}
-        image={props.image || "https://www.itsdope.in/profile.webp"}
+        image={props.image || "https://www.itsdope.in/logo.png"}
       ></Head>
       <center>
         <h1 style={{}}>{props.title}</h1>
