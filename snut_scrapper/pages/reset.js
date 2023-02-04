@@ -32,17 +32,18 @@ export default function Login({ username_given }) {
       (username.slice(-15) == "ug22@nsut.ac.in") |
       (username.slice(-16) == "bba22@nsut.ac.in")
     ) {
-      axios.post("/api/otp", { username: username }).then(async (e) => {
+      axios.post("/api/otp-reset", { username: username }).then(async (e) => {
         if (e.data.error) {
           setError("Some error occured");
           setDisabled(false);
         } else if (e.data.registered) {
-          setError("Already registered");
-          setDisabled(false);
-        } else {
           setHash(parseInt(e.data.otp, 16));
           setError(false);
-          setShowOtp(true);
+                    setShowOtp(true);
+                              setDisabled(false)
+         
+        } else {
+          setError("Not registered");
           setDisabled(false);
         }
       });
@@ -105,8 +106,7 @@ export default function Login({ username_given }) {
         <center className="forms">
           {choosePassword ? (
             <form className="credentials" onSubmit={auth3}>
-              <p className="title">Choose Password</p>
-             <input
+              <input
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ marginBottom: 0 }}
@@ -151,7 +151,7 @@ export default function Login({ username_given }) {
             </form>
           ) : (
             <form className="credentials" onSubmit={auth}>
-              <p className="title">Register</p>
+              <p className="title">Reset Password</p>
               <input
                 placeholder="User ID"
                 onChange={(e) => setUsername(e.target.value)}
@@ -164,7 +164,7 @@ export default function Login({ username_given }) {
                 {disabled ? "Loading...." : "Send OTP"}
               </button>
               <p>
-                <Link href="/login">Already Registered ? Login</Link>
+                <Link href="/login">Remember Password ? Login</Link>
               </p>
             </form>
           )}
