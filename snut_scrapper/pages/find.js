@@ -47,7 +47,7 @@ export default function Find({ username_given }) {
                     <img width={100} height={100} src="/profile.webp"></img>
                   )}
                   <div className="name">
-                    {e.name.toUpperCase() || "Not Provided"}
+                    {e.name ? e.name.toUpperCase() : "Not Provided"}
                   </div>
                   <div className="email">{e.roll_no}</div>
                   <hr></hr>
