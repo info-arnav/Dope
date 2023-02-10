@@ -210,7 +210,6 @@ export async function getServerSideProps(id) {
   let data = await db.collection("users-new").find({ _id: id }).toArray();
   data = JSON.parse(JSON.stringify(data));
   if (data[0]) {
-    console.log(data);
     return {
       props: data[0],
     };

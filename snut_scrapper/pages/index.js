@@ -88,26 +88,27 @@ export default function Find({ username_given }) {
                     {data.map((e) => (
                       <Link href={`/profile/${e._id}`}>
                         <div className="card">
-                          <div className="header">
-                            <div className="header-image">
-                              <img
-                                src={e.image || "/profile.webp"}
-                                width={40}
-                                height={40}
-                              ></img>
-                            </div>
-                            <div className="header-title">
-                              {e.name ? e.name.toUpperCase() : "Undefined"}
-                            </div>
-                          </div>
+                          <img
+                            src={e.image || "profile.webp"}
+                            style={{ width: "100%" }}
+                          ></img>
                           <div
                             className="body"
-                            style={{ marginBottom: 20, color: "black" }}
+                            style={{
+                              marginBottom: 20,
+                              color: "black",
+                              textAlign: "center",
+                            }}
                           >
                             <br></br>
-                            <div>
-                              <b>Bio : </b>
-                              {e.bio}
+                            <div style={{ fontSize: 13.5, padding: 10 }}>
+                              <b style={{ marginBottom: 5 }}>{e.name}</b>
+                              <p style={{ color: "grey", marginTop: 5 }}>
+                                {e.branch || "-"}
+                              </p>
+                              <p>
+                                {e.bio ? e.bio.slice(0, 53) + "....." : "-"}
+                              </p>
                             </div>
                           </div>
                         </div>

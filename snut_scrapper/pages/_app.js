@@ -67,64 +67,31 @@ export default function Home({ Component, pageProps }) {
   };
   const Hit = (e) => {
     return (
-      <div
-        className="card"
-        onClick={() => {
-          window.location.replace(`/profile/${e.hit.objectID}`);
-        }}
-      >
-        <center>
-          {e.hit.image ? (
-            <img width={100} height={100} src={e.hit.image}></img>
-          ) : (
-            <img width={100} height={100} src="/profile.webp"></img>
-          )}
-          <div className="name">
-            {e.hit.name.toUpperCase() || "Not Provided"}
-          </div>
-          <div className="email">{e.hit.roll_no}</div>
-          <hr></hr>
-        </center>
-        <b>
-          <div className="title">
-            {!e.hit.instagram_id ? "Prediction" : "Instrgram ID"}
-          </div>
-        </b>
-        {!e.hit.instagram_id ? (
-          e.hit.insta_predicted ? (
-            e.hit.insta_predicted.split("*")[0] ? (
-              <div className="instagram_id">
-                {e.hit.insta_predicted.split("*")[0].split("$")[0]}
-              </div>
-            ) : (
-              <div class="instagram_id" disabled>
-                No Prediction
-              </div>
-            )
-          ) : (
-            <div class="instagram_id" disabled>
-              No Prediction
+      <Link href={`/profile/${e.hit._id}`}>
+        <div className="card">
+          <img
+            src={e.hit.image || "profile.webp"}
+            style={{ width: "100%" }}
+          ></img>
+          <div
+            className="body"
+            style={{
+              marginBottom: 20,
+              color: "black",
+              textAlign: "center",
+            }}
+          >
+            <br></br>
+            <div style={{ fontSize: 13.5, padding: 10 }}>
+              <b style={{ marginBottom: 5 }}>{e.hit.name || "-"}</b>
+              <p style={{ color: "grey", marginTop: 5 }}>
+                {e.hit.branch || "-"}
+              </p>
+              <p>{e.hit.bio ? e.hit.bio.slice(0, 53) + "....." : "-"}</p>
             </div>
-          )
-        ) : (
-          <div className="instagram_id">{e.hit.instagram_id}</div>
-        )}
-        {!e.hit.instagram_id ? (
-          e.hit.insta_predicted ? (
-            e.hit.insta_predicted.split("*")[0] ? (
-              <div className="instagram_name">
-                {e.hit.insta_predicted.split("*")[0].split("$")[1]}
-              </div>
-            ) : (
-              <div className="instagram_name"></div>
-            )
-          ) : (
-            <div className="instagram_name"></div>
-          )
-        ) : (
-          <div className="instagram_name"></div>
-        )}
-      </div>
+          </div>
+        </div>
+      </Link>
     );
   };
   return (
@@ -253,7 +220,9 @@ export default function Home({ Component, pageProps }) {
         </nav>
         {show.length > 0 && (
           <main>
-            <Hits hitComponent={Hit} />
+            <div className="masonry-container" style={{ marginTop: 90 }}>
+              <Hits hitComponent={Hit} />
+            </div>
           </main>
         )}
       </InstantSearch>
