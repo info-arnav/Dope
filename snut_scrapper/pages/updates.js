@@ -127,12 +127,12 @@ export default function Update({ username_given, type_given }) {
                         </p>
                         <p>
                           <b>Requirments :</b> {e.requirments}
-                        </p>{" "}
+                        </p>
                         <p>
                           <b>By :</b> {e.email + "@nsut.ac.in"}
                         </p>
                         <p>
-                          <b>Description :</b>{" "}
+                          <b>Description :</b>
                           {e.description.slice(0, 400) + "....."}
                         </p>
                       </div>
