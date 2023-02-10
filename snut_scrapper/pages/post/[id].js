@@ -31,7 +31,7 @@ export async function getServerSideProps(id) {
   const client = await clientPromise;
   const db = client.db("nsut");
   let data = await db
-    .collection("notices")
+    .collection("notices-new")
     .find({ _id: ObjectId(id) })
     .toArray();
   data = JSON.parse(JSON.stringify(data));

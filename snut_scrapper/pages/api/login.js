@@ -6,7 +6,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     let data = await db
-      .collection("users")
+      .collection("users-new")
       .find({ email: req.body.username.split("@")[0] })
       .toArray();
     data = data[0];
@@ -21,6 +21,7 @@ export default async (req, res) => {
                 error: false,
                 loggedIn: true,
                 data: req.body.username,
+                type: req.body.type,
               });
             } else {
               res.json({ error: false, loggedIn: false });

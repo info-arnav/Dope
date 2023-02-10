@@ -37,7 +37,10 @@ export default function Login({ username_given }) {
             "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
           );
           const alg = "HS256";
-          const jwt = await new jose.SignJWT({ data: e.data.data })
+          const jwt = await new jose.SignJWT({
+            data: e.data.data,
+            type: e.data.type,
+          })
             .setProtectedHeader({ alg })
             .sign(secret);
           localStorage.setItem("user", jwt);
@@ -81,7 +84,7 @@ export default function Login({ username_given }) {
             </button>
             <p>
               <Link href="/register">Not yet registered ? Register Now</Link>
-              <div style={{marginBottom:7}}></div>
+              <div style={{ marginBottom: 7 }}></div>
               <Link href="/reset">Forgot Password ? Reset here</Link>
             </p>
           </form>

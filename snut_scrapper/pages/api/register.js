@@ -8,29 +8,44 @@ export default async (req, res) => {
     "8PCXEU15SU",
     "fc652d91b2d6db2718b47254be4c5d6e"
   );
-  const index = client.initIndex("dev_NSUT");
+  const index = client.initIndex("dev_NSUT-NEW");
   try {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("users")
+      .collection("users-new")
       .find({ email: req.body.username.split("@")[0] })
       .toArray();
+    const records = await db
+      .collection("records")
+      .find({ email: req.body.username })
+      .toArray();
+    if (records[0]) {
+      let type = "alumini";
+    } else {
+      let type = "student";
+    }
     if (data[0]) {
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
         let ndata = await db
-          .collection("users")
+          .collection("users-new")
           .update(
             { email: req.body.username.split("@")[0] },
-            { $set: { password: hash } }
+            { $set: { password: hash, date: req.body.date, type: type } }
           );
-        res.send({ error: false, username: req.body.username.split("@")[0] });
+        res.send({
+          error: false,
+          username: req.body.username.split("@")[0],
+          type: type,
+        });
       });
     } else {
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
-        const ndata = await db.collection("users").insert({
+        const ndata = await db.collection("users-new").insert({
           email: req.body.username.split("@")[0],
           password: hash,
+          date: req.body.date,
+          type: type,
         });
         await index
           .saveObjects([{ objectID: req.body.username.split("@")[0] }])
@@ -38,6 +53,7 @@ export default async (req, res) => {
             res.send({
               error: false,
               username: req.body.username.split("@")[0],
+              type: type,
             });
           });
       });

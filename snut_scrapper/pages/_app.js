@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
+  const [type, setType] = useState(null);
   const router = useRouter();
   const [show, setShow] = useState("");
   const verifier = async (userStorage) => {
@@ -20,6 +21,7 @@ export default function Home({ Component, pageProps }) {
       const data = await jose.jwtVerify(userStorage, secret);
       if (data.payload.data) {
         setUsername(data.payload.data);
+        setType(data.payload.type);
       } else {
         setUsername(false);
         localStorage.removeItem("user");
@@ -127,7 +129,7 @@ export default function Home({ Component, pageProps }) {
   };
   return (
     <>
-      <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
+      <InstantSearch searchClient={searchClient} indexName="dev_NSUT-NEW">
         <nav>
           <Link
             href="/"
@@ -154,7 +156,7 @@ export default function Home({ Component, pageProps }) {
               ? "     "
               : username == false
               ? "HOME"
-              : "PROFILE"}
+              : "DISCOVER"}
           </Link>
 
           <SearchBox
@@ -192,7 +194,7 @@ export default function Home({ Component, pageProps }) {
           ) : (
             <>
               <Link
-                href="/find"
+                href="/profile"
                 className="nav-image-right extra"
                 onClick={() => {
                   setShow("");
@@ -202,7 +204,7 @@ export default function Home({ Component, pageProps }) {
                   src="/discover.png"
                   width={35}
                   height={35}
-                  alt="discover icon"
+                  alt="profile icon"
                 ></Image>
               </Link>
             </>
@@ -260,6 +262,7 @@ export default function Home({ Component, pageProps }) {
           {show.length <= 0 && (
             <Component
               username_given={username}
+              type_given={type}
               {...pageProps}
               onClick={() => {
                 setShow("");
@@ -338,7 +341,7 @@ export default function Home({ Component, pageProps }) {
                 onClick={() => {
                   setShow("");
                 }}
-                href="/find"
+                href="/"
               >
                 Discover
               </Link>
@@ -350,15 +353,6 @@ export default function Home({ Component, pageProps }) {
                 href="/updates"
               >
                 Society Updates
-              </Link>
-              <br></br>
-              <Link
-                onClick={() => {
-                  setShow("");
-                }}
-                href="/anonymous"
-              >
-                Anonymous
               </Link>
             </p>
           </div>

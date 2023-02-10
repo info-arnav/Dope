@@ -5,7 +5,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     let data = await db
-      .collection("notices")
+      .collection("notices-new")
       .find({})
       .sort({ date: -1 })
       .toArray();

@@ -107,8 +107,21 @@ export default function Home({ username }) {
             </button>
           </nav>
           {loading ? (
-            <div className="empty">
-              <Image src="/loading.gif" width={300} height={300}></Image>
+            <div
+              className="empty"
+              style={{
+                height: "calc(90vh + 80px)",
+                justifyContent: "center",
+                alignItems: "center",
+                display: "flex",
+              }}
+            >
+              <Image
+                src="/loading.gif"
+                style={{ borderRadius: "100%" }}
+                width={50}
+                height={50}
+              ></Image>
             </div>
           ) : (
             <div style={{ marginTop: 90 }}>

@@ -6,7 +6,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     await db
-      .collection("users")
+      .collection("users-new")
       .update({ email: req.body.email }, { $set: req.body.changes });
     res.send({ error: false });
   } catch (e) {

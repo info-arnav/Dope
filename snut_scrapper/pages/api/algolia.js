@@ -5,7 +5,7 @@ const algolia = (req, res) => {
     "8PCXEU15SU",
     "fc652d91b2d6db2718b47254be4c5d6e"
   );
-  const index = client.initIndex("dev_NSUT");
+  const index = client.initIndex("dev_NSUT-NEW");
   if (req.body.method == "create") {
     index.saveObjects([{ objectID: req.body.email }]).then(({ objectIDs }) => {
       res.send("success");

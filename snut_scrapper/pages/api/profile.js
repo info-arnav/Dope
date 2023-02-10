@@ -6,7 +6,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("users")
+      .collection("users-new")
       .find({ email: req.body.email })
       .toArray();
     if (data[0]) {

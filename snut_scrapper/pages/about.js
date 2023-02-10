@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import Head from "../components/head";
 
-export default function About() {
+export default function About({ username_given }) {
   return (
     <div>
       <Head
@@ -13,55 +14,74 @@ export default function About() {
       ></Head>
       <div className="about-banner">
         <div>
-          <p>Dope</p>
-          <Link href="/register">
-            <button className="about-button">Register Now</button>
-          </Link>
+          <p className="about-title large">What are we ?</p>
+          <div className="inline">
+            <p className="about-title-medium">... Simply put, we're </p>
+            <p className="about-title">Dope.</p>
+          </div>
+          <p className="about-content">
+            Dope is a platform that makes your transition to university just
+            that more seamless.
+          </p>
+          <p className="about-content large">
+            Be it keeping upto date with the hectic schedules of societies,
+            checking up on your new peers, or even spilling gossip tea, Dope's
+            got you covered!
+          </p>
+          {username_given != null && !username_given ? (
+            <Link href="register">
+              <button>Sign Up Now</button>
+            </Link>
+          ) : (
+            <Link href="/">
+              <button>Find People</button>
+            </Link>
+          )}
         </div>
       </div>
-      <p className="about-title">About</p>
-      <div class="masonry-container">
-        <div class="masonry-item">
-          <a href="https://uk.pinterest.com/pin/436286282624249460/">
-            <img src="https://s-media-cache-ak0.pinimg.com/736x/61/4f/1b/614f1b3a481f68b4d492f71c5fe3fc5f.jpg" />
-          </a>
-          <span>Img 1</span>
+      <section className="about-section">
+        <div className="row">
+          <div className="col">
+            <Image src="/g1.jpg" width={290} height={290}></Image>
+          </div>
+          <div className="col vertical">
+            <div className="col-title">Say goodbye to asking around!</div>
+            <div className="col-content">
+              Dope allows users to exchange all their social info with their
+              peers at one place.
+            </div>
+          </div>
         </div>
-
-        <div class="masonry-item">
-          <a href="https://uk.pinterest.com/pin/481040803922110845/">
-            <img src="https://s-media-cache-ak0.pinimg.com/736x/1d/6f/2d/1d6f2d4fff0f0d4e83456c28b0645bbd.jpg" />
-          </a>
-          <span>Img 2</span>
+      </section>
+      <section className="about-section gray">
+        <div className="row">
+          <div className="col vertical">
+            <div className="col-title">Distractions, a thing of the past!</div>
+            <div className="col-content">
+              Dope puts an end to endless scrolling and shows you only what you
+              WANT to see. Stay up-to-date with your favourite societies without
+              falling into the instagram trap!
+            </div>
+          </div>
+          <div className="col">
+            <Image src="/g2.jpg" width={290} height={290}></Image>
+          </div>
         </div>
-
-        <div class="masonry-item">
-          <a href="http://grrlathr.com/woodworkingstand/picture-frame-design-on-walls-plans-diy-free-download-plans-to-build-bunk-beds">
-            <img src="http://i00.i.aliimg.com/wsphoto/v0/1913341970_3/New-Design-Photo-Frame-Wall-Decals-Memories-Photo-Frame-Vinyl-Wall-Stickers-Home-Decor-Witness-Every.jpg" />
-          </a>
-          <span>Img 3</span>
+      </section>
+      <section className="about-section">
+        <div className="row">
+          <div className="col">
+            <Image src="/g3.png" width={290} height={290}></Image>
+          </div>
+          <div className="col vertical">
+            <div className="col-title">Your Seniors, Your Recruiters!</div>
+            <div className="col-content">
+              On Dope students of NSUT can view offers made by their own
+              seniors, the alumini of NSUT.
+            </div>
+          </div>
         </div>
-        <div class="masonry-item">
-          <a href="https://uk.pinterest.com/pin/436286282624249460/">
-            <img src="https://s-media-cache-ak0.pinimg.com/736x/61/4f/1b/614f1b3a481f68b4d492f71c5fe3fc5f.jpg" />
-          </a>
-          <span>Img 4</span>
-        </div>
-
-        <div class="masonry-item">
-          <a href="https://uk.pinterest.com/pin/481040803922110845/">
-            <img src="https://s-media-cache-ak0.pinimg.com/736x/1d/6f/2d/1d6f2d4fff0f0d4e83456c28b0645bbd.jpg" />
-          </a>
-          <span>Img 5</span>
-        </div>
-
-        <div class="masonry-item">
-          <a href="http://grrlathr.com/woodworkingstand/picture-frame-design-on-walls-plans-diy-free-download-plans-to-build-bunk-beds">
-            <img src="http://i00.i.aliimg.com/wsphoto/v0/1913341970_3/New-Design-Photo-Frame-Wall-Decals-Memories-Photo-Frame-Vinyl-Wall-Stickers-Home-Decor-Witness-Every.jpg" />
-          </a>
-          <span>Img 6</span>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

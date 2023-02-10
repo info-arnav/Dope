@@ -28,10 +28,7 @@ export default function Login({ username_given }) {
     e.preventDefault();
     setError(false);
     setDisabled(true);
-    if (
-      (username.slice(-15) == "ug22@nsut.ac.in") |
-      (username.slice(-16) == "bba22@nsut.ac.in")
-    ) {
+    if (username.slice(-11) == "@nsut.ac.in") {
       axios.post("/api/otp-reset", { username: username }).then(async (e) => {
         if (e.data.error) {
           setError("Some error occured");
@@ -39,9 +36,8 @@ export default function Login({ username_given }) {
         } else if (e.data.registered) {
           setHash(parseInt(e.data.otp, 16));
           setError(false);
-                    setShowOtp(true);
-                              setDisabled(false)
-         
+          setShowOtp(true);
+          setDisabled(false);
         } else {
           setError("Not registered");
           setDisabled(false);
@@ -81,7 +77,10 @@ export default function Login({ username_given }) {
               "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
             );
             const alg = "HS256";
-            const jwt = await new jose.SignJWT({ data: e.data.username })
+            const jwt = await new jose.SignJWT({
+              data: e.data.username,
+              type: e.data.type,
+            })
               .setProtectedHeader({ alg })
               .sign(secret);
             localStorage.setItem("user", jwt);
@@ -116,7 +115,8 @@ export default function Login({ username_given }) {
                 required
               ></input>
               <p style={{ marginBottom: 15, marginTop: 2 }}>
-                Must contain letters, special characters, numbers and atleast 6 characters.
+                Must contain letters, special characters, numbers and atleast 6
+                characters.
               </p>
               <input
                 placeholder="Confirm Password"

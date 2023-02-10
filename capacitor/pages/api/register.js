@@ -6,13 +6,13 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("users")
+      .collection("users-new")
       .find({ email: req.body.username.split("@")[0] })
       .toArray();
     if (data) {
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
         let ndata = await db
-          .collection("users")
+          .collection("users-new")
           .update(
             { email: req.body.username.split("@")[0] },
             { $set: { password: hash } }
@@ -21,7 +21,7 @@ export default async (req, res) => {
       });
     } else {
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
-        const ndata = await db.collection("users").insert({
+        const ndata = await db.collection("users-new").insert({
           email: req.body.username.split("@")[0],
           password: hash,
         });

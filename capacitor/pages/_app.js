@@ -126,7 +126,7 @@ export default function Home({ Component, pageProps }) {
         });
     `}
       </Script>
-      <InstantSearch searchClient={searchClient} indexName="dev_NSUT">
+      <InstantSearch searchClient={searchClient} indexName="dev_NSUT-NEW">
         <nav>
           <Link
             href="/"

@@ -207,7 +207,7 @@ export async function getServerSideProps(id) {
   id = id.query.id;
   const client = await clientPromise;
   const db = client.db("nsut");
-  let data = await db.collection("users").find({ email: id }).toArray();
+  let data = await db.collection("users-new").find({ email: id }).toArray();
   data = JSON.parse(JSON.stringify(data));
   if (data.length > 0) {
     return {

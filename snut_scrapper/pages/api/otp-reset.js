@@ -6,7 +6,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("users")
+      .collection("users-new")
       .find({ email: req.body.username.split("@")[0] })
       .toArray();
     if (data[0]) {
@@ -32,7 +32,7 @@ export default async (req, res) => {
           })
           .then((e) => {
             otp = otp.toString(16);
-            res.json({ error: false, otp: otp, registered:true});
+            res.json({ error: false, otp: otp, registered: true });
           });
       }
     } else {

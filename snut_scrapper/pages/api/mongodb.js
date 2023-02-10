@@ -7,7 +7,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("users")
+      .collection("users-new")
       .aggregate([{ $sample: { size: 20 } }])
       .toArray();
     console.log(data);

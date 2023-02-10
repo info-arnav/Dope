@@ -6,7 +6,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("notices")
+      .collection("notices-new")
       .remove({ _id: ObjectId(req.body.id) });
     res.json({ error: false });
   } catch (e) {

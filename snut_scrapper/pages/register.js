@@ -28,10 +28,7 @@ export default function Login({ username_given }) {
     e.preventDefault();
     setError(false);
     setDisabled(true);
-    if (
-      (username.slice(-15) == "ug22@nsut.ac.in") |
-      (username.slice(-16) == "bba22@nsut.ac.in")
-    ) {
+    if (username.slice(-11) == "@nsut.ac.in") {
       axios.post("/api/otp", { username: username }).then(async (e) => {
         if (e.data.error) {
           setError("Some error occured");
@@ -47,7 +44,7 @@ export default function Login({ username_given }) {
         }
       });
     } else {
-      setError("Email not of format ug22@nsut.ac.in or bba22@nsut.ac.in");
+      setError("Email not of format @nsut.ac.in");
       setDisabled(false);
     }
   };
@@ -70,7 +67,11 @@ export default function Login({ username_given }) {
     setDisabled(true);
     if (password == confirmPassword) {
       axios
-        .post("/api/register", { username: username, password: password })
+        .post("/api/register", {
+          username: username,
+          password: password,
+          date: new Date(),
+        })
         .then(async (e) => {
           if (e.data.error) {
             setError("Some error occured");
@@ -80,7 +81,10 @@ export default function Login({ username_given }) {
               "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
             );
             const alg = "HS256";
-            const jwt = await new jose.SignJWT({ data: e.data.username })
+            const jwt = await new jose.SignJWT({
+              data: e.data.username,
+              type: e.data.type,
+            })
               .setProtectedHeader({ alg })
               .sign(secret);
             localStorage.setItem("user", jwt);
@@ -106,7 +110,7 @@ export default function Login({ username_given }) {
           {choosePassword ? (
             <form className="credentials" onSubmit={auth3}>
               <p className="title">Choose Password</p>
-             <input
+              <input
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ marginBottom: 0 }}
@@ -116,7 +120,8 @@ export default function Login({ username_given }) {
                 required
               ></input>
               <p style={{ marginBottom: 15, marginTop: 2 }}>
-                Must contain letters, special characters, numbers and atleast 6 characters.
+                Must contain letters, special characters, numbers and atleast 6
+                characters.
               </p>
               <input
                 placeholder="Confirm Password"
