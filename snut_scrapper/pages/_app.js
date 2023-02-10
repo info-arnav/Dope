@@ -103,6 +103,9 @@ export default function Home({ Component, pageProps }) {
             className="image-nav"
             onClick={() => {
               setShow("");
+              if (router.pathname == "/") {
+                router.reload();
+              }
             }}
           >
             <Image
@@ -117,6 +120,9 @@ export default function Home({ Component, pageProps }) {
             className="home"
             onClick={() => {
               setShow("");
+              if (router.pathname == "/") {
+                router.reload();
+              }
             }}
           >
             {username == null
