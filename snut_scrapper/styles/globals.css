@@ -495,3 +495,182 @@ a {
     margin-bottom: 20px;
   }
 }
+
+.recruit {
+  padding: 20px;
+}
+
+.recruit .row {
+  display: flex;
+}
+
+.recruit .row .col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.recruit .row .col {
+  flex: 1;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px;
+}
+
+.recruit .row .col label {
+  font-weight: bold;
+}
+
+.recruit-input {
+  flex: 1;
+  border-radius: 10px;
+  margin-left: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.reqruiment-form-button:hover {
+  box-shadow: 2px 2px 4px 0px #c5c0c0;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+  .recruit .row {
+    display: block;
+  }
+}
+
+.alumini-recruitments {
+  margin: 20px;
+  margin-bottom: 53px;
+}
+
+.recruiter-card {
+  padding: 0px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-radius: 20px;
+  border: solid rgb(235, 235, 235) 2px;
+  box-shadow: 2px 2px 7px 0px #c5c0c0;
+  break-inside: avoid !important;
+  min-height: 80px;
+}
+
+.line {
+  color: grey;
+  margin: 20px;
+  margin-top: 0px;
+}
+
+.offers-title {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.recruiter-card .header {
+  background-color: #6699ee;
+  width: calc(100% - 50px);
+  color: white;
+  height: 53px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-overflow: ellipsis;
+}
+
+.recruiter-card .content {
+  margin: 20px;
+}
+
+.recruiter-card .footer {
+  margin: 20px;
+}
+
+.recruiter-card .footer button {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  background-color: white;
+  margin: 2px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.recruiter-card .footer button:hover {
+  box-shadow: 0.01px 0.01px 4px 0px grey;
+}
+
+.job-description-input {
+  min-height: 500px;
+  border-radius: 10px;
+  border: solid black;
+  width: 100%;
+  padding: 10px;
+  color: black;
+}
+
+.forms {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 60px;
+}
+
+.credentials {
+  background-color: white;
+  border-radius: 20px;
+  border: solid grey 0.25px;
+  box-shadow: 2px 2px 7px 0px #c5c0c0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  width: 90%;
+  margin: 20px;
+}
+
+.credentials .title {
+  font-weight: bolder;
+  font-size: 35px;
+}
+
+.credentials input {
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.credentials button {
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border: solid black;
+  font-weight: bold;
+  color: purple;
+  cursor: pointer;
+}
+
+.credentials a {
+  color: black;
+  text-decoration: none;
+}
+
+.error-1 {
+  color: red;
+}

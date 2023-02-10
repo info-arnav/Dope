@@ -21,7 +21,7 @@ export default function Home({ Component, pageProps }) {
       const data = await jose.jwtVerify(userStorage, secret);
       if (data.payload.data) {
         setUsername(data.payload.data);
-        setType(data.payload.type);
+        setType(data.payload.type || "student");
       } else {
         setUsername(false);
         localStorage.removeItem("user");

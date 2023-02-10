@@ -7,7 +7,14 @@ import Link from "next/link";
 
 export default function Find({ username_given }) {
   function reload() {
-    router.reload();
+    setLoading(true);
+    const fetcher = async () => {
+      await axios.post("/api/find").then((e) => {
+        setData(e.data);
+        setLoading(false);
+      });
+    };
+    fetcher();
   }
   useEffect(() => {
     const fetcher = async () => {
@@ -33,66 +40,83 @@ export default function Find({ username_given }) {
       {username_given != null ? (
         username_given != false ? (
           <>
-            <button className="find-people" onClick={reload}>
-              Find New People
-            </button>
-            <div className="grid" style={{ minHeight: 800 }}>
-              {data.map((e) => (
-                <a className="card" href={`/profile/${e.email}`}>
-                  <center>
-                    {e.image ? (
-                      <img width={100} height={100} src={e.image}></img>
-                    ) : (
-                      <img width={100} height={100} src="/profile.webp"></img>
-                    )}
-                    <div className="name">
-                      {e.name ? e.name.toUpperCase() : "Not Provided"}
-                    </div>
-                    <div className="email">{e.roll_no}</div>
-                    <hr></hr>
-                  </center>
-                  <b>
-                    <div className="title">
-                      {!e.instagram_id ? "Prediction" : "Instrgram ID"}
-                    </div>
-                  </b>
-                  {!e.instagram_id ? (
-                    e.insta_predicted ? (
-                      e.insta_predicted.split("*")[0] ? (
-                        <div className="instagram_id">
-                          {e.insta_predicted.split("*")[0].split("$")[0]}
-                        </div>
-                      ) : (
-                        <div class="instagram_id" disabled>
-                          No Prediction
-                        </div>
-                      )
-                    ) : (
-                      <div class="instagram_id" disabled>
-                        No Prediction
-                      </div>
-                    )
-                  ) : (
-                    <div className="instagram_id">{e.instagram_id}</div>
-                  )}
-                  {!e.instagram_id ? (
-                    e.insta_predicted ? (
-                      e.insta_predicted.split("*")[0] ? (
-                        <div className="instagram_name">
-                          {e.insta_predicted.split("*")[0].split("$")[1]}
-                        </div>
-                      ) : (
-                        <div className="instagram_name"></div>
-                      )
-                    ) : (
-                      <div className="instagram_name"></div>
-                    )
-                  ) : (
-                    <div className="instagram_name"></div>
-                  )}
-                </a>
-              ))}
+            <div
+              style={{
+                marginLeft: 20,
+                marginRight: 20,
+              }}
+            >
+              <button
+                className="find-people"
+                onClick={reload}
+                style={{
+                  marginTop: 90,
+                  borderRadius: 20,
+                  color: "white",
+                  backgroundColor: "#6699EE",
+                  width: "100%",
+                  height: 35,
+                  border: "none",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                }}
+              >
+                Find New People
+              </button>
             </div>
+            <>
+              {loading ? (
+                <div
+                  className="empty"
+                  style={{
+                    height: "calc(80vh)",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    display: "flex",
+                  }}
+                >
+                  <Image
+                    src="/loading.gif"
+                    style={{ borderRadius: "100%" }}
+                    width={50}
+                    height={50}
+                  ></Image>
+                </div>
+              ) : (
+                <>
+                  <div className="masonry-container">
+                    {data.map((e) => (
+                      <Link href={`/profile/${e._id}`}>
+                        <div className="card">
+                          <div className="header">
+                            <div className="header-image">
+                              <img
+                                src={e.image || "/profile.webp"}
+                                width={40}
+                                height={40}
+                              ></img>
+                            </div>
+                            <div className="header-title">
+                              {e.name ? e.name.toUpperCase() : "Undefined"}
+                            </div>
+                          </div>
+                          <div
+                            className="body"
+                            style={{ marginBottom: 20, color: "black" }}
+                          >
+                            <br></br>
+                            <div>
+                              <b>Bio : </b>
+                              {e.bio}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
           </>
         ) : (
           <>

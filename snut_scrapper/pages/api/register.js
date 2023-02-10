@@ -20,10 +20,11 @@ export default async (req, res) => {
       .collection("records")
       .find({ email: req.body.username })
       .toArray();
+    let type;
     if (records[0]) {
-      let type = "alumini";
+      type = "alumini";
     } else {
-      let type = "student";
+      type = "student";
     }
     if (data[0]) {
       bcrypt.hash(req.body.password, 10).then(async function (hash) {
