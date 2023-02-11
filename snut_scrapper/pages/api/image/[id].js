@@ -1,3 +1,4 @@
+import { ObjectID } from "mongodb";
 import clientPromise from "../../../middleware/mongodb";
 
 export default async (req, res) => {
@@ -7,7 +8,7 @@ export default async (req, res) => {
     const db = client.db("nsut");
     const data = await db
       .collection("user-images-new")
-      .find({ id: id })
+      .find({ _id: ObjectID(id) })
       .toArray();
     var base64Data = data[0].image.replace(
       /^data:image\/(jpg|jpeg|png|gif|webp|svg);base64,/,
