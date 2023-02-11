@@ -29,12 +29,12 @@ export default function About({ username_given }) {
             got you covered!
           </p>
           {username_given != null && !username_given ? (
-            <Link href="register">
-              <button>Sign Up Now</button>
+            <Link href="login">
+              <button>Login Now</button>
             </Link>
           ) : (
             <Link href="/">
-              <button>Find People</button>
+              <button>Update Something</button>
             </Link>
           )}
         </div>

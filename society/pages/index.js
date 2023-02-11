@@ -268,12 +268,12 @@ export default function Update({ username_given, type_given }) {
                     gossip tea, Dope's got you covered!
                   </p>
                   {username_given != null && !username_given ? (
-                    <Link href="register">
-                      <button>Sign Up Now</button>
+                    <Link href="login">
+                      <button>Login Now</button>
                     </Link>
                   ) : (
                     <Link href="/">
-                      <button>Find People</button>
+                      <button>Update Something</button>
                     </Link>
                   )}
                 </div>
