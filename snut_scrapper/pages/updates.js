@@ -105,7 +105,7 @@ export default function Update({ username_given, type_given }) {
                               ></Image>
                             </div>
                             <div className="header-title">
-                              {e.societies.toUpperCase()}
+                              {e.email.toUpperCase()}
                             </div>
                           </div>
                           <div className="body">
