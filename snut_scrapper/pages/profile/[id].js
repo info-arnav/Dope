@@ -15,11 +15,11 @@ export default function Profile(props) {
   return (
     <div className="profile-back">
       <Head
-        title={`Dope - ${props.email}@nsut.ac.in`}
+        title={`Dope - ${props.name}`}
         description={`This is the profile of ${
           props.name || "No name"
         }. About - ${props.bio || "No Bio"}`}
-        keword={`, ${props.email}@nsut.ac.in, ${props.name}, profile`}
+        keword={`, ${props.name}, profile`}
         url={`profile/${props.email}`}
         image={props.image || "https://www.itsdope.in/profile.webp"}
       ></Head>
