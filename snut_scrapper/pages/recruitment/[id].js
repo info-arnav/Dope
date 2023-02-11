@@ -28,7 +28,42 @@ export default function Profile(props) {
         image={"https://www.itsdope.in/recruitment.jpeg"}
       ></Head>
       {loggedIn != null && loggedIn ? (
-        <div>Some content</div>
+        <div style={{ padding: 10 }}>
+          <center style={{ marginTop: 80 }}>
+            <h1 style={{}}>{props.title}</h1>
+            <p>By {props.email}</p>
+          </center>
+          <br></br>
+          <p>
+            <b>Location : </b>
+            {props.location}
+          </p>
+          <div style={{ marginBottom: 15 }}></div>
+          <p>
+            <b>Department : </b>
+            {props.department}
+          </p>
+          <div style={{ marginBottom: 15 }}></div>
+          <p>
+            <b>Reporting To : </b>
+            {props.reporting}
+          </p>
+          <div style={{ marginBottom: 15 }}></div>
+          <p>
+            <b>Main Requirments : </b>
+            {props.requirments}
+          </p>
+          <div style={{ marginBottom: 15 }}></div>
+          <br></br>
+          <br></br>
+          <b>Details : </b>
+          <p
+            dangerouslySetInnerHTML={{
+              __html:
+                props.description && props.description.replaceAll("\n", "<br>"),
+            }}
+          ></p>
+        </div>
       ) : (
         <div className="empty"></div>
       )}

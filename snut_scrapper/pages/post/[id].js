@@ -13,7 +13,7 @@ export default function Profile(props) {
         url={`profile/${props._id}`}
         image={props.image || "https://www.itsdope.in/logo.png"}
       ></Head>
-      <center>
+      <center style={{ marginTop: 80 }}>
         <h1 style={{}}>{props.title}</h1>
         <p>By {props.email.toUpperCase()}</p>
       </center>

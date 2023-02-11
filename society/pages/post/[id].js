@@ -13,14 +13,15 @@ export default function Profile(props) {
         url={`profile/${props._id}`}
         image={props.image || "https://www.itsdope.in/logo.png"}
       ></Head>
-      <center>
+      <center style={{ marginTop: 80 }}>
         <h1 style={{}}>{props.title}</h1>
-        <p>By {props.societies.toUpperCase()}</p>
+        <p>By {props.email.toUpperCase()}</p>
       </center>
       <br></br>
       <p
         dangerouslySetInnerHTML={{
-          __html: props.description.replaceAll("\n", "<br>"),
+          __html:
+            props.description && props.description.replaceAll("\n", "<br>"),
         }}
       ></p>
     </div>
@@ -31,7 +32,7 @@ export async function getServerSideProps(id) {
   const client = await clientPromise;
   const db = client.db("nsut");
   let data = await db
-    .collection("notices-new")
+    .collection("societies-new-post")
     .find({ _id: ObjectId(id) })
     .toArray();
   data = JSON.parse(JSON.stringify(data));
