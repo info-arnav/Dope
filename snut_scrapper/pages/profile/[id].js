@@ -60,7 +60,13 @@ export default function Profile(props) {
           </p>
           <p>
             <b>About : </b>
-            {props.bio || "Nothing here"}
+            <p
+              dangerouslySetInnerHTML={{
+                __html: props.bio
+                  ? props.bio.replace("\n", "<br>")
+                  : "Nothing here",
+              }}
+            ></p>
           </p>
         </div>
       </div>

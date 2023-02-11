@@ -129,8 +129,8 @@ export default function Update({ username_given, type_given }) {
                       <label>Title: </label>{" "}
                       <input
                         required
-                        value={requirments}
-                        onChange={(e) => setRequirments(e.target.value)}
+                        value={title}
+                        onChange={(e) => seTitle(e.target.value)}
                         className="recruit-input"
                         placeholder="Eg - Orientation"
                       ></input>
