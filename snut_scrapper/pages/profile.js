@@ -139,11 +139,11 @@ export default function Home({ username_given }) {
   return (
     <>
       <Head
-        title="Dope - Discover"
-        description="Find new people on Dope whome you can connect with."
-        keword=", discover"
-        url="find"
-        image="https://www.itsdope.in/social.jpg"
+        title="Dope - Profile"
+        description="Edit your profile over here."
+        keword=", profile"
+        url="profile"
+        image="https://www.itsdope.in/logo.png"
       ></Head>
       {username_given == null ? (
         <div className="empty"></div>

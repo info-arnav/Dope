@@ -99,7 +99,7 @@ export default function Update({ username_given, type_given }) {
                           <div className="header">
                             <div className="header-image">
                               <Image
-                                src={"/societies/" + e.societies + ".png"}
+                                src={`https://nsut-societies.itsdope.in/api/image/${e.email}`}
                                 width={40}
                                 height={40}
                               ></Image>
@@ -133,7 +133,8 @@ export default function Update({ username_given, type_given }) {
                         </p>
                         <p>
                           <b>Description :</b>
-                          {e.description.slice(0, 400) + "....."}
+                          {e.description &&
+                            e.description.slice(0, 400) + "....."}
                         </p>
                       </div>
                       <div className="footer">
@@ -275,7 +276,8 @@ export default function Update({ username_given, type_given }) {
                         </p>
                         <p>
                           <b>Description :</b>{" "}
-                          {e.description.slice(0, 400) + "....."}
+                          {e.description &&
+                            e.description.slice(0, 400) + "....."}
                         </p>
                       </div>
                       <div className="footer">
