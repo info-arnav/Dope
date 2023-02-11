@@ -93,7 +93,7 @@ export default function Update({ username_given, type_given }) {
               active == 1 ? (
                 <div>
                   <div className="masonry-container">
-                    {notices.reverse().map((e) => (
+                    {notices.map((e) => (
                       <Link href={`/post/${e._id}`}>
                         <div className="card">
                           <div className="header">

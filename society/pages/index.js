@@ -189,7 +189,7 @@ export default function Update({ username_given, type_given }) {
                     </div>
                   )}
                   <div className="masonry-container">
-                    {notices.reverse().map((e) => (
+                    {notices.map((e) => (
                       <div className="card">
                         <div className="header">
                           <div className="header-image">
