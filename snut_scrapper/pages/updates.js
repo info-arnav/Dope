@@ -32,7 +32,7 @@ export default function Update({ username_given, type_given }) {
         reporting: reporting,
         requirments: requirments,
         date: new Date(),
-        email: username_given.split("@")[0],
+        email: username_given,
       })
       .then((e) => router.reload());
   };
@@ -58,7 +58,7 @@ export default function Update({ username_given, type_given }) {
     }
     if (username_given && type_given == "alumini") {
       axios
-        .post("/api/recruitment", { email: username_given.split("@")[0] })
+        .post("/api/recruitment", { email: username_given })
         .then((e) => setNotices(e.data));
     } else {
       axios.post("/api/notices").then((e) => setNotices(e.data));
@@ -129,7 +129,7 @@ export default function Update({ username_given, type_given }) {
                           <b>Requirments :</b> {e.requirments}
                         </p>
                         <p>
-                          <b>By :</b> {e.email + "@nsut.ac.in"}
+                          <b>By :</b> {e.email}
                         </p>
                         <p>
                           <b>Description :</b>

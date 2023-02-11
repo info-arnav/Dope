@@ -6,8 +6,8 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("user-images")
-      .find({ email: id })
+      .collection("user-images-new")
+      .find({ id: id })
       .toArray();
     var base64Data = data[0].image.replace(
       /^data:image\/(jpg|jpeg|png|gif|webp|svg);base64,/,

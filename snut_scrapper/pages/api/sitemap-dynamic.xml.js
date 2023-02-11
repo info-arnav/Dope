@@ -10,7 +10,7 @@ export default async (req, res) => {
                     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
                     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">`;
     data.map((e) => {
-      response = `${response}<url><loc>https://www.itsdope.in/profile/${e.email}</loc><lastmod>2023-01-19</lastmod></url>`;
+      response = `${response}<url><loc>https://www.itsdope.in/profile/${e._id}</loc><lastmod>2023-01-19</lastmod></url>`;
     });
     response = response + "</urlset>";
     res.setHeader("Content-Type", "text/xml");

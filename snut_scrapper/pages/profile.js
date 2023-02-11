@@ -16,6 +16,8 @@ export default function Home({ username_given }) {
   const [changed, setChanged] = useState(false);
   const [instagram, setInstagram] = useState("");
   const [snapchat, setSnapchat] = useState("");
+  const [branch, setBranch] = useState("");
+  const [company, setCompany] = useState("");
   const [github, setGithub] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
@@ -30,11 +32,9 @@ export default function Home({ username_given }) {
     await axios.post("/api/algolia", {
       method: "update",
       object: {
-        objectID: userData.email,
+        objectID: userData._id,
         roll_no: roll_no,
-        image: image
-          ? `https://www.itsdope.in/api/image/${userData.email}`
-          : "",
+        image: image ? `https://www.itsdope.in/api/image/${userData._id}` : "",
         name: name,
         bio: bio,
         instagram_id: instagram,
@@ -43,15 +43,15 @@ export default function Home({ username_given }) {
         whatsapp: whatsapp,
         mail: mail,
         github: github,
+        branch: branch,
+        company: company,
       },
     });
-    if (
-      image &&
-      image != `https://www.itsdope.in/api/image/${userData.email}`
-    ) {
+    if (image && image != `https://www.itsdope.in/api/image/${userData._id}`) {
       await axios.post("/api/update-image", {
         email: userData.email,
         image: image,
+        id: userData._id,
       });
     }
     await axios
@@ -61,7 +61,7 @@ export default function Home({ username_given }) {
           email: userData.email,
           roll_no: roll_no,
           image: image
-            ? `https://www.itsdope.in/api/image/${userData.email}`
+            ? `https://www.itsdope.in/api/image/${userData._id}`
             : "",
           name: name,
           whatsapp: whatsapp,
@@ -72,6 +72,8 @@ export default function Home({ username_given }) {
           whatsapp: whatsapp,
           snapchat: snapchat,
           github: github,
+          branch: branch,
+          company: company,
         },
       })
       .then((e) => reload());
@@ -80,26 +82,26 @@ export default function Home({ username_given }) {
     if (username_given == false) {
       router.push("/login");
     } else if (username_given) {
-      axios
-        .post("/api/user", { email: username_given.split("@")[0] })
-        .then((e) => {
-          if (e.data.out) {
-            localStorage.removeItem("user");
-            reload();
-          } else {
-            setInstagram(e.data.instagram_id);
-            setBio(e.data.bio);
-            setImage(e.data.image);
-            setName(e.data.name);
-            setRoll_no(e.data.roll_no);
-            setSnapchat(e.data.snapchat);
-            setMail(e.data.mail);
-            setWhatsapp(e.data.whatsapp);
-            setGithub(e.data.github);
-            setLinkedin(e.data.linkedin);
-            setUserData(e.data);
-          }
-        });
+      axios.post("/api/user", { email: username_given }).then((e) => {
+        if (e.data.out) {
+          localStorage.removeItem("user");
+          reload();
+        } else {
+          setInstagram(e.data.instagram_id);
+          setBio(e.data.bio);
+          setImage(e.data.image);
+          setName(e.data.name);
+          setRoll_no(e.data.roll_no);
+          setSnapchat(e.data.snapchat);
+          setMail(e.data.mail);
+          setWhatsapp(e.data.whatsapp);
+          setGithub(e.data.github);
+          setLinkedin(e.data.linkedin);
+          setBranch(e.data.branch);
+          setCompany(e.data.company);
+          setUserData(e.data);
+        }
+      });
     }
   }, [username_given]);
   const imageHandle = async (e) => {
@@ -146,197 +148,150 @@ export default function Home({ username_given }) {
       {username_given == null ? (
         <div className="empty"></div>
       ) : username_given == false ? (
-        <>
-          <div className="about-banner">
-            <div>
-              <p>Dope</p>
-              <Link href="/register">
-                <button className="about-button">Register Now</button>
-              </Link>
-            </div>
-          </div>
-          <p className="about-title">About</p>
-          <p className="about-content">
-            Dope assists NSUT students in making the transition to college,
-            which is a major adjustment in their lives. You can interact and
-            socialise with new students at the college by learning details about
-            them, such as their Instagram handles, checking out the latest news
-            in society, and even discussing any ideas you have in secret.{" "}
-            <br></br>
-            <br></br>Before any freshmen register, the site already has some
-            predicated information about them; all they need to do is register
-            using their official email addresses to change that information.{" "}
-            <br></br>
-            <br></br>
-            Need more? Simply post your ideas in the site's anonymous section.
-          </p>
-        </>
+        <div className="empty"></div>
       ) : userData ? (
         <div className="profile-back">
           <div className="profile-front">
-            <center>
-              {image ? (
-                <img width={200} height={200} src={image}></img>
-              ) : (
-                <img width={200} height={200} src="/profile.webp"></img>
-              )}
-              <input
-                className="profile-input"
-                placeholder="Name"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              ></input>
-
-              <input
-                className="profile-input"
-                onChange={(e) => setRoll_no(e.target.value)}
-                value={roll_no}
-                placeholder="Roll No"
-              ></input>
-
-              <hr></hr>
-              <br></br>
-              <p className="bio">
-                <b>
-                  <div className="title">Bio</div>
-                </b>
-                <textarea
+            <div className="row">
+              <div className="col center">
+                <input
+                  id="profile-input"
+                  onChange={imageHandle}
+                  type="file"
                   placeholder="Nothing here"
-                  className="profile-text-area"
+                ></input>
+                <img
+                  src={image || "/profile.webp"}
+                  onClick={() => {
+                    let inputbox = document.getElementById("profile-input");
+                    inputbox.click();
+                  }}
+                  width={100}
+                  style={{ borderRadius: 20 }}
+                ></img>
+                <p style={{ fontSize: 11 }}>click photo to change</p>
+              </div>
+              <div className="col left">
+                <p>
+                  <b>Name :</b>
+                  <br className="br-hidden"></br>
+                  <input
+                    style={{
+                      width: "100%",
+                      borderRadius: 5,
+                      boxShadow: "#bab5b5 2px 2px 7px 0px",
+                      marginTop: 5,
+                      border: "none",
+                    }}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  ></input>
+                </p>
+                <p>
+                  <b>Email :</b>
+                  <br className="br-hidden"></br>
+                  {" " + (userData.email || "-")}
+                </p>
+              </div>
+            </div>{" "}
+            <br className="br-hidden"></br>
+            <div className="left">
+              {" "}
+              <p>
+                <b>Branch/Position :</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                  }}
+                  value={branch}
+                  onChange={(e) => setBranch(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                <b>Company :</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                  }}
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                <b>About : </b>{" "}
+                <textarea
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                  }}
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
-              </p>
-            </center>
-            <b>
-              <div className="title">Email ID</div>
-              <input
-                className="profile-input"
-                disabled
-                value={userData.email + "@nsut.ac.in"}
-              ></input>
-            </b>
-            <br></br>
-            <b>
-              <div className="title">Instagram ID</div>
-              <input
-                className="profile-input"
-                value={instagram}
-                placeholder="Nothing here"
-                onChange={(e) => setInstagram(e.target.value)}
-              ></input>
-            </b>
-            <br></br>
-
-            <b>
-              <div className="title">Snapchat</div>
-              <input
-                className="profile-input"
-                value={snapchat}
-                placeholder="Nothing here"
-                onChange={(e) => setSnapchat(e.target.value)}
-              ></input>
-            </b>
-            <br />
-            <b>
-              <div className="title">Linkedin URL</div>
-              <input
-                className="profile-input"
-                value={linkedin}
-                placeholder="Nothing here"
-                onChange={(e) => setLinkedin(e.target.value)}
-              ></input>
-            </b>
-            <br />
-            <b>
-              <div className="title">Github URL</div>
-              <input
-                className="profile-input"
-                value={github}
-                placeholder="Nothing here"
-                onChange={(e) => setGithub(e.target.value)}
-              ></input>
-            </b>
-            <br />
-            <b>
-              <div className="title">Whatsapp Number</div>
-            </b>
-            <p style={{ margin: 2, marginBottom: 5 }}>
-              Only visible to logged in users
-            </p>
-            <b>
-              <input
-                className="profile-input"
-                value={whatsapp}
-                placeholder="Nothing here"
-                onChange={(e) => setWhatsapp(e.target.value)}
-              ></input>
-            </b>
-            <br />
-            <b>
-              <div className="title">Personal Mail</div>
-            </b>
-            <p style={{ margin: 2, marginBottom: 5 }}>
-              Only visible to logged in users
-            </p>
-            <b>
-              <input
-                className="profile-input"
-                value={mail}
-                placeholder="Nothing here"
-                onChange={(e) => setMail(e.target.value)}
-              ></input>
-            </b>
-            <br />
-            <b>
-              <div className="title">Image</div>
-              <input
-                className="profile-input"
-                onChange={imageHandle}
-                type="file"
-                placeholder="Nothing here"
-              ></input>
-            </b>
-            <br />
-            <button
-              onClick={update}
-              disabled={disabled}
-              style={{
-                borderRadius: 20,
-                color: "white",
-                backgroundColor: "black",
-                width: "100%",
-                cursor: "pointer",
-                padding: 10,
-                marginTop: 20,
-                fontWeight: "bold",
-              }}
-            >
-              {disabled ? "Loading...." : "Update Profile"}
-            </button>
-            <button
-              onClick={(e) => {
-                localStorage.removeItem("user");
-                reload();
-              }}
-              style={{
-                borderRadius: 20,
-                color: "white",
-                backgroundColor: "black",
-                width: "100%",
-                padding: 10,
-                cursor: "pointer",
-                marginTop: 10,
-                fontWeight: "bold",
-              }}
-            >
-              Logout
-            </button>
+              </p>{" "}
+              <button
+                onClick={update}
+                disabled={disabled}
+                style={{
+                  borderRadius: 20,
+                  color: "white",
+                  backgroundColor: "black",
+                  width: "100%",
+                  cursor: "pointer",
+                  padding: 10,
+                  marginTop: 20,
+                  fontWeight: "bold",
+                }}
+              >
+                {disabled ? "Loading...." : "Update Profile"}
+              </button>
+              <button
+                onClick={(e) => {
+                  localStorage.removeItem("user");
+                  reload();
+                }}
+                style={{
+                  borderRadius: 20,
+                  color: "white",
+                  backgroundColor: "black",
+                  width: "100%",
+                  padding: 10,
+                  cursor: "pointer",
+                  marginTop: 10,
+                  fontWeight: "bold",
+                }}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       ) : (
-        <div className="empty">
-          <Image src="/loading.gif" width={300} height={300}></Image>
+        <div
+          className="empty"
+          style={{
+            height: "calc(100vh)",
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+          }}
+        >
+          <Image
+            src="/loading.gif"
+            style={{ borderRadius: "100%" }}
+            width={50}
+            height={50}
+          ></Image>
         </div>
       )}
     </>

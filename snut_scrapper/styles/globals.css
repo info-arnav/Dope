@@ -674,3 +674,79 @@ a {
 .error-1 {
   color: red;
 }
+
+.profile-back {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/profile-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 53px;
+}
+
+.profile-front {
+  background-color: white;
+  border-radius: 20px;
+  border: solid grey 0.25px;
+  box-shadow: 2px 2px 7px 0px #c5c0c0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  width: 90%;
+  margin: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.profile-front .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-front .row .col.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-front .row .col.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile-front .row .col.left * {
+  margin: 0px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  font-size: 13.5px;
+}
+
+.left {
+  margin-left: 10px;
+  font-size: 13.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+#profile-input {
+  display: none;
+}
+
+@media only screen and (max-width: 450px) {
+  .profile-front .row {
+    display: block !important;
+  }
+  .br-hidden {
+    display: none;
+  }
+  .profile-front .col.left {
+    margin-top: 18px;
+  }
+}

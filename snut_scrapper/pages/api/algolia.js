@@ -7,7 +7,7 @@ const algolia = (req, res) => {
   );
   const index = client.initIndex("dev_NSUT-NEW");
   if (req.body.method == "create") {
-    index.saveObjects([{ objectID: req.body.email }]).then(({ objectIDs }) => {
+    index.saveObjects([{ objectID: req.body._id }]).then(({ objectIDs }) => {
       res.send("success");
     });
   } else if (req.body.method == "update") {

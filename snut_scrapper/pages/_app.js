@@ -67,10 +67,10 @@ export default function Home({ Component, pageProps }) {
   };
   const Hit = (e) => {
     return (
-      <Link href={`/profile/${e.hit._id}`}>
+      <Link onClick={() => setShow("")} href={`/profile/${e.hit.objectID}`}>
         <div className="card">
           <img
-            src={e.hit.image || "profile.webp"}
+            src={e.hit.image || "/profile.webp"}
             style={{ width: "100%" }}
           ></img>
           <div

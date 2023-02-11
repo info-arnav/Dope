@@ -7,15 +7,15 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("user-images")
+      .collection("user-images-new")
       .find({ email: req.body.email })
       .toArray();
     if (data[0]) {
       await db
-        .collection("user-images")
+        .collection("user-images-new")
         .update({ email: req.body.email }, { $set: req.body });
     } else {
-      await db.collection("user-images").insert(req.body);
+      await db.collection("user-images-new").insert(req.body);
     }
     res.send({ error: false });
   } catch (e) {

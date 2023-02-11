@@ -28,25 +28,20 @@ export default function Login({ username_given }) {
     e.preventDefault();
     setError(false);
     setDisabled(true);
-    if (username.slice(-11) == "@nsut.ac.in") {
-      axios.post("/api/otp", { username: username }).then(async (e) => {
-        if (e.data.error) {
-          setError("Some error occured");
-          setDisabled(false);
-        } else if (e.data.registered) {
-          setError("Already registered");
-          setDisabled(false);
-        } else {
-          setHash(parseInt(e.data.otp, 16));
-          setError(false);
-          setShowOtp(true);
-          setDisabled(false);
-        }
-      });
-    } else {
-      setError("Email not of format @nsut.ac.in");
-      setDisabled(false);
-    }
+    axios.post("/api/otp", { username: username }).then(async (e) => {
+      if (e.data.error) {
+        setError("Some error occured, maybe you are not in the database");
+        setDisabled(false);
+      } else if (e.data.registered) {
+        setError("Already registered");
+        setDisabled(false);
+      } else {
+        setHash(parseInt(e.data.otp, 16));
+        setError(false);
+        setShowOtp(true);
+        setDisabled(false);
+      }
+    });
   };
   const auth2 = async (e) => {
     e.preventDefault();

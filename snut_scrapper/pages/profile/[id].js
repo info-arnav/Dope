@@ -24,181 +24,45 @@ export default function Profile(props) {
         image={props.image || "https://www.itsdope.in/profile.webp"}
       ></Head>
       <div className="profile-front">
-        <center>
-          {props.image ? (
-            <img width={200} height={200} src={props.image}></img>
-          ) : (
-            <img width={200} height={200} src="/profile.webp"></img>
-          )}
-          <div className="name">
-            {props.name
-              ? props.name.toUpperCase() || "Not Provided"
-              : "Not Provided"}
+        <div className="row">
+          <div className="col center">
+            <img
+              src={props.image || "/profile.webp"}
+              width={100}
+              style={{ borderRadius: 20 }}
+            ></img>
           </div>
-          <div className="email">{props.roll_no}</div>
-          <hr></hr>
-          <br></br>
-          {props.bio ? (
-            <p
-              className="bio"
-              dangerouslySetInnerHTML={{
-                __html: props.bio.replaceAll("\n", "<br>"),
-              }}
-            ></p>
-          ) : (
-            <p className="bio">No Bio Added</p>
-          )}
-        </center>
-        <b>
-          <div className="title" style={{ marginBottom: 0 }}>
-            Email
-          </div>
-        </b>
-        <p style={{ marginTop: 0 }}>{props.email}@nsut.ac.in</p>
-        <b>
-          <div className="title">
-            {!props.instagram_id ? "Prediction" : "Instrgram ID"}
-          </div>
-        </b>
-        {!props.instagram_id ? (
-          props.insta_predicted ? (
-            props.insta_predicted.split("*")[0] ? (
-              <a
-                className="instagram_id"
-                href={`https://www.instagram.com/${
-                  props.insta_predicted.split("*")[0].split("$")[0]
-                }`}
-              >
-                {props.insta_predicted.split("*")[0].split("$")[0]}
-              </a>
-            ) : (
-              <div class="instagram_id" disabled>
-                No Prediction
-              </div>
-            )
-          ) : (
-            <div class="instagram_id" disabled>
-              No Prediction
-            </div>
-          )
-        ) : (
-          <a
-            className="instagram_id"
-            href={`https://www.instagram.com/${props.instagram_id}`}
-          >
-            {props.instagram_id}
-          </a>
-        )}
-        {!props.instagram_id ? (
-          props.insta_predicted ? (
-            props.insta_predicted.split("*")[0] ? (
-              <div className="instagram_name">
-                {props.insta_predicted.split("*")[0].split("$")[1]}
-              </div>
-            ) : (
-              <div className="instagram_name"></div>
-            )
-          ) : (
-            <div className="instagram_name"></div>
-          )
-        ) : (
-          <div className="instagram_name"></div>
-        )}
-        <b>
-          <div className="title">{!props.instagram_id && "Possibilities"}</div>
-        </b>
-        {!props.instagram_id &&
-        props.insta_posibilities &&
-        props.insta_posibilities.split("*").length > 0 ? (
-          <div className="possibilities">
-            {props.insta_posibilities.split("*").map((e) => (
-              <div>
-                <a
-                  className="instagram_id"
-                  href={`https://www.instagram.com/${e.split("$")[0]}`}
-                >
-                  {e.split("$")[0]}
-                </a>
-                <div className="instagram_name">{e.split("$")[1]}</div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          !props.instagram_id && (
-            <div class="instagram_id" disabled>
-              -
-            </div>
-          )
-        )}
-        {props.linkedin && (
-          <div>
-            {" "}
-            <b>
-              <div className="title">LinkedIn URL</div>
-            </b>{" "}
-            <a className="instagram_id" href={props.linkedin}>
-              {props.linkedin}
-            </a>
-          </div>
-        )}
-        <div style={{ marginTop: 10 }}></div>
-        {props.github && (
-          <div>
-            {" "}
-            <b>
-              <div className="title">Github URL</div>
-            </b>{" "}
-            <a className="instagram_id" href={props.github}>
-              {props.github}
-            </a>
-          </div>
-        )}
-        <div style={{ marginTop: 10 }}></div>
-        {props.snapchat && (
-          <div>
-            {" "}
-            <b>
-              <div className="title">Snapchat</div>
-            </b>{" "}
-            <a
-              className="instagram_id"
-              href={`https://snapchat.com/add/${props.snapchat}`}
-            >
-              {props.snapchat}
-            </a>
-          </div>
-        )}
-        {loggedIn != null && loggedIn && (
-          <>
-            <div style={{ marginTop: 10 }}></div>
-            {props.whatsapp && (
-              <div>
-                {" "}
-                <b>
-                  <div className="title">Whatsapp Number</div>
-                </b>{" "}
-                <a
-                  className="instagram_id"
-                  href={`https://wa.me/${props.whatsapp}`}
-                >
-                  {props.whatsapp}
-                </a>
-              </div>
+          <div className="col left">
+            <p>
+              <b>Name :</b>
+              <br className="br-hidden"></br>
+              {" " + (props.name || "-")}
+            </p>
+            {loggedIn != null && loggedIn && (
+              <p>
+                <b>Email :</b>
+                <br className="br-hidden"></br>
+                {" " + (props.email || "-")}
+              </p>
             )}
-            <div style={{ marginTop: 10 }}></div>
-            {props.mail && (
-              <div>
-                {" "}
-                <b>
-                  <div className="title">Personal Email</div>
-                </b>{" "}
-                <a className="instagram_id" href={`mailto:${props.mail}`}>
-                  {props.mail}
-                </a>
-              </div>
-            )}
-          </>
-        )}
+          </div>
+        </div>{" "}
+        <br className="br-hidden"></br>
+        <div className="left">
+          {" "}
+          <p>
+            <b>Branch/Position :</b>
+            {" " + (props.branch || "-")}
+          </p>
+          <p>
+            <b>Company :</b>
+            {" " + (props.company || "None")}
+          </p>
+          <p>
+            <b>About : </b>
+            {props.bio || "Nothing here"}
+          </p>
+        </div>
       </div>
     </div>
   );
