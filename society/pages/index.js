@@ -130,7 +130,7 @@ export default function Update({ username_given, type_given }) {
                         value={requirments}
                         onChange={(e) => setRequirments(e.target.value)}
                         className="recruit-input"
-                        placeholder="Eg - React"
+                        placeholder="Eg - Orientation"
                       ></input>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function Update({ username_given, type_given }) {
                         className="job-description-input"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Eg - Responsibilities, Requirments, Salary"
+                        placeholder="Eg - Form link"
                       ></textarea>
                     </div>
                   </div>
