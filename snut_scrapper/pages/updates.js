@@ -63,7 +63,7 @@ export default function Update({ username_given, type_given }) {
     } else {
       axios.post("/api/notices").then((e) => setNotices(e.data));
     }
-  }, [username_given, type_given, notices]);
+  }, [username_given, type_given]);
   const router = useRouter();
   return (
     <>

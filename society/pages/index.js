@@ -92,10 +92,12 @@ export default function Update({ username_given, type_given }) {
     });
   };
   useEffect(() => {
-    axios
-      .post("/api/recruitment", { email: username_given })
-      .then((e) => setNotices(e.data));
-  }, [username_given, type_given, notices]);
+    if (username_given) {
+      axios
+        .post("/api/recruitment", { email: username_given })
+        .then((e) => setNotices(e.data));
+    }
+  }, [username_given, type_given]);
   const router = useRouter();
   return (
     <>
