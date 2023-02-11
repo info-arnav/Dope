@@ -8,7 +8,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db
-      .collection("soccieties-new")
+      .collection("societies-new-post")
       .find({ _id: ObjectId(req.body.id) })
       .toArray();
     if (data[0]) {

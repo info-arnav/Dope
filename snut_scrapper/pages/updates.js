@@ -98,11 +98,11 @@ export default function Update({ username_given, type_given }) {
                         <div className="card">
                           <div className="header">
                             <div className="header-image">
-                              <Image
+                              <img
                                 src={`https://nsut-societies.itsdope.in/api/image/${e.email}`}
                                 width={40}
                                 height={40}
-                              ></Image>
+                              ></img>
                             </div>
                             <div className="header-title">
                               {e.email.toUpperCase()}
