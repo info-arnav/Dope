@@ -67,7 +67,7 @@ export default function Home({ Component, pageProps }) {
   };
   const Hit = (e) => {
     return (
-      <Link onClick={() => setShow("")} href={`/profile/${e.hit.objectID}`}>
+      <>
         <div className="card">
           <img
             src={e.hit.image || "/profile.webp"}
@@ -91,7 +91,7 @@ export default function Home({ Component, pageProps }) {
             </div>
           </div>
         </div>
-      </Link>
+      </>
     );
   };
   return (

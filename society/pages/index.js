@@ -95,7 +95,7 @@ export default function Update({ username_given, type_given }) {
     axios
       .post("/api/recruitment", { email: username_given })
       .then((e) => setNotices(e.data));
-  }, [username_given, type_given]);
+  }, [username_given, type_given, notices]);
   const router = useRouter();
   return (
     <>
