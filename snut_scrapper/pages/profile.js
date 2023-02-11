@@ -182,6 +182,7 @@ export default function Home({ username_given }) {
                       boxShadow: "#bab5b5 2px 2px 7px 0px",
                       marginTop: 5,
                       border: "none",
+                      border: "solid gray 1px",
                     }}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -206,6 +207,7 @@ export default function Home({ username_given }) {
                     boxShadow: "#bab5b5 2px 2px 7px 0px",
                     marginTop: 5,
                     border: "none",
+                    border: "solid grey 1px",
                   }}
                   value={branch}
                   onChange={(e) => setBranch(e.target.value)}
@@ -220,6 +222,7 @@ export default function Home({ username_given }) {
                     boxShadow: "#bab5b5 2px 2px 7px 0px",
                     marginTop: 5,
                     border: "none",
+                    border: "solid grey 1px",
                   }}
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
@@ -234,6 +237,7 @@ export default function Home({ username_given }) {
                     boxShadow: "#bab5b5 2px 2px 7px 0px",
                     marginTop: 5,
                     border: "none",
+                    border: "solid grey 1px",
                   }}
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
