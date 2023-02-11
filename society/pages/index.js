@@ -260,7 +260,7 @@ export default function Update({ username_given, type_given }) {
                   </div>
                   <p className="about-content">
                     Dope is a platform that makes students' transition to
-                    university just that more seamless.
+                    university just that much more seamless.
                   </p>
                   <p className="about-content large">
                     Be it keeping upto date with the hectic schedules of

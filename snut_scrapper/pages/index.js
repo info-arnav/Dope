@@ -130,7 +130,7 @@ export default function Find({ username_given }) {
                 </div>
                 <p className="about-content">
                   Dope is a platform that makes your transition to university
-                  just that more seamless.
+                  just that much more seamless.
                 </p>
                 <p className="about-content large">
                   Be it keeping upto date with the hectic schedules of
