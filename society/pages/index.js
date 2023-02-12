@@ -253,7 +253,7 @@ export default function Update({ username_given, type_given }) {
             <>
               <div className="about-banner">
                 <div>
-                  <p className="about-title large">What are we ?</p>
+                  <p className="about-title large">What are we?</p>
                   <div className="inline">
                     <p className="about-title-medium">... Simply put, we're </p>
                     <p className="about-title">Dope.</p>
