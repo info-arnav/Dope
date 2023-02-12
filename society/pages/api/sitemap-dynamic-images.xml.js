@@ -12,7 +12,7 @@ export default async (req, res) => {
       if (e.image) {
         response =
           response +
-          `<url><loc>https://nsut-societies.itsdope.in/post/${e._id}</loc><image:image> <image:loc>${e.image}</image:loc></image:image></url>`;
+          `<url><loc>https://nsut-societies.itsdope.in/post/${e._id}</loc><image:image> <image:loc>https://nsut-societies.itsdope.in/api/society-post${e.image}</image:loc></image:image></url>`;
       }
     });
     response = response + "</urlset>";
