@@ -99,7 +99,7 @@ export default function Update({ username_given, type_given }) {
                           <div className="header">
                             <div className="header-image">
                               <img
-                                src={`https://www.itsdope.in/api/society-post/${e.email}`}
+                                src={`https://www.itsdope.in/api/image-society/${e.email}`}
                                 width={40}
                                 height={40}
                               ></img>
