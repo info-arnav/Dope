@@ -1,5 +1,5 @@
-import clientPromise from "../../../society/middleware/mongodb";
 import nodemailer from "nodemailer";
+import clientPromise from "../../middleware/mongodb";
 
 export default async (req, res) => {
   try {
