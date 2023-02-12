@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "../../components/head";
 import clientPromise from "../../middleware/mongodb";
@@ -10,6 +11,7 @@ export default function Profile(props) {
       router.push("/login");
     }
   }, [props.username_given]);
+  const router = useRouter();
   return (
     <div className="profile-back">
       <Head
@@ -21,8 +23,8 @@ export default function Profile(props) {
         url={`profile/${props._id}`}
         image={props.image || "https://www.itsdope.in/profile.webp"}
       ></Head>
-      {username_given != null ? (
-        username_given ? (
+      {props.username_given != null ? (
+        props.username_given ? (
           <div className="profile-front">
             <div className="row">
               <div className="col center">
