@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 
 export default async (req, res) => {
   try {
+    let a;
     const client = await clientPromise;
     const db = client.db("nsut");
     const data = await db.collection("societies-new-post").find({}).toArray();
