@@ -21,7 +21,7 @@ export default function About({ username_given }) {
           </div>
           <p className="about-content">
             Dope is a platform that makes your transition to university just
-            that much more seamless.
+            that much more seemless.
           </p>
           <p className="about-content large">
             Be it keeping upto date with the hectic schedules of societies,
