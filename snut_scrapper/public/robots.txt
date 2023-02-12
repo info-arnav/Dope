@@ -6,5 +6,9 @@ Allow: /api/image/*
 Disallow: /chat
 Disallow: /404
 Disallow: /_error
+Disallow: /profile/*
+Disallow: /recruitment/*
+Disallow: /profile
+Disallow: /recruitment
 
 Sitemap: https://www.itsdope.in/sitemap.xml

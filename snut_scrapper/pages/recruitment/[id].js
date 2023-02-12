@@ -22,7 +22,7 @@ export default function Profile(props) {
     <div>
       <Head
         title={`Dope - Offer | ${props.title}`}
-        description={`This is a recruitment offered at dope by ${props.email}.`}
+        description={`This is a recruitment offered at dope. Login to view more details`}
         keword={`, recruitment`}
         url={`recruitment/${props._id}`}
         image={"https://www.itsdope.in/recruitment.jpeg"}
