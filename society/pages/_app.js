@@ -128,13 +128,25 @@ export default function Home({ Component, pageProps }) {
             {username == null ? "     " : username == false ? "HOME" : "UPDATE"}
           </Link>
 
-          <SearchBox
-            onChange={(e) => {
-              setShow(e.target.value);
-              window.scrollTo(0, 0);
-            }}
-            showLoadingIndicator={false}
-          />
+          {username != null ? (
+            username ? (
+              <SearchBox
+                onChange={(e) => {
+                  setShow(e.target.value);
+                  window.scrollTo(0, 0);
+                }}
+                showLoadingIndicator={false}
+              />
+            ) : (
+              <>
+                <input disabled placeholder="Login to Search...."></input>
+              </>
+            )
+          ) : (
+            <>
+              <input disabled placeholder="Login to Search...."></input>
+            </>
+          )}
           <div style={{ marginLeft: 5 }}></div>
           {username == null ? (
             <a disabled className="nav-image-right">
