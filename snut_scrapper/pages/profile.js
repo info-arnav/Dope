@@ -161,6 +161,7 @@ export default function Home({ username_given }) {
                   placeholder="Nothing here"
                 ></input>
                 <img
+                  alt="profile picture"
                   src={image || "/profile.webp"}
                   onClick={() => {
                     let inputbox = document.getElementById("profile-input");
@@ -295,6 +296,7 @@ export default function Home({ username_given }) {
             style={{ borderRadius: "100%" }}
             width={50}
             height={50}
+            alt="loading animation"
           ></Image>
         </div>
       )}

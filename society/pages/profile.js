@@ -111,6 +111,7 @@ export default function Home({ username_given }) {
                   placeholder="Nothing here"
                 ></input>
                 <img
+                  alt="society logo"
                   src={
                     `https://nsut-societies.itsdope.in/api/image/${userData.email}` ||
                     "/profile.webp"
@@ -201,6 +202,7 @@ export default function Home({ username_given }) {
             style={{ borderRadius: "100%" }}
             width={50}
             height={50}
+            alt="loading animation"
           ></Image>
         </div>
       )}

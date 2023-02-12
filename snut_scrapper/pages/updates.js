@@ -99,6 +99,7 @@ export default function Update({ username_given, type_given }) {
                           <div className="header">
                             <div className="header-image">
                               <img
+                                alt="society logo"
                                 src={`https://www.itsdope.in/api/image-society/${e.email}`}
                                 width={40}
                                 height={40}
@@ -110,6 +111,7 @@ export default function Update({ username_given, type_given }) {
                           </div>
                           <div className="body">
                             <img
+                              alt="post image"
                               src={`https://www.itsdope.in/api/society-post/${e.image}`}
                             ></img>
                           </div>
@@ -315,6 +317,7 @@ export default function Update({ username_given, type_given }) {
                 style={{ borderRadius: "100%" }}
                 width={50}
                 height={50}
+                alt="loading animation"
               ></Image>
             </div>
           )

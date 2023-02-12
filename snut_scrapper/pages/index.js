@@ -80,6 +80,7 @@ export default function Find({ username_given }) {
                     style={{ borderRadius: "100%" }}
                     width={50}
                     height={50}
+                    alt="loading animation"
                   ></Image>
                 </div>
               ) : (
@@ -89,6 +90,7 @@ export default function Find({ username_given }) {
                       <Link href={`/profile/${e._id}`}>
                         <div className="card">
                           <img
+                            alt="profile picture"
                             src={e.image || "profile.webp"}
                             style={{ width: "100%" }}
                           ></img>
@@ -151,7 +153,12 @@ export default function Find({ username_given }) {
             <section className="about-section">
               <div className="row">
                 <div className="col">
-                  <Image src="/g1.webp" width={290} height={290}></Image>
+                  <Image
+                    src="/g1.webp"
+                    width={290}
+                    height={290}
+                    alt="graphic for say to goodbye to asking around"
+                  ></Image>
                 </div>
                 <div className="col vertical">
                   <div className="col-title">Say goodbye to asking around!</div>
@@ -175,14 +182,24 @@ export default function Find({ username_given }) {
                   </div>
                 </div>
                 <div className="col">
-                  <Image src="/g2.webp" width={290} height={290}></Image>
+                  <Image
+                    src="/g2.webp"
+                    width={290}
+                    height={290}
+                    alt="graphic for distractions a thing of the past"
+                  ></Image>
                 </div>
               </div>
             </section>
             <section className="about-section">
               <div className="row">
                 <div className="col">
-                  <Image src="/g3.webp" width={290} height={290}></Image>
+                  <Image
+                    src="/g3.webp"
+                    width={290}
+                    height={290}
+                    alt="graphic for about section"
+                  ></Image>
                 </div>
                 <div className="col vertical">
                   <div className="col-title">

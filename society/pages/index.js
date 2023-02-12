@@ -196,6 +196,7 @@ export default function Update({ username_given, type_given }) {
                         <div className="header">
                           <div className="header-image">
                             <img
+                              alt="society logo"
                               src={`https://nsut-societies.itsdope.in/api/image/${e.email}`}
                               width={40}
                               height={40}
@@ -205,6 +206,7 @@ export default function Update({ username_given, type_given }) {
                         </div>
                         <div className="body">
                           <img
+                            alt="post picture"
                             src={
                               e.image
                                 ? `https://nsut-societies.itsdope.in/api/society-post/${e.image}`
@@ -248,6 +250,7 @@ export default function Update({ username_given, type_given }) {
                 }}
               >
                 <Image
+                  alt="loading animation"
                   src="/loading.gif"
                   style={{ borderRadius: "100%" }}
                   width={50}
@@ -287,7 +290,12 @@ export default function Update({ username_given, type_given }) {
               <section className="about-section">
                 <div className="row">
                   <div className="col">
-                    <Image src="/g1.webp" width={290} height={290}></Image>
+                    <Image
+                      src="/g1.webp"
+                      width={290}
+                      height={290}
+                      alt="graphic for say goodbye to asking around"
+                    ></Image>
                   </div>
                   <div className="col vertical">
                     <div className="col-title">
@@ -313,14 +321,24 @@ export default function Update({ username_given, type_given }) {
                     </div>
                   </div>
                   <div className="col">
-                    <Image src="/g2.webp" width={290} height={290}></Image>
+                    <Image
+                      src="/g2.webp"
+                      width={290}
+                      height={290}
+                      alt="graphic for distractions a thing of the past"
+                    ></Image>
                   </div>
                 </div>
               </section>
               <section className="about-section">
                 <div className="row">
                   <div className="col">
-                    <Image src="/g3.webp" width={290} height={290}></Image>
+                    <Image
+                      src="/g3.webp"
+                      width={290}
+                      height={290}
+                      alt="graphic"
+                    ></Image>
                   </div>
                   <div className="col vertical">
                     <div className="col-title">

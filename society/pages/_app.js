@@ -70,6 +70,7 @@ export default function Home({ Component, pageProps }) {
       <>
         <div className="card">
           <img
+            alt="profile picture"
             src={e.hit.image || "/profile.webp"}
             style={{ width: "100%" }}
           ></img>

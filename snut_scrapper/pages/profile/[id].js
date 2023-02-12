@@ -29,6 +29,7 @@ export default function Profile(props) {
             <div className="row">
               <div className="col center">
                 <img
+                  alt="profile picture"
                   src={props.image || "/profile.webp"}
                   width={100}
                   style={{ borderRadius: 20 }}
