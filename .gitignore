@@ -103,4 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# Capacitor
+#graphql
+snut_scrapper/pages/api/test.js
