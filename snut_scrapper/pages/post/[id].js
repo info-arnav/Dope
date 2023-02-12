@@ -7,9 +7,9 @@ export default function Profile(props) {
   return (
     <div style={{ padding: 10 }}>
       <Head
-        title={`Dope - Notice by ${props.societies}`}
-        description={`This is a noticed published by "${props.societies}" titled "${props.title}"`}
-        keword={`, notices, ${props.societies}`}
+        title={`Dope - Notice by ${props.email}`}
+        description={`This is a noticed published by "${props.email}" titled "${props.title}"`}
+        keword={`, notices, ${props.email}`}
         url={`profile/${props._id}`}
         image={props.image || "https://www.itsdope.in/logo.png"}
       ></Head>
