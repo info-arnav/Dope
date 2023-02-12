@@ -49,10 +49,10 @@ export default function Update({ username_given, type_given }) {
       };
     });
   };
-  const deleteRecruitment = async (e) => {
+  const deleteSociety = async (e) => {
     setDisabled(true);
     if (e.b) {
-      await axios.post("/api/recruitment-delete-image", {
+      await axios.post("/api/society-delete-image", {
         id: e.b.replace(
           "https://nsut-societies.itsdope.in/api/society-post/",
           ""
@@ -60,10 +60,10 @@ export default function Update({ username_given, type_given }) {
       });
     }
     await axios
-      .post("/api/recruitment-delete", { id: e.a })
+      .post("/api/society-delete", { id: e.a })
       .then((a) => router.reload());
   };
-  const createRecruitment = async (e) => {
+  const createSocietyPost = async (e) => {
     e.preventDefault();
     setDisabled(true);
     await axios
@@ -73,28 +73,20 @@ export default function Update({ username_given, type_given }) {
       })
       .then(async (e) => {
         axios
-          .post("/api/new-recruitment", {
+          .post("/api/new-society", {
             title: title,
             description: description,
-            image: `https://nsut-societies.itsdope.in/api/society-post/${e.data.id}`,
+            image: `${e.data.id}`,
             date: new Date(),
             email: username_given,
           })
           .then((e) => router.reload());
       });
   };
-  const recruitment = async (e) => {
-    e.preventDefault();
-    setNotices(null);
-    await axios.post("/api/recruitments").then((e) => {
-      setNotices(e.data);
-      setActive(2);
-    });
-  };
   useEffect(() => {
     if (username_given) {
       axios
-        .post("/api/recruitment", { email: username_given })
+        .post("/api/society", { email: username_given })
         .then((e) => setNotices(e.data));
     }
   }, [username_given, type_given]);
@@ -123,14 +115,14 @@ export default function Update({ username_given, type_given }) {
 
                 <hr className="line" style={{ marginBottom: 0 }}></hr>
 
-                <form className="recruit" onSubmit={createRecruitment}>
+                <form className="recruit" onSubmit={createSocietyPost}>
                   <div className="row">
                     <div className="col">
                       <label>Title: </label>{" "}
                       <input
                         required
                         value={title}
-                        onChange={(e) => seTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value)}
                         className="recruit-input"
                         placeholder="Eg - Orientation"
                       ></input>
@@ -184,7 +176,7 @@ export default function Update({ username_given, type_given }) {
                 <center className="offers-title">Your Posts</center>
 
                 <hr className="line" style={{ marginBottom: 0 }}></hr>
-                <div className="alumini-recruitments">
+                <div className="society">
                   {notices.length == 0 && (
                     <div>
                       <br></br>No posts yet from your side
@@ -227,7 +219,7 @@ export default function Update({ username_given, type_given }) {
                                 padding: 5,
                               }}
                               onClick={() =>
-                                deleteRecruitment({ a: e._id, b: e.image })
+                                deleteSociety({ a: e._id, b: e.image })
                               }
                             >
                               {disabled ? "Loading...." : "Delete"}
