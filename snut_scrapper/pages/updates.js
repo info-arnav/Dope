@@ -99,7 +99,7 @@ export default function Update({ username_given, type_given }) {
                           <div className="header">
                             <div className="header-image">
                               <img
-                                src={`https://nsut-societies.itsdope.in/api/image/${e.email}`}
+                                src={`https://www.itsdope.in/api/society-image/${e.email}`}
                                 width={40}
                                 height={40}
                               ></img>
@@ -109,7 +109,9 @@ export default function Update({ username_given, type_given }) {
                             </div>
                           </div>
                           <div className="body">
-                            <img src={e.image}></img>
+                            <img
+                              src={`https://www.itsdope.in/api/society-post/${e.image}`}
+                            ></img>
                           </div>
                         </div>
                       </Link>

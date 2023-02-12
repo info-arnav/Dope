@@ -204,7 +204,13 @@ export default function Update({ username_given, type_given }) {
                           <div className="header-title">{e.email}</div>
                         </div>
                         <div className="body">
-                          <img src={e.image || "/logo.png"}></img>
+                          <img
+                            src={
+                              e.image
+                                ? `https://nsut-societies.itsdope.in/api/society-post/${e.image}`
+                                : "/logo.png"
+                            }
+                          ></img>
                           <div
                             className="footer"
                             style={{ margin: 10, width: "100%" }}

@@ -19,10 +19,7 @@ export default function Home({ username_given }) {
   const update = async (e) => {
     e.preventDefault();
     setDisabled(true);
-    if (
-      image &&
-      image != `https://nsut-societies.itsdope.in/api/image/${userData.email}`
-    ) {
+    if (image && image != userData.email) {
       await axios.post("/api/update-image", {
         image: image,
         id: userData._id,
@@ -36,9 +33,7 @@ export default function Home({ username_given }) {
         changes: {
           email: userData.email,
           bio: bio,
-          image: image
-            ? `https://nsut-societies.itsdope.in/api/image/${userData.email}`
-            : "",
+          image: image ? userData.email : "",
         },
       })
       .then((e) => reload());
@@ -116,7 +111,10 @@ export default function Home({ username_given }) {
                   placeholder="Nothing here"
                 ></input>
                 <img
-                  src={image || "/profile.webp"}
+                  src={
+                    `https://nsut-societies.itsdope.in/api/image/${userData.email}` ||
+                    "/profile.webp"
+                  }
                   onClick={() => {
                     let inputbox = document.getElementById("profile-input");
                     inputbox.click();
