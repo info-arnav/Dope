@@ -624,7 +624,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../public/bg.wbp");
+  background-image: url("../public/bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 60px;
