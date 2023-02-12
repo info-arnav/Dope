@@ -151,7 +151,7 @@ export default function Find({ username_given }) {
             <section className="about-section">
               <div className="row">
                 <div className="col">
-                  <Image src="/g1.jpg" width={290} height={290}></Image>
+                  <Image src="/g1.webp" width={290} height={290}></Image>
                 </div>
                 <div className="col vertical">
                   <div className="col-title">Say goodbye to asking around!</div>
@@ -175,14 +175,14 @@ export default function Find({ username_given }) {
                   </div>
                 </div>
                 <div className="col">
-                  <Image src="/g2.jpg" width={290} height={290}></Image>
+                  <Image src="/g2.webp" width={290} height={290}></Image>
                 </div>
               </div>
             </section>
             <section className="about-section">
               <div className="row">
                 <div className="col">
-                  <Image src="/g3.png" width={290} height={290}></Image>
+                  <Image src="/g3.webp" width={290} height={290}></Image>
                 </div>
                 <div className="col vertical">
                   <div className="col-title">

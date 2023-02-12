@@ -151,7 +151,7 @@ export default function Home({ Component, pageProps }) {
           {username == null ? (
             <a disabled className="nav-image-right">
               <Image
-                src="/white.jpg"
+                src="/white.webp"
                 width={35}
                 height={35}
                 alt="white image"
@@ -167,7 +167,7 @@ export default function Home({ Component, pageProps }) {
             >
               {" "}
               <Image
-                src="/login.png"
+                src="/login.webp"
                 width={35}
                 height={35}
                 alt="login icon"
@@ -182,7 +182,7 @@ export default function Home({ Component, pageProps }) {
               }}
             >
               <Image
-                src="/discover.png"
+                src="/discover.webp"
                 width={35}
                 height={35}
                 alt="profile icon"

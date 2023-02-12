@@ -25,7 +25,7 @@ export default function Profile(props) {
         description={`This is a recruitment offered at dope. Login to view more details`}
         keword={`, recruitment`}
         url={`recruitment/${props._id}`}
-        image={"https://www.itsdope.in/recruitment.jpeg"}
+        image={"https://www.itsdope.in/recruitment.webp"}
       ></Head>
       {loggedIn != null && loggedIn ? (
         <div style={{ padding: 10 }}>
