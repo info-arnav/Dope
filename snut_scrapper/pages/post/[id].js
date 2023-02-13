@@ -11,7 +11,11 @@ export default function Profile(props) {
         description={`This is a noticed published by "${props.email}" titled "${props.title}"`}
         keword={`, notices, ${props.email}`}
         url={`profile/${props._id}`}
-        image={props.image || "https://www.itsdope.in/logo.png"}
+        image={
+          props.image
+            ? `https://www.itsdope.in/api/society-post/${props.image}`
+            : "https://www.itsdope.in/logo.png"
+        }
       ></Head>
       <center style={{ marginTop: 80 }}>
         <h1 style={{}}>{props.title}</h1>
