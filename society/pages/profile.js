@@ -93,7 +93,11 @@ export default function Home({ username_given }) {
         description="Edit the society profile here."
         keword=", profile"
         url="profile"
-        image="https://www.itsdope.in/logo.png"
+        image={
+          userData.email
+            ? `https://nsut-societies.itsdope.in/api/image/${userData.email}`
+            : `https://www.itsdope.in/logo.png`
+        }
       ></Head>
       {username_given == null ? (
         <div className="empty"></div>

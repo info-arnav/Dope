@@ -1,5 +1,4 @@
 import axios from "axios";
-import * as jose from "jose";
 import { useRouter } from "next/router";
 import Head from "../components/head";
 import { useEffect, useState } from "react";
@@ -72,17 +71,7 @@ export default function Login({ username_given }) {
             setError("Some error occured");
             setDisabled(false);
           } else {
-            const secret = new TextEncoder().encode(
-              "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
-            );
-            const alg = "HS256";
-            const jwt = await new jose.SignJWT({
-              data: e.data.username,
-              type: e.data.type,
-            })
-              .setProtectedHeader({ alg })
-              .sign(secret);
-            localStorage.setItem("user", jwt);
+            localStorage.setItem("user", e.data.jwt);
             reload();
           }
         });

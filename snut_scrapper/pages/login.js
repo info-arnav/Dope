@@ -1,6 +1,5 @@
 import axios from "axios";
 import Head from "../components/head";
-import * as jose from "jose";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -33,17 +32,7 @@ export default function Login({ username_given }) {
           setError("Invalid credentials");
           setDisabled(false);
         } else if (e.data.loggedIn == true) {
-          const secret = new TextEncoder().encode(
-            "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
-          );
-          const alg = "HS256";
-          const jwt = await new jose.SignJWT({
-            data: e.data.data,
-            type: e.data.type,
-          })
-            .setProtectedHeader({ alg })
-            .sign(secret);
-          localStorage.setItem("user", jwt);
+          localStorage.setItem("user", e.data.jwt);
           reload();
         } else {
           setError("Some error occured, please try again.");

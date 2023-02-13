@@ -1,6 +1,8 @@
 import clientPromise from "../../middleware/mongodb";
 import bcrypt from "bcrypt";
 
+import * as jose from "jose";
+
 export default async (req, res) => {
   try {
     const client = await clientPromise;
@@ -15,13 +17,20 @@ export default async (req, res) => {
         bcrypt.compare(
           req.body.password,
           data.password,
-          function (err, result) {
+          async function (err, result) {
             if (result) {
+              const secret = new TextEncoder().encode(process.env.ENCRYPTION);
+              const alg = "HS256";
+              const jwt = await new jose.SignJWT({
+                data: req.body.username,
+                type: data.type,
+              })
+                .setProtectedHeader({ alg })
+                .sign(secret);
               res.json({
                 error: false,
                 loggedIn: true,
-                data: req.body.username,
-                type: data.type,
+                jwt: jwt,
               });
             } else {
               res.json({ error: false, loggedIn: false });

@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 const algoliasearch = require("algoliasearch");
 import axios from "axios";
 
+import * as jose from "jose";
+
 export default async (req, res) => {
   const client = algoliasearch(
     "8PCXEU15SU",
@@ -39,9 +41,17 @@ export default async (req, res) => {
               { email: req.body.username },
               { $set: { password: hash, date: req.body.date, type: type } }
             );
+          const secret = new TextEncoder().encode(process.env.ENCRYPTION);
+          const alg = "HS256";
+          const jwt = await new jose.SignJWT({
+            data: req.body.username,
+            type: data.type,
+          })
+            .setProtectedHeader({ alg })
+            .sign(secret);
           res.send({
             error: false,
-            username: req.body.username,
+            jwt: jwt,
             type: type,
           });
         });
@@ -61,11 +71,18 @@ export default async (req, res) => {
             .toArray();
           await index
             .saveObjects([{ objectID: data[0]._id }])
-            .then(({ objectIDs }) => {
+            .then(async ({ objectIDs }) => {
+              const secret = new TextEncoder().encode(process.env.ENCRYPTION);
+              const alg = "HS256";
+              const jwt = await new jose.SignJWT({
+                data: req.body.username,
+                type: data.type,
+              })
+                .setProtectedHeader({ alg })
+                .sign(secret);
               res.send({
                 error: false,
-                username: req.body.username,
-                type: type,
+                jwt: jwt,
               });
             });
         });

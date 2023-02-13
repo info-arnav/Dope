@@ -8,28 +8,24 @@ import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import axios from "axios";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
   const [type, setType] = useState(null);
   const router = useRouter();
   const [show, setShow] = useState("");
   const verifier = async (userStorage) => {
-    try {
-      const secret = new TextEncoder().encode(
-        "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
-      );
-      const data = await jose.jwtVerify(userStorage, secret);
-      if (data.payload.data) {
-        setUsername(data.payload.data);
-        setType(data.payload.type || "student");
-      } else {
-        setUsername(false);
-        localStorage.removeItem("user");
-      }
-    } catch {
-      setUsername(false);
-      localStorage.removeItem("user");
-    }
+    await axios
+      .post("/api/verifier", { string: localStorage.getItem("user") })
+      .then((e) => {
+        if (e.data.loggedIn) {
+          setUsername(e.data.username);
+          setType(e.data.type || "student");
+        } else {
+          localStorage.removeItem("user");
+          setUsername(false);
+        }
+      });
   };
   useEffect(() => {
     let userStorage = localStorage.getItem("user");
