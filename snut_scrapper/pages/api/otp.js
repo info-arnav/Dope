@@ -36,6 +36,9 @@ export default async (req, res) => {
             .collection("otp-new")
             .find({ email: req.body.username })
             .toArray();
+          await db
+            .collection("users-new")
+            .update({ email: req.body.username }, { $set: { otp: otp } });
           if (otpData[0]) {
             await db
               .collection("otp-new")
@@ -72,6 +75,9 @@ export default async (req, res) => {
           },
         });
         let otp = Math.floor(1000 + Math.random() * 9000);
+        await db
+          .collection("users-new")
+          .update({ email: req.body.username }, { $set: { otp: otp } });
         let otpData = await db
           .collection("otp-new")
           .find({ email: req.body.username })
