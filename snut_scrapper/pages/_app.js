@@ -238,7 +238,7 @@ export default function Home({ Component, pageProps }) {
         {show.length > 0 && (
           <main>
             <div className="masonry-container" style={{ marginTop: 90 }}>
-              <Hits hitComponent={Hit} />
+              {username != null && username && <Hits hitComponent={Hit} />}
             </div>
           </main>
         )}

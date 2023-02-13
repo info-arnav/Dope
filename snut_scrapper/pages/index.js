@@ -9,19 +9,23 @@ export default function Find({ username_given }) {
   function reload() {
     setLoading(true);
     const fetcher = async () => {
-      await axios.post("/api/find").then((e) => {
-        setData(e.data);
-        setLoading(false);
-      });
+      await axios
+        .post("/api/find", { token: localStorage.getItem("user") })
+        .then((e) => {
+          setData(e.data);
+          setLoading(false);
+        });
     };
     fetcher();
   }
   useEffect(() => {
     const fetcher = async () => {
-      await axios.post("/api/find").then((e) => {
-        setData(e.data);
-        setLoading(false);
-      });
+      await axios
+        .post("/api/find", { token: localStorage.getItem("user") })
+        .then((e) => {
+          setData(e.data);
+          setLoading(false);
+        });
     };
     fetcher();
   }, [username_given]);

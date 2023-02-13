@@ -24,7 +24,7 @@ export default async (req, res) => {
             secure: true,
             auth: {
               user: "admin@itsdope.in",
-              pass: "Arnav300804",
+              pass: process.env.PASSWORD,
             },
           });
           let otp = Math.floor(1000 + Math.random() * 9000);
@@ -47,7 +47,7 @@ export default async (req, res) => {
           secure: true,
           auth: {
             user: "admin@itsdope.in",
-            pass: "Arnav300804",
+            pass: process.env.PASSWORD,
           },
         });
         let otp = Math.floor(1000 + Math.random() * 9000);

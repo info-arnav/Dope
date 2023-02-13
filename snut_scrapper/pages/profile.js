@@ -31,12 +31,14 @@ export default function Home({ username_given }) {
     setDisabled(true);
     await axios.post("/api/algolia", {
       method: "update",
+      token: localStorage.getItem("user"),
       object: {
         objectID: userData._id,
         roll_no: roll_no,
         image: image ? `https://www.itsdope.in/api/image/${userData._id}` : "",
         name: name,
         bio: bio,
+        email: userData.email,
         instagram_id: instagram,
         linkedin: linkedin,
         snapchat: snapchat,
@@ -52,11 +54,13 @@ export default function Home({ username_given }) {
         email: userData.email,
         image: image,
         id: userData._id,
+        token: localStorage.getItem("user"),
       });
     }
     await axios
       .post("/api/update", {
         email: userData.email,
+        token: localStorage.getItem("user"),
         changes: {
           email: userData.email,
           roll_no: roll_no,
@@ -82,26 +86,31 @@ export default function Home({ username_given }) {
     if (username_given == false) {
       router.push("/login");
     } else if (username_given) {
-      axios.post("/api/user", { email: username_given }).then((e) => {
-        if (e.data.out) {
-          localStorage.removeItem("user");
-          reload();
-        } else {
-          setInstagram(e.data.instagram_id);
-          setBio(e.data.bio);
-          setImage(e.data.image);
-          setName(e.data.name);
-          setRoll_no(e.data.roll_no);
-          setSnapchat(e.data.snapchat);
-          setMail(e.data.mail);
-          setWhatsapp(e.data.whatsapp);
-          setGithub(e.data.github);
-          setLinkedin(e.data.linkedin);
-          setBranch(e.data.branch);
-          setCompany(e.data.company);
-          setUserData(e.data);
-        }
-      });
+      axios
+        .post("/api/user", {
+          email: username_given,
+          token: localStorage.getItem("user"),
+        })
+        .then((e) => {
+          if (e.data.out) {
+            localStorage.removeItem("user");
+            reload();
+          } else {
+            setInstagram(e.data.instagram_id);
+            setBio(e.data.bio);
+            setImage(e.data.image);
+            setName(e.data.name);
+            setRoll_no(e.data.roll_no);
+            setSnapchat(e.data.snapchat);
+            setMail(e.data.mail);
+            setWhatsapp(e.data.whatsapp);
+            setGithub(e.data.github);
+            setLinkedin(e.data.linkedin);
+            setBranch(e.data.branch);
+            setCompany(e.data.company);
+            setUserData(e.data);
+          }
+        });
     }
   }, [username_given]);
   const imageHandle = async (e) => {

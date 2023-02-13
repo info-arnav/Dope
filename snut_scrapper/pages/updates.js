@@ -17,7 +17,10 @@ export default function Update({ username_given, type_given }) {
   const deleteRecruitment = async (e) => {
     setDisabled(true);
     axios
-      .post("/api/recruitment-delete", { id: e })
+      .post("/api/recruitment-delete", {
+        id: e,
+        token: localStorage.getItem("user"),
+      })
       .then((e) => router.reload());
   };
   const createRecruitment = async (e) => {
@@ -33,24 +36,29 @@ export default function Update({ username_given, type_given }) {
         requirments: requirments,
         date: new Date(),
         email: username_given,
+        token: localStorage.getItem("user"),
       })
       .then((e) => router.reload());
   };
   const recruitment = async (e) => {
     e.preventDefault();
     setNotices(null);
-    await axios.post("/api/recruitments").then((e) => {
-      setNotices(e.data);
-      setActive(2);
-    });
+    await axios
+      .post("/api/recruitments", { token: localStorage.getItem("user") })
+      .then((e) => {
+        setNotices(e.data);
+        setActive(2);
+      });
   };
   const societies = async (e) => {
     e.preventDefault();
     setNotices(null);
-    await axios.post("/api/notices").then((e) => {
-      setNotices(e.data);
-      setActive(1);
-    });
+    await axios
+      .post("/api/notices", { token: localStorage.getItem("user") })
+      .then((e) => {
+        setNotices(e.data);
+        setActive(1);
+      });
   };
   useEffect(() => {
     if (username_given == false) {
@@ -58,10 +66,15 @@ export default function Update({ username_given, type_given }) {
     }
     if (username_given && type_given == "alumini") {
       axios
-        .post("/api/recruitment", { email: username_given })
+        .post("/api/recruitment", {
+          email: username_given,
+          token: localStorage.getItem("user"),
+        })
         .then((e) => setNotices(e.data));
     } else {
-      axios.post("/api/notices").then((e) => setNotices(e.data));
+      axios
+        .post("/api/notices", { token: localStorage.getItem("user") })
+        .then((e) => setNotices(e.data));
     }
   }, [username_given, type_given]);
   const router = useRouter();
