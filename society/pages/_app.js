@@ -145,7 +145,7 @@ export default function Home({ Component, pageProps }) {
             )
           ) : (
             <>
-              <input disabled placeholder="Login to Search...."></input>
+              <input disabled placeholder=""></input>
             </>
           )}
           <div style={{ marginLeft: 5 }}></div>
