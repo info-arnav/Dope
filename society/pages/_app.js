@@ -8,6 +8,7 @@ import { InstantSearch, Hits, SearchBox } from "react-instantsearch-dom";
 import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import axios from "axios";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
   const [type, setType] = useState(null);
@@ -19,6 +20,7 @@ export default function Home({ Component, pageProps }) {
       .post("/api/verifier", { string: localStorage.getItem("user") })
       .then((e) => {
         if (e.data.loggedIn) {
+          console.log(e.daya);
           setUsername(e.data.username);
           setType(e.data.type || "student");
           axios

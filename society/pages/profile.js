@@ -124,8 +124,9 @@ export default function Home({ username_given }) {
                 <img
                   alt="society logo"
                   src={
-                    `https://nsut-societies.itsdope.in/api/image/${userData.email}` ||
-                    "/profile.webp"
+                    changed
+                      ? image
+                      : `https://nsut-societies.itsdope.in/api/image/${userData.email}`
                   }
                   onClick={() => {
                     let inputbox = document.getElementById("profile-input");
