@@ -1,11 +1,16 @@
 const algoliasearch = require("algoliasearch");
 import * as jose from "jose";
+import clientPromise from "../../middleware/mongodb";
 
 export default async (req, res) => {
   try {
     const secret = new TextEncoder().encode(process.env.ENCRYPTION);
     const testData = await jose.jwtVerify(req.body.token, secret);
-    if (testData.payload.data == req.body.object.email) {
+    let data = await db
+      .collection("users-new")
+      .find({ _id: req.body._id })
+      .toArray();
+    if (testData.payload.data == data[0].email) {
       const client = algoliasearch(
         "8PCXEU15SU",
         "fc652d91b2d6db2718b47254be4c5d6e"

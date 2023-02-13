@@ -16,7 +16,7 @@ export default function Update({ username_given, type_given }) {
   const [disabled, setDisabled] = useState(false);
   const deleteRecruitment = async (e) => {
     setDisabled(true);
-    axios
+    await axios
       .post("/api/recruitment-delete", {
         id: e,
         token: localStorage.getItem("user"),
