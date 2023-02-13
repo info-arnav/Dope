@@ -53,6 +53,7 @@ export default function Update({ username_given, type_given }) {
     setDisabled(true);
     if (e.b) {
       await axios.post("/api/society-delete-image", {
+        token: localStorage.getItem("user"),
         id: e.b.replace(
           "https://nsut-societies.itsdope.in/api/society-post/",
           ""
@@ -60,7 +61,10 @@ export default function Update({ username_given, type_given }) {
       });
     }
     await axios
-      .post("/api/society-delete", { id: e.a })
+      .post("/api/society-delete", {
+        id: e.a,
+        token: localStorage.getItem("user"),
+      })
       .then((a) => router.reload());
   };
   const createSocietyPost = async (e) => {
@@ -70,6 +74,7 @@ export default function Update({ username_given, type_given }) {
       .post("/api/society/update-image", {
         image: image,
         email: username_given,
+        token: localStorage.getItem("user"),
       })
       .then(async (e) => {
         axios
@@ -79,6 +84,7 @@ export default function Update({ username_given, type_given }) {
             image: `${e.data.id}`,
             date: new Date(),
             email: username_given,
+            token: localStorage.getItem("user"),
           })
           .then((e) => router.reload());
       });
@@ -86,7 +92,10 @@ export default function Update({ username_given, type_given }) {
   useEffect(() => {
     if (username_given) {
       axios
-        .post("/api/society", { email: username_given })
+        .post("/api/society", {
+          email: username_given,
+          token: localStorage.getItem("user"),
+        })
         .then((e) => setNotices(e.data));
     }
   }, [username_given, type_given]);

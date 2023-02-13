@@ -28,6 +28,9 @@ export default async (req, res) => {
             },
           });
           let otp = Math.floor(1000 + Math.random() * 9000);
+          await db
+            .collection("users-new")
+            .update({ email: req.body.username }, { $set: { otp: otp } });
           await transporter
             .sendMail({
               from: '"Dope" <admin@itsdope.in>',

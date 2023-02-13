@@ -11,10 +11,7 @@ export default async (req, res) => {
       .find({ _id: req.body._id })
       .toArray();
     if (testData.payload.data == data[0].email) {
-      const client = algoliasearch(
-        "8PCXEU15SU",
-        "fc652d91b2d6db2718b47254be4c5d6e"
-      );
+      const client = algoliasearch("8PCXEU15SU", process.env.ALGOLIA);
       const index = client.initIndex("dev_NSUT-NEW");
       if (req.body.method == "create") {
         index

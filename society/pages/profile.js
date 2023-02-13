@@ -22,6 +22,7 @@ export default function Home({ username_given }) {
     if (image && image != userData.email) {
       await axios.post("/api/update-image", {
         image: image,
+        token: localStorage.getItem("user"),
         id: userData._id,
         email: userData.email,
         bio: bio,
@@ -30,6 +31,7 @@ export default function Home({ username_given }) {
     await axios
       .post("/api/update", {
         email: userData.email,
+        token: localStorage.getItem("user"),
         changes: {
           email: userData.email,
           bio: bio,
@@ -42,16 +44,21 @@ export default function Home({ username_given }) {
     if (username_given == false) {
       router.push("/login");
     } else if (username_given) {
-      axios.post("/api/user", { email: username_given }).then((e) => {
-        if (e.data.out) {
-          localStorage.removeItem("user");
-          reload();
-        } else {
-          setImage(e.data.image);
-          setBio(e.data.bio);
-          setUserData(e.data);
-        }
-      });
+      axios
+        .post("/api/user", {
+          email: username_given,
+          token: localStorage.getItem("user"),
+        })
+        .then((e) => {
+          if (e.data.out) {
+            localStorage.removeItem("user");
+            reload();
+          } else {
+            setImage(e.data.image);
+            setBio(e.data.bio);
+            setUserData(e.data);
+          }
+        });
     }
   }, [username_given]);
   const imageHandle = async (e) => {

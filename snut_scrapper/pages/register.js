@@ -64,6 +64,7 @@ export default function Login({ username_given }) {
         .post("/api/register", {
           username: username,
           password: password,
+          otp: otp,
           date: new Date(),
         })
         .then(async (e) => {

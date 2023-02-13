@@ -61,7 +61,11 @@ export default function Login({ username_given }) {
     setDisabled(true);
     if (password == confirmPassword) {
       axios
-        .post("/api/register", { username: username, password: password })
+        .post("/api/register", {
+          username: username,
+          password: password,
+          otp: otp,
+        })
         .then(async (e) => {
           if (e.data.error) {
             setError("Some error occured");

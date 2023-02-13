@@ -11,25 +11,26 @@ import Script from "next/script";
 export default function Home({ Component, pageProps }) {
   const [username, setUsername] = useState(null);
   const [type, setType] = useState(null);
+  const [key, setKey] = useState(null);
   const router = useRouter();
   const [show, setShow] = useState("");
   const verifier = async (userStorage) => {
-    try {
-      const secret = new TextEncoder().encode(
-        "D7AAD3B1A3EDC206FEF25F5DC1578A4A1D347A3A2299FB9E70DECFA68CC692D1"
-      );
-      const data = await jose.jwtVerify(userStorage, secret);
-      if (data.payload.data) {
-        setUsername(data.payload.data);
-        setType(data.payload.type || "student");
-      } else {
-        setUsername(false);
-        localStorage.removeItem("user");
-      }
-    } catch {
-      setUsername(false);
-      localStorage.removeItem("user");
-    }
+    await axios
+      .post("/api/verifier", { string: localStorage.getItem("user") })
+      .then((e) => {
+        if (e.data.loggedIn) {
+          setUsername(e.data.username);
+          setType(e.data.type || "student");
+          axios
+            .post("/api/algolia-key", {
+              token: localStorage.getItem("user"),
+            })
+            .then((e) => setKey(e.data.key));
+        } else {
+          localStorage.removeItem("user");
+          setUsername(false);
+        }
+      });
   };
   useEffect(() => {
     let userStorage = localStorage.getItem("user");
@@ -39,10 +40,7 @@ export default function Home({ Component, pageProps }) {
       setUsername(false);
     }
   }, [username]);
-  const algoliaClient = algoliasearch(
-    "8PCXEU15SU",
-    "7b08d93fde9eb5eebb3d081f764b2ec4"
-  );
+  const algoliaClient = algoliasearch("8PCXEU15SU", key);
   const searchClient = {
     ...algoliaClient,
     search(requests) {
@@ -194,7 +192,7 @@ export default function Home({ Component, pageProps }) {
         {show.length > 0 && (
           <main>
             <div className="masonry-container" style={{ marginTop: 90 }}>
-              <Hits hitComponent={Hit} />
+              {username != null && username && <Hits hitComponent={Hit} />}
             </div>
           </main>
         )}
