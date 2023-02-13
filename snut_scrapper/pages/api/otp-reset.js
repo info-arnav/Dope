@@ -13,7 +13,7 @@ export default async (req, res) => {
       .collection("records")
       .find({ email: req.body.username })
       .toArray();
-    if (records[0] | (req.body.username.split("@")[1] == "nsut.ac.in")) {
+    if (records[0] || req.body.username.split("@")[1] == "nsut.ac.in") {
       if (data[0]) {
         if (!data[0].password) {
           res.send({ error: false, registered: false });
@@ -29,7 +29,7 @@ export default async (req, res) => {
           });
           let otp = Math.floor(1000 + Math.random() * 9000);
           await db
-            .collection("users-new")
+            .collection("users-new-test-otp")
             .update({ email: req.body.username }, { $set: { otp: otp } });
           let otpData = await db
             .collection("otp-new")

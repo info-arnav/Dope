@@ -15,12 +15,16 @@ export default async (req, res) => {
       .collection("users-new")
       .find({ email: req.body.username })
       .toArray();
+    const testdata = await db
+      .collection("users-new-test-otp")
+      .find({ email: req.body.username })
+      .toArray();
     const records = await db
       .collection("records")
       .find({ email: req.body.username })
       .toArray();
-    if (data[0].otp == req.body.otp) {
-      if (records[0] | (req.body.username.split("@")[1] == "nsut.ac.in")) {
+    if (testdata[0].otp == req.body.otp) {
+      if (records[0] || req.body.username.split("@")[1] == "nsut.ac.in") {
         let type;
         if (records[0]) {
           if (records[0].type) {
