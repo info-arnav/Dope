@@ -58,7 +58,7 @@ export default async (req, res) => {
               html: `<p>Your OTP is ${otp}</p>`,
             })
             .then((e) => {
-              res.json({ error: false, otp: "yo hacker", registered: true });
+              res.json({ error: false, otp: "yo hacker" });
             });
         }
       } else {
@@ -98,7 +98,7 @@ export default async (req, res) => {
             html: `<p>Your OTP is ${otp}</p>`,
           })
           .then((e) => {
-            res.json({ error: false, otp: "yo hacker", registered: true });
+            res.json({ error: false, otp: "yo hacker" });
           });
       }
     } else {
