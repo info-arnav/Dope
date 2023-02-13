@@ -28,9 +28,24 @@ export default async (req, res) => {
             },
           });
           let otp = Math.floor(1000 + Math.random() * 9000);
-          await db
-            .collection("users-new")
-            .update({ email: req.body.username }, { $set: { otp: otp } });
+          let otpData = await db
+            .collection("otp-new")
+            .find({ email: req.body.username })
+            .toArray();
+          if (otpData[0]) {
+            await db
+              .collection("otp-new")
+              .update(
+                { email: req.body.username },
+                { $set: { lastModifiedDate: new Date(), otp: otp } }
+              );
+          } else {
+            await db.collection("otp-new").insert({
+              lastModifiedDate: new Date(),
+              email: req.body.username,
+              otp: otp,
+            });
+          }
           await transporter
             .sendMail({
               from: '"Dope" <admin@itsdope.in>',
@@ -39,8 +54,7 @@ export default async (req, res) => {
               html: `<p>Your OTP is ${otp}</p>`,
             })
             .then((e) => {
-              otp = otp.toString(16);
-              res.json({ error: false, otp: otp, registered: true });
+              res.json({ error: false, otp: "yo hacker", registered: true });
             });
         }
       } else {

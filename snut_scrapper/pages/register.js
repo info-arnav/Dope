@@ -35,7 +35,6 @@ export default function Login({ username_given }) {
         setError("Already registered");
         setDisabled(false);
       } else {
-        setHash(parseInt(e.data.otp, 16));
         setError(false);
         setShowOtp(true);
         setDisabled(false);
@@ -46,14 +45,16 @@ export default function Login({ username_given }) {
     e.preventDefault();
     setError(false);
     setDisabled(true);
-    if (otp == hash) {
-      setError(false);
-      setChoosePassword(true);
-      setDisabled(false);
-    } else {
-      setError("invalid OTP");
-      setDisabled(false);
-    }
+    axios.post("/api/verify-otp", { email: username, otp: otp }).then((e) => {
+      if (e.data.error) {
+        setError("invalid OTP");
+        setDisabled(false);
+      } else {
+        setError(false);
+        setChoosePassword(true);
+        setDisabled(false);
+      }
+    });
   };
   const auth3 = async (e) => {
     e.preventDefault();
