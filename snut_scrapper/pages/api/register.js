@@ -6,10 +6,7 @@ import axios from "axios";
 import * as jose from "jose";
 
 export default async (req, res) => {
-  const client = algoliasearch(
-    "8PCXEU15SU",
-    "fc652d91b2d6db2718b47254be4c5d6e"
-  );
+  const client = algoliasearch("8PCXEU15SU", process.env.ALGOLIA);
   const index = client.initIndex("dev_NSUT-NEW");
   try {
     const client = await clientPromise;

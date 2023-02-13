@@ -14,6 +14,7 @@ export default function Home({ Component, pageProps }) {
   const [type, setType] = useState(null);
   const router = useRouter();
   const [show, setShow] = useState("");
+  const [key, setKey] = useState(null);
   const verifier = async (userStorage) => {
     await axios
       .post("/api/verifier", { string: localStorage.getItem("user") })
@@ -21,6 +22,11 @@ export default function Home({ Component, pageProps }) {
         if (e.data.loggedIn) {
           setUsername(e.data.username);
           setType(e.data.type || "student");
+          axios
+            .post("/api/algolia-key", {
+              token: localStorage.getItem("user"),
+            })
+            .then((e) => setKey(e.data.key));
         } else {
           localStorage.removeItem("user");
           setUsername(false);
@@ -35,10 +41,7 @@ export default function Home({ Component, pageProps }) {
       setUsername(false);
     }
   }, [username]);
-  const algoliaClient = algoliasearch(
-    "8PCXEU15SU",
-    "7b08d93fde9eb5eebb3d081f764b2ec4"
-  );
+  const algoliaClient = algoliasearch("8PCXEU15SU", key);
   const searchClient = {
     ...algoliaClient,
     search(requests) {
