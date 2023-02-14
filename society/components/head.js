@@ -4,6 +4,7 @@ import { useEffect } from "react";
 export default function Head({ title, description, kewords, url, image }) {
   return (
     <Heads>
+      {url != "login" && <meta name="robots" content="noindex"/>}
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
       <title>{title}</title>
       <meta name="title" content={title} />
