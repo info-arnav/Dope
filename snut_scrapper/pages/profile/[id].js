@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ObjectId } from "mongodb";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Head from "../../components/head";
@@ -84,7 +85,7 @@ export async function getServerSideProps(id) {
   id = id.query.id;
   const client = await clientPromise;
   const db = client.db("nsut");
-  let data = await db.collection("users-new").find({ _id: id }).toArray();
+  let data = await db.collection("users-new").find({ _id: ObjectId(id) }).toArray();
   data = JSON.parse(JSON.stringify(data));
   if (data[0]) {
     return {
