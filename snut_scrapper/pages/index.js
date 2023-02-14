@@ -27,7 +27,9 @@ export default function Find({ username_given }) {
           setLoading(false);
         });
     };
-    fetcher();
+    if (username_given != null && username_given) {
+      fetcher();
+    }
   }, [username_given]);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);

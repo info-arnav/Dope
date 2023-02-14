@@ -85,7 +85,7 @@ export default function Home({ username_given }) {
   useEffect(() => {
     if (username_given == false) {
       router.push("/login");
-    } else if (username_given) {
+    } else if (username_given != null && username_given) {
       axios
         .post("/api/user", {
           email: username_given,

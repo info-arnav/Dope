@@ -90,7 +90,7 @@ export default function Update({ username_given, type_given }) {
       });
   };
   useEffect(() => {
-    if (username_given) {
+    if (username_given != null && username_given) {
       axios
         .post("/api/society", {
           email: username_given,

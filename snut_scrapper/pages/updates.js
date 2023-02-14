@@ -64,7 +64,7 @@ export default function Update({ username_given, type_given }) {
     if (username_given == false) {
       router.push("/login");
     }
-    if (username_given && type_given == "alumini") {
+    if (username_given != null && username_given && type_given == "alumini") {
       axios
         .post("/api/recruitment", {
           email: username_given,

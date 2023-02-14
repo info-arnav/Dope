@@ -11,7 +11,7 @@ export default function Login({ username_given }) {
     router.reload(window.location.pathname);
   };
   useEffect(() => {
-    if (username_given) {
+    if (username_given != null && username_given) {
       router.push("/");
     }
   }, [username_given, disabled]);

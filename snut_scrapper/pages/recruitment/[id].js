@@ -12,7 +12,7 @@ export default function Profile(props) {
     if (props.username_given == false) {
       router.push("/login");
     }
-    if (props.username_given) {
+    if (username_given != null && username_given) {
       setLoggedIn(true);
     } else {
       setLoggedIn(false);
