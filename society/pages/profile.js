@@ -209,13 +209,16 @@ export default function Home({ username_given }) {
             display: "flex",
           }}
         >
-          <Image
-            src="/loading.gif"
+          <video
+            width="50"
+            height="50"
+            autoPlay
+            loop
+            muted
             style={{ borderRadius: "100%" }}
-            width={50}
-            height={50}
-            alt="loading animation"
-          ></Image>
+          >
+            <source src="/loading.webm" type="video/webm" />
+          </video>
         </div>
       )}
     </>
