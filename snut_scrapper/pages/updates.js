@@ -298,11 +298,11 @@ export default function Update({ username_given, type_given }) {
                         </p>
                       </div>
                       <div className="footer">
-                        <Link href={`/recruitment/${e._id}`}>
+                        <a href={`/recruitment/${e._id}`}>
                           <button disabled={disabled}>
                             {disabled ? "Loading...." : "View"}
                           </button>
-                        </Link>
+                        </a>
                         <button
                           disabled={disabled}
                           onClick={() => deleteRecruitment(e._id)}
