@@ -40,7 +40,7 @@ export default function Home({ Component, pageProps }) {
     } else {
       setUsername(false);
     }
-  }, [username]);
+  }, []);
   const algoliaClient = algoliasearch("8PCXEU15SU", key);
   const searchClient = {
     ...algoliaClient,
@@ -66,7 +66,7 @@ export default function Home({ Component, pageProps }) {
   };
   const Hit = (e) => {
     return (
-      <Link onClick={() => setShow("")} href={`/profile/${e.hit.objectID}`}>
+      <a href={`/profile/${e.hit.objectID}`}>
         <div className="card">
           <img
             alt="profile picture"
@@ -91,7 +91,7 @@ export default function Home({ Component, pageProps }) {
             </div>
           </div>
         </div>
-      </Link>
+      </a>
     );
   };
   return (

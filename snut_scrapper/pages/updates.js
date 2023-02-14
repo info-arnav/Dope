@@ -76,7 +76,7 @@ export default function Update({ username_given, type_given }) {
         .post("/api/notices", { token: localStorage.getItem("user") })
         .then((e) => setNotices(e.data));
     }
-  }, [username_given, type_given]);
+  }, []);
   const router = useRouter();
   return (
     <>
@@ -107,7 +107,7 @@ export default function Update({ username_given, type_given }) {
                 <div>
                   <div className="masonry-container">
                     {notices.map((e) => (
-                      <Link href={`/post/${e._id}`}>
+                      <a href={`/post/${e._id}`}>
                         <div className="card">
                           <div className="header">
                             <div className="header-image">
@@ -129,7 +129,7 @@ export default function Update({ username_given, type_given }) {
                             ></img>
                           </div>
                         </div>
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -155,11 +155,11 @@ export default function Update({ username_given, type_given }) {
                         </p>
                       </div>
                       <div className="footer">
-                        <Link href={`/recruitment/${e._id}`}>
+                        <a href={`/recruitment/${e._id}`}>
                           <button disabled={disabled}>
                             {disabled ? "Loading...." : "View"}
                           </button>
-                        </Link>
+                        </a>
                       </div>
                     </div>
                   ))}

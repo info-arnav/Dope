@@ -28,7 +28,7 @@ export default function Find({ username_given }) {
         });
     };
     fetcher();
-  }, [username_given]);
+  }, []);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const router = useRouter();
@@ -91,7 +91,7 @@ export default function Find({ username_given }) {
                 <>
                   <div className="masonry-container">
                     {data.map((e) => (
-                      <Link href={`/profile/${e._id}`}>
+                      <a href={`/profile/${e._id}`}>
                         <div className="card">
                           <img
                             alt="profile picture"
@@ -118,7 +118,7 @@ export default function Find({ username_given }) {
                             </div>
                           </div>
                         </div>
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </>
