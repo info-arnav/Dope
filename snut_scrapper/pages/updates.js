@@ -76,7 +76,7 @@ export default function Update({ username_given, type_given }) {
         .post("/api/notices", { token: localStorage.getItem("user") })
         .then((e) => setNotices(e.data));
     }
-  }, []);
+  }, [username_given]);
   const router = useRouter();
   return (
     <>

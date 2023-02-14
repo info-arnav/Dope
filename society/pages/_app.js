@@ -41,7 +41,7 @@ export default function Home({ Component, pageProps }) {
     } else {
       setUsername(false);
     }
-  }, [username]);
+  }, []);
   const algoliaClient = algoliasearch("8PCXEU15SU", key);
   const searchClient = {
     ...algoliaClient,

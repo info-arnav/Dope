@@ -28,7 +28,7 @@ export default function Find({ username_given }) {
         });
     };
     fetcher();
-  }, []);
+  }, [username_given]);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const router = useRouter();

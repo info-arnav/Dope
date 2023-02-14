@@ -112,7 +112,7 @@ export default function Home({ username_given }) {
           }
         });
     }
-  }, []);
+  }, [username_given]);
   const imageHandle = async (e) => {
     e.preventDefault();
     const imageFile = e.target.files[0];
