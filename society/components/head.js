@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Head({ title, description, kewords, url, image }) {
   return (
     <Heads>
-      {url != "login" && <meta name="robots" content="noindex"/>}
+      {url != "login" && <meta name="robots" content="noindex" />}
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
       <title>{title}</title>
       <meta name="title" content={title} />
@@ -35,7 +35,7 @@ export default function Head({ title, description, kewords, url, image }) {
       />
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
       />
       <meta property="og:title" content={title} />
       <meta property="og:url" content={`https://www.itsdope.in/${url}`} />
