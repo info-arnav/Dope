@@ -17,6 +17,9 @@ export default async (req, res) => {
       .collection("records")
       .find({ email: req.body.username })
       .toArray();
+    const newOtpTest = await db
+      .collection("users-new-test-otp")
+      .find({ email: req.body.username });
     if (records[0] || req.body.username.split("@")[1] == "nsut.ac.in") {
       if (data[0]) {
         if (data[0].password) {
@@ -36,9 +39,6 @@ export default async (req, res) => {
             .collection("otp-new")
             .find({ email: req.body.username })
             .toArray();
-          const newOtpTest = await db
-            .collection("users-new-test-otp")
-            .find({ email: req.body.username });
           if (newOtpTest[0]) {
             await db
               .collection("users-new-test-otp")
@@ -84,9 +84,6 @@ export default async (req, res) => {
           },
         });
         let otp = Math.floor(1000 + Math.random() * 9000);
-        const newOtpTest = await db
-          .collection("users-new-test-otp")
-          .find({ email: req.body.username });
         if (newOtpTest[0]) {
           await db
             .collection("users-new-test-otp")
