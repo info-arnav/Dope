@@ -348,11 +348,11 @@ export default function Update({ username_given, type_given }) {
                   </div>
                   <div className="col vertical">
                     <div className="col-title">
-                      Your Seniors, Your Recruiters!
+                      Your batchmates, Your connections!
                     </div>
                     <div className="col-content">
-                      On Dope students of NSUT can view offers made by their own
-                      seniors, the alumini of NSUT.
+                      On Dope you can maximise the number of students you
+                      connect with explading your network
                     </div>
                   </div>
                 </div>

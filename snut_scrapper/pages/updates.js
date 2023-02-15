@@ -95,9 +95,6 @@ export default function Update({ username_given, type_given }) {
               <button className={active == 1 && "active"} onClick={societies}>
                 Societies
               </button>
-              <button className={active == 2 && "active"} onClick={recruitment}>
-                Recruitments
-              </button>
             </div>
           )}
         {username_given != null && username_given != false ? (
