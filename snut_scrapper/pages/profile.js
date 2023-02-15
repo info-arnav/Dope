@@ -253,6 +253,93 @@ export default function Home({ username_given }) {
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
               </p>{" "}
+              <center>
+                <b>
+                  <hr></hr>
+                  <p>Personal Info</p>
+                  <hr></hr>
+                </b>
+              </center>
+              <p>
+                <b>LinkedIn:</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                    border: "solid grey 1px",
+                  }}
+                  value={linkedin}
+                  placeholder="https://www.linkedin.com/in/XXXXXXXXX"
+                  onChange={(e) => setLinkedin(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                <b>Github :</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                    border: "solid grey 1px",
+                  }}
+                  value={github}
+                  placeholder="https://github.com/username"
+                  onChange={(e) => setGithub(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                <b>Whatsapp No :</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                    border: "solid grey 1px",
+                  }}
+                  value={whatsapp}
+                  placeholder="XXXXXXXX12"
+                  onChange={(e) => setWhatsapp(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                <b>Instagram :</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                    border: "solid grey 1px",
+                  }}
+                  value={instagram}
+                  placeholder="nsut.official"
+                  onChange={(e) => setInstagram(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                <b>Snapchat :</b>{" "}
+                <input
+                  style={{
+                    width: "100%",
+                    borderRadius: 5,
+                    boxShadow: "#bab5b5 2px 2px 7px 0px",
+                    marginTop: 5,
+                    border: "none",
+                    border: "solid grey 1px",
+                  }}
+                  value={snapchat}
+                  placeholder="username"
+                  onChange={(e) => setSnapchat(e.target.value)}
+                ></input>
+              </p>
               <button
                 onClick={update}
                 disabled={disabled}

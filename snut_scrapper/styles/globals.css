@@ -720,6 +720,11 @@ a {
   flex-direction: column;
 }
 
+.profile-front a {
+  text-decoration: none;
+  color: black;
+}
+
 .profile-front .row .col.left * {
   margin: 0px;
   margin-bottom: 8px;

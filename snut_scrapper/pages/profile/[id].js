@@ -69,6 +69,52 @@ export default function Profile(props) {
                       : "Nothing here",
                   }}
                 ></p>
+                <center>
+                  <b>
+                    <hr></hr>
+                    <p>Personal Info</p>
+                    <hr></hr>
+                  </b>
+                </center>
+                <p>
+                  <a
+                    href={props.linkedin ? props.linkedin : "#"}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <b>Linkedin :</b>
+                    {" " + (props.linkedin || "None")}
+                  </a>
+                </p>
+                <p>
+                  <a
+                    href={props.github ? props.github : "#"}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <b>Github :</b>
+                    {" " + (props.github || "None")}
+                  </a>
+                </p>
+                <p>
+                  <b>Whatsapp :</b>
+                  {" " + (props.whatsapp || "None")}
+                </p>
+                <p>
+                  <a
+                    style={{ cursor: "pointer" }}
+                    href={
+                      props.instagram_id
+                        ? `https://www.instagram.com/${props.instagram_id}`
+                        : "#"
+                    }
+                  >
+                    <b>Instagram :</b>
+                    {" " + (props.instagram_id || "None")}
+                  </a>
+                </p>
+                <p>
+                  <b>Snapchat :</b>
+                  {" " + (props.snapchat || "None")}
+                </p>
               </p>
             </div>
           </div>
@@ -85,7 +131,10 @@ export async function getServerSideProps(id) {
   id = id.query.id;
   const client = await clientPromise;
   const db = client.db("nsut");
-  let data = await db.collection("users-new").find({ _id: ObjectId(id) }).toArray();
+  let data = await db
+    .collection("users-new")
+    .find({ _id: ObjectId(id) })
+    .toArray();
   data = JSON.parse(JSON.stringify(data));
   if (data[0]) {
     return {
