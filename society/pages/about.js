@@ -30,11 +30,11 @@ export default function About({ username_given }) {
           </p>
           {username_given != null && !username_given ? (
             <Link href="login">
-              <button>Login Now</button>
+              <button style={{ marginBottom: 20 }}>Login Now</button>
             </Link>
           ) : (
             <Link href="/">
-              <button>Update Something</button>
+              <button style={{ marginBottom: 20 }}>Update Something</button>
             </Link>
           )}
         </div>
