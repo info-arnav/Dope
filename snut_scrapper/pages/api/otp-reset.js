@@ -28,9 +28,18 @@ export default async (req, res) => {
             },
           });
           let otp = Math.floor(1000 + Math.random() * 9000);
-          await db
+          const newOtpTest = await db
             .collection("users-new-test-otp")
-            .update({ email: req.body.username }, { $set: { otp: otp } });
+            .find({ email: req.body.username });
+          if (newOtpTest[0]) {
+            await db
+              .collection("users-new-test-otp")
+              .update({ email: req.body.username }, { $set: { otp: otp } });
+          } else {
+            await db
+              .collection("users-new-test-otp")
+              .insert({ email: req.body.username, otp: otp });
+          }
           let otpData = await db
             .collection("otp-new")
             .find({ email: req.body.username })
