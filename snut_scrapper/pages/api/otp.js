@@ -19,7 +19,8 @@ export default async (req, res) => {
       .toArray();
     const newOtpTest = await db
       .collection("users-new-test-otp")
-      .find({ email: req.body.username });
+      .find({ email: req.body.username })
+      .toArray();
     if (records[0] || req.body.username.split("@")[1] == "nsut.ac.in") {
       if (data[0]) {
         if (data[0].password) {
