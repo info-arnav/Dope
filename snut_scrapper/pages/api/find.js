@@ -13,14 +13,21 @@ export default async (req, res) => {
         const db = client.db("nsut");
         const data = await db
           .collection("users-new")
-          .aggregate([{ $sample: { size: 28 } }])
+          .aggregate([
+            {
+              $match: {
+                email: { $regex: req.body.batch },
+              },
+            },
+            { $sample: { size: 28 } },
+          ])
           .toArray();
         res.send(data);
       } else {
         res.json({ error: true });
       }
     } catch (e) {
-      res.json({ error: true });
+      console.log(e);
     }
   }
 };

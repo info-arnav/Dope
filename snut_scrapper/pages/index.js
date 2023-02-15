@@ -21,7 +21,10 @@ export default function Find({ username_given }) {
   useEffect(() => {
     const fetcher = async () => {
       await axios
-        .post("/api/find", { token: localStorage.getItem("user") })
+        .post("/api/find", {
+          token: localStorage.getItem("user"),
+          batch: username_given.split("@")[0].slice(-2),
+        })
         .then((e) => {
           setData(e.data);
           setLoading(false);
