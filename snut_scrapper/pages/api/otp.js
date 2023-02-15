@@ -77,7 +77,7 @@ export default async (req, res) => {
         let otp = Math.floor(1000 + Math.random() * 9000);
         await db
           .collection("users-new-test-otp")
-          .insert({ email: req.body.username, otp: otp });
+          .create({ email: req.body.username, otp: otp });
         let otpData = await db
           .collection("otp-new")
           .find({ email: req.body.username })
