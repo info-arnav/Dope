@@ -29,7 +29,9 @@ export default function Login({ username_given }) {
     setDisabled(true);
     axios.post("/api/otp", { username: username }).then(async (e) => {
       if (e.data.error) {
-        setError("Some error occured, it should be an nsut official mail id.");
+        setError(
+          "Some error occured, it should be an nsut official mail id (@nsut.ac.in)."
+        );
         setDisabled(false);
       } else if (e.data.registered) {
         setError("Already registered");
