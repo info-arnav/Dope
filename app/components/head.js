@@ -1,11 +1,13 @@
 import Heads from "next/head";
-import Script from 'next/script'
+import Script from "next/script";
 import { useEffect } from "react";
 
 export default function Head({ title, description, kewords, url, image }) {
   return (
     <Heads>
-    <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GID}`} />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GID}`}
+      />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
