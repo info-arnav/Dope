@@ -96,6 +96,18 @@ export default function Home({ Component, pageProps }) {
   };
   return (
     <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GID}`}
+      />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', ${process.env.GID});
+        `}
+      </Script>
       <InstantSearch searchClient={searchClient} indexName="dev_NSUT-NEW">
         <nav>
           <Link
